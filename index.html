@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Cartera Hollem, S.A.</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --brand-orange: #f39519;
+    --brand-navy: #283551;
+    --brand-orange2: #f38a00;
+    --white: #ffffff;
+    --page-bg: #f4f6fa;
+    --card-bg: #ffffff;
+    --card-border: #dde3ee;
+    --card-shadow: 0 2px 16px rgba(40,53,81,0.09);
+    --text-primary: #283551;
+    --text-muted: #7a8ea8;
+    --green: #27ae60;
+    --red: #e84545;
+    --purple: #8e44ad;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--page-bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--brand-navy) 0%, #1a2540 100%);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(40,53,81,0.25);
+  }
+
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--brand-orange);
+    letter-spacing: 3px;
+  }
+
+  .header-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .filter-btn {
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.75);
+    padding: 8px 22px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--brand-orange);
+    color: #fff;
+    border-color: var(--brand-orange);
+  }
+
+  .dashboard {
+    padding: 36px 48px;
+    display: grid;
+    gap: 28px;
+  }
+
+  /* KPI Row */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .kpi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--card-shadow);
+  }
+
+  .kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(40,53,81,0.14);
+  }
+
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .kpi-card.gold::before   { background: var(--brand-orange); }
+  .kpi-card.blue::before   { background: var(--brand-navy); }
+  .kpi-card.green::before  { background: var(--green); }
+  .kpi-card.orange::before { background: var(--brand-orange2); }
+  .kpi-card.red::before    { background: var(--red); }
+
+  .kpi-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .kpi-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .kpi-card.gold .kpi-value   { color: var(--brand-orange); }
+  .kpi-card.blue .kpi-value   { color: var(--brand-navy); }
+  .kpi-card.green .kpi-value  { color: var(--green); }
+  .kpi-card.orange .kpi-value { color: var(--brand-orange2); }
+  .kpi-card.red .kpi-value    { color: var(--red); }
+
+  .kpi-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  /* Charts grid */
+  .charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .charts-row-2 {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+  }
+
+  .chart-card {
+    background: #283551;
+    border: 1px solid #1e2a42;
+    border-radius: 14px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 2px 16px rgba(40,53,81,0.18);
+  }
+
+  .chart-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: #f39519;
+    margin-bottom: 4px;
+  }
+
+  .chart-subtitle {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .chart-container { position: relative; }
+
+  /* Legend custom */
+  .custom-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Gender cards */
+  .gender-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .gender-card {
+    background: rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .gender-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+
+  .gender-name {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 10px;
+  }
+
+  .gender-stat .val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .gender-stat .lbl {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    display: block;
+  }
+
+  .gender-pct {
+    margin-top: 10px;
+    background: rgba(243,149,25,0.2);
+    border: 1px solid #f39519;
+    border-radius: 20px;
+    padding: 4px 14px;
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #f39519;
+  }
+
+  /* Tabs */
+  .tab-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tab {
+    padding: 6px 18px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .tab.active {
+    background: #f39519;
+    color: #fff;
+    border-color: #f39519;
+  }
+
+  .pie-legend { margin-top: 16px; }
+
+  .pie-legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .pie-legend-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .pie-legend-pct {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #f39519;
+  }
+
+  footer {
+    text-align: center;
+    padding: 18px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--card-border);
+    margin-top: 8px;
+    background: var(--white);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1> Dashboard Cartera Hollem, S.A.</h1>
+  <div class="header-controls">
+    <button class="filter-btn" onclick="setMonth('NOVIEMBRE')">NOV</button>
+    <button class="filter-btn" onclick="setMonth('DICIEMBRE')">DIC</button>
+    <button class="filter-btn" onclick="setMonth('ENERO')">ENE</button>
+    <button class="filter-btn active" onclick="setMonth('TODOS')">TODOS</button>
+  </div>
+</header>
+
+<div class="dashboard">
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card gold">
+      <div class="kpi-label">Total Créditos</div>
+      <div class="kpi-value" id="kpi-total">958</div>
+      <div class="kpi-sub">Socios activos</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Saldo Capital</div>
+      <div class="kpi-value" id="kpi-saldo">Q162.1M</div>
+      <div class="kpi-sub">Total cartera</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Al Día</div>
+      <div class="kpi-value" id="kpi-aldia">661</div>
+      <div class="kpi-sub" id="kpi-aldia-pct">69.00% de cartera</div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="kpi-label">En Mora</div>
+      <div class="kpi-value" id="kpi-mora">177</div>
+      <div class="kpi-sub">1-90 días</div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-label">Jurídico</div>
+      <div class="kpi-value" id="kpi-juridico">123</div>
+      <div class="kpi-sub" id="kpi-juridico-pct">12.84% cartera</div>
+    </div>
+  </div>
+
+  <!-- Row 1: Rango Días + % Rango + Inmuebles -->
+  <div class="charts-row">
+
+    <div class="chart-card">
+      <div class="chart-title">Rango de Días</div>
+      <div class="chart-subtitle">Cantidad de créditos por estado</div>
+      <div class="tab-row">
+        <button class="tab" onclick="updateRango('NOVIEMBRE', this)">NOV</button>
+        <button class="tab" onclick="updateRango('DICIEMBRE', this)">DIC</button>
+        <button class="tab" onclick="updateRango('ENERO', this)">ENE</button>
+        <button class="tab active" onclick="updateRango('TODOS', this)">TODOS</button>
+      </div>
+      <div class="chart-container" style="height:200px">
+        <canvas id="rangoChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">% Rango Días</div>
+      <div class="chart-subtitle">Distribución porcentual por estado</div>
+      <div class="tab-row">
+        <button class="tab" onclick="updatePct('NOVIEMBRE', this)">NOV</button>
+        <button class="tab" onclick="updatePct('DICIEMBRE', this)">DIC</button>
+        <button class="tab" onclick="updatePct('ENERO', this)">ENE</button>
+        <button class="tab active" onclick="updatePct('TODOS', this)">TODOS</button>
+      </div>
+      <div class="chart-container" style="height:230px">
+        <canvas id="pctChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Inmuebles</div>
+      <div class="chart-subtitle">Saldo capital vs. N° créditos</div>
+      <div class="chart-container" style="height:260px">
+        <canvas id="inmueblesChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Row 2: Cartera Género + Rangos de Tiempo -->
+  <div class="charts-row-2">
+
+    <div class="chart-card">
+      <div class="chart-title">Cartera por Género</div>
+      <div class="chart-subtitle">Distribución de créditos y saldo capital</div>
+      <div class="gender-row">
+        <div class="gender-card">
+          <div class="gender-icon">👨</div>
+          <div class="gender-name">Hombre</div>
+          <div class="gender-stat">
+            <span class="val">492</span>
+            <span class="lbl">N° de créditos</span>
+          </div>
+          <div class="gender-stat" style="margin-top:8px">
+            <span class="val" style="font-size:1.1rem; color: #5271ff">Q94.5M</span>
+            <span class="lbl">Saldo capital</span>
+          </div>
+          <div class="gender-pct">50.60%</div>
+        </div>
+        <div class="gender-card">
+          <div class="gender-icon">👩</div>
+          <div class="gender-name">Mujer</div>
+          <div class="gender-stat">
+            <span class="val">466</span>
+            <span class="lbl">N° de créditos</span>
+          </div>
+          <div class="gender-stat" style="margin-top:8px">
+            <span class="val" style="font-size:1.1rem; color: var(--brand-orange)">Q67.7M</span>
+            <span class="lbl">Saldo capital</span>
+          </div>
+          <div class="gender-pct">49.40%</div>
+        </div>
+      </div>
+      <div style="margin-top:20px; height:130px">
+        <canvas id="generoChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Rangos de Tiempo</div>
+      <div class="chart-subtitle">Suma de saldo capital por plazo</div>
+      <div style="height:220px; position:relative">
+        <canvas id="tiempoChart"></canvas>
+      </div>
+      <div class="pie-legend">
+        <div class="pie-legend-item">
+          <div class="pie-legend-left"><div class="legend-dot" style="background:#5271ff"></div>Menor a 6 meses</div>
+          <div class="pie-legend-pct">59%</div>
+        </div>
+        <div class="pie-legend-item">
+          <div class="pie-legend-left"><div class="legend-dot" style="background:#f39519"></div>De 7 meses a 1 año</div>
+          <div class="pie-legend-pct">30%</div>
+        </div>
+        <div class="pie-legend-item">
+          <div class="pie-legend-left"><div class="legend-dot" style="background:#f38a00"></div>De 1 a 1.5 años</div>
+          <div class="pie-legend-pct">4%</div>
+        </div>
+        <div class="pie-legend-item">
+          <div class="pie-legend-left"><div class="legend-dot" style="background:#27ae60"></div>De 1.6 a 2 años</div>
+          <div class="pie-legend-pct">1%</div>
+        </div>
+        <div class="pie-legend-item">
+          <div class="pie-legend-left"><div class="legend-dot" style="background:#8e44ad"></div>Mayor a 2 años</div>
+          <div class="pie-legend-pct">6%</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+Chart.register(ChartDataLabels);
+
+const data = {
+  NOVIEMBRE: {
+    rango: [672, 76, 32, 21, 44, 120],
+    pct: [69.64, 7.88, 3.32, 2.18, 4.58, 12.44],
+    kpi: { total: 965, saldo: 'Q160.3M', aldia: 672, aldia_pct: '69.64%', mora: 173, juridico: 120, juridico_pct: '12.44%' }
+  },
+  DICIEMBRE: {
+    rango: [661, 69, 43, 23, 42, 121],
+    pct: [68.93, 7.19, 4.48, 2.40, 4.35, 12.62],
+    kpi: { total: 959, saldo: 'Q161.4M', aldia: 661, aldia_pct: '68.93%', mora: 177, juridico: 121, juridico_pct: '12.62%' }
+  },
+  ENERO: {
+    rango: [661, 77, 38, 22, 37, 123],
+    pct: [69.00, 8.04, 3.97, 2.30, 3.86, 12.84],
+    kpi: { total: 958, saldo: 'Q162.1M', aldia: 661, aldia_pct: '69.00%', mora: 174, juridico: 123, juridico_pct: '12.84%' }
+  }
+};
+
+const MESES = ['NOVIEMBRE','DICIEMBRE','ENERO'];
+const COLORS = ['#5271ff','#f39519','#27ae60','#e84545','#8e44ad','#f38a00'];
+const MONTH_COLORS = ['#283551','#f39519','#27ae60'];
+const LABELS = ['Al día','1 a 30','31 a 60','61 a 90','Prejuridico','Jurídico'];
+
+const tooltipDefaults = {
+  backgroundColor: '#283551', borderColor: '#f39519', borderWidth: 1,
+  titleColor: '#f39519', bodyColor: '#ffffff', padding: 10
+};
+
+const chartDefaults = {
+  plugins: { legend: { display: false }, tooltip: tooltipDefaults },
+  scales: {
+    x: { grid: { color: 'rgba(255,255,255,0.07)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } },
+    y: { grid: { color: 'rgba(255,255,255,0.07)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } }
+  }
+};
+
+// ─── RANGO CHART ─────────────────────────────────────────────────────────────
+const barDatalabels = {
+  display: true,
+  color: '#fff',
+  font: { weight: '700', size: 11 },
+  anchor: 'end',
+  align: 'end',
+  offset: -2,
+  formatter: v => v
+};
+
+const barDatalabelsInside = {
+  display: true,
+  color: '#fff',
+  font: { weight: '700', size: 10 },
+  anchor: 'center',
+  align: 'center',
+  formatter: v => v > 0 ? v : ''
+};
+
+// ── helpers ──────────────────────────────────────────────────────────────────
+const gridScales = (yFmt) => ({
+  x: { grid: { color: 'rgba(255,255,255,0.07)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } },
+  y: { grid: { color: 'rgba(255,255,255,0.07)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 }, callback: yFmt || (v => v) } }
+});
+
+// Single month: one dataset, each bar a different color, label on top
+function singleDataset(arr, fmt) {
+  return [{
+    data: arr, backgroundColor: COLORS, borderRadius: 5, borderSkipped: false,
+    datalabels: {
+      display: true, anchor: 'end', align: 'top',
+      color: '#e8eaf6', font: { weight: '700', size: 11 },
+      formatter: fmt || (v => v)
+    }
+  }];
+}
+
+// TODOS mode: one dataset per estado, labels above bars
+function groupedDatasets(field, fmt) {
+  return LABELS.map((lbl, i) => ({
+    label: lbl,
+    data: MESES.map(m => data[m][field][i]),
+    backgroundColor: COLORS[i],
+    borderRadius: 5, borderSkipped: false,
+    categoryPercentage: 0.85, barPercentage: 0.7,
+    datalabels: {
+      display: true, anchor: 'end', align: 'top',
+      color: COLORS[i], font: { weight: '800', size: 10 },
+      formatter: fmt || (v => v),
+      clamp: true
+    }
+  }));
+}
+
+// TODOS mode for % chart: rotated labels (acostadas) above each bar
+function groupedDatasetsPct(fmt) {
+  return LABELS.map((lbl, i) => ({
+    label: lbl,
+    data: MESES.map(m => data[m].pct[i]),
+    backgroundColor: COLORS[i],
+    borderRadius: 5, borderSkipped: false,
+    categoryPercentage: 0.85, barPercentage: 0.7,
+    datalabels: {
+      display: true, anchor: 'end', align: 'end',
+      rotation: -90,
+      color: COLORS[i], font: { weight: '800', size: 10 },
+      formatter: fmt || (v => v),
+      offset: 4,
+      clamp: false
+    }
+  }));
+}
+
+const legendBottom = { display: true, position: 'bottom', labels: { color: 'rgba(255,255,255,0.75)', font: { size: 10 }, boxWidth: 11, padding: 12 } };
+
+// ─── RANGO CHART ─────────────────────────────────────────────────────────────
+let rangoChart = new Chart(document.getElementById('rangoChart'), {
+  type: 'bar',
+  data: { labels: LABELS, datasets: singleDataset(data.NOVIEMBRE.rango) },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    layout: { padding: { top: 24, right: 8 } },
+    plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
+    scales: gridScales()
+  }
+});
+
+function applyRango(mes) {
+  if (mes === 'TODOS') {
+    rangoChart.data.labels = MESES;
+    rangoChart.data.datasets = groupedDatasets('rango');
+    rangoChart.options.plugins.legend = legendBottom;
+    rangoChart.options.layout = { padding: { top: 28, right: 8, bottom: 4 } };
+    rangoChart.options.scales = gridScales();
+  } else {
+    rangoChart.data.labels = LABELS;
+    rangoChart.data.datasets = singleDataset(data[mes].rango);
+    rangoChart.options.plugins.legend = { display: false };
+    rangoChart.options.layout = { padding: { top: 24, right: 8 } };
+    rangoChart.options.scales = gridScales();
+  }
+  rangoChart.update('none');
+}
+
+function updateRango(mes, btn) {
+  btn.closest('.tab-row').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  applyRango(mes);
+}
+
+// ─── PCT CHART ───────────────────────────────────────────────────────────────
+let pctChart = new Chart(document.getElementById('pctChart'), {
+  type: 'bar',
+  data: { labels: LABELS, datasets: singleDataset(data.NOVIEMBRE.pct, v => v.toFixed(1)+'%') },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    layout: { padding: { top: 24, right: 8 } },
+    plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
+    scales: gridScales(v => v + '%')
+  }
+});
+
+function applyPct(mes) {
+  if (mes === 'TODOS') {
+    pctChart.data.labels = MESES;
+    pctChart.data.datasets = groupedDatasetsPct(v => v.toFixed(2)+'%');
+    pctChart.options.plugins.legend = legendBottom;
+    pctChart.options.layout = { padding: { top: 55, right: 8, bottom: 4 } };
+    pctChart.options.scales = gridScales(v => v + '%');
+  } else {
+    pctChart.data.labels = LABELS;
+    pctChart.data.datasets = singleDataset(data[mes].pct, v => v.toFixed(1)+'%');
+    pctChart.options.plugins.legend = { display: false };
+    pctChart.options.layout = { padding: { top: 24, right: 8 } };
+    pctChart.options.scales = gridScales(v => v + '%');
+  }
+  pctChart.update('none');
+}
+
+function updatePct(mes, btn) {
+  btn.closest('.tab-row').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  applyPct(mes);
+}
+
+// ─── INMUEBLES CHART ──────────────────────────────────────────────────────────
+new Chart(document.getElementById('inmueblesChart'), {
+  type: 'bar',
+  data: {
+    labels: ['NOVIEMBRE', 'DICIEMBRE', 'ENERO'],
+    datasets: [
+      { label: 'Saldo Capital', data: [5493334, 5521804, 7006698], backgroundColor: '#5271ff', borderRadius: 6, borderSkipped: false, yAxisID: 'y',
+        datalabels: { display: true, color: '#fff', font: { weight: '700', size: 10 }, anchor: 'center', align: 'center', formatter: v => 'Q' + (v/1000000).toFixed(2) + 'M' } },
+      { label: 'N° Créditos', data: [44, 41, 48], backgroundColor: '#f39519', borderRadius: 6, borderSkipped: false, yAxisID: 'y1',
+        datalabels: { display: true, color: '#fff', font: { weight: '700', size: 11 }, anchor: 'center', align: 'center', formatter: v => v } }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: true, labels: { color: 'rgba(255,255,255,0.75)', font: { size: 11 }, boxWidth: 12 } }, tooltip: tooltipDefaults, datalabels: {} },
+    scales: {
+      x: chartDefaults.scales.x,
+      y: { ...chartDefaults.scales.y, position: 'left', ticks: { color: 'rgba(255,255,255,0.55)', callback: v => 'Q' + (v/1000000).toFixed(1) + 'M' } },
+      y1: { position: 'right', grid: { display: false }, ticks: { color: '#f39519', font: { size: 11 } } }
+    }
+  }
+});
+
+// ─── GENERO CHART ─────────────────────────────────────────────────────────────
+new Chart(document.getElementById('generoChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Hombre', 'Mujer'],
+    datasets: [{ label: 'N° Créditos', data: [492, 466], backgroundColor: ['#5271ff', '#f39519'], borderRadius: 6, borderSkipped: false,
+      datalabels: { display: true, color: '#fff', font: { weight: '700', size: 13 }, anchor: 'center', align: 'center', formatter: v => v } }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
+    scales: { x: chartDefaults.scales.x, y: chartDefaults.scales.y }
+  }
+});
+
+// ─── TIEMPO (PIE) ─────────────────────────────────────────────────────────────
+new Chart(document.getElementById('tiempoChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Menor a 6 meses','De 7 meses a 1 año','De 1 a 1.5 años','De 1.6 a 2 años','Mayor a 2 años'],
+    datasets: [{ 
+      data: [59, 30, 4, 1, 6], 
+      backgroundColor: ['#5271ff','#f39519','#f38a00','#27ae60','#8e44ad'], 
+      borderWidth: 4, 
+      borderColor: '#283551', 
+      hoverOffset: 12,
+      spacing: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '55%',
+    plugins: {
+      legend: { display: false },
+      tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}%` } },
+      datalabels: { 
+        display: true, 
+        color: '#fff', 
+        font: { weight: '700', size: 12 }, 
+        formatter: (v, ctx) => {
+          // Para valores pequeños, mostrar el % sin importar el tamaño
+          return v + '%';
+        }
+      }
+    }
+  }
+});
+
+// ─── GLOBAL MONTH FILTER ──────────────────────────────────────────────────────
+function setMonth(mes) {
+  const btnLabels = { NOVIEMBRE: 'NOV', DICIEMBRE: 'DIC', ENERO: 'ENE', TODOS: 'TODOS' };
+  document.querySelectorAll('header .filter-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent === btnLabels[mes]);
+  });
+  document.querySelectorAll('.tab-row').forEach(row => {
+    row.querySelectorAll('.tab').forEach(t => {
+      t.classList.toggle('active', t.textContent === btnLabels[mes] || (mes === 'TODOS' && t.textContent === 'TODOS'));
+    });
+  });
+
+  if (mes === 'TODOS') {
+    const totals = MESES.reduce((acc, m) => {
+      acc.total += data[m].kpi.total; acc.aldia += data[m].kpi.aldia;
+      acc.mora += data[m].kpi.mora; acc.juridico += data[m].kpi.juridico;
+      return acc;
+    }, { total: 0, aldia: 0, mora: 0, juridico: 0 });
+    document.getElementById('kpi-total').textContent = Math.round(totals.total / 3);
+    document.getElementById('kpi-saldo').textContent = 'Q161.3M';
+    document.getElementById('kpi-aldia').textContent = Math.round(totals.aldia / 3);
+    document.getElementById('kpi-aldia-pct').textContent = 'promedio 3 meses';
+    document.getElementById('kpi-mora').textContent = Math.round(totals.mora / 3);
+    document.getElementById('kpi-juridico').textContent = Math.round(totals.juridico / 3);
+    document.getElementById('kpi-juridico-pct').textContent = 'promedio 3 meses';
+
+    applyRango('TODOS');
+    applyPct('TODOS');
+
+  } else {
+    const d = data[mes];
+    document.getElementById('kpi-total').textContent = d.kpi.total;
+    document.getElementById('kpi-saldo').textContent = d.kpi.saldo;
+    document.getElementById('kpi-aldia').textContent = d.kpi.aldia;
+    document.getElementById('kpi-aldia-pct').textContent = d.kpi.aldia_pct + ' de cartera';
+    document.getElementById('kpi-mora').textContent = d.kpi.mora;
+    document.getElementById('kpi-juridico').textContent = d.kpi.juridico;
+    document.getElementById('kpi-juridico-pct').textContent = d.kpi.juridico_pct + ' cartera';
+
+    applyRango(mes);
+    applyPct(mes);
+  }
+}
+
+// Init with TODOS
+setMonth('TODOS');
+
+</script>
+</body>
+</html>
+
