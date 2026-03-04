@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -332,10 +333,10 @@
 <header>
   <h1> Dashboard Cartera Hollem, S.A.</h1>
   <div class="header-controls">
-    <button class="filter-btn" onclick="setMonth('NOVIEMBRE')">NOV</button>
-    <button class="filter-btn" onclick="setMonth('DICIEMBRE')">DIC</button>
-    <button class="filter-btn" onclick="setMonth('ENERO')">ENE</button>
-    <button class="filter-btn active" onclick="setMonth('TODOS')">TODOS</button>
+    <button class="filter-btn active" onclick="setMonth('NOVIEMBRE')">NOV 2025</button>
+    <button class="filter-btn" onclick="setMonth('DICIEMBRE')">DIC 2025</button>
+    <button class="filter-btn" onclick="setMonth('ENERO')">ENE 2026</button>
+    <button class="filter-btn" onclick="setMonth('TODOS')">TODOS</button>
   </div>
 </header>
 
@@ -345,28 +346,28 @@
   <div class="kpi-row">
     <div class="kpi-card gold">
       <div class="kpi-label">Total Créditos</div>
-      <div class="kpi-value" id="kpi-total">958</div>
+      <div class="kpi-value" id="kpi-total">965</div>
       <div class="kpi-sub">Socios activos</div>
     </div>
     <div class="kpi-card blue">
       <div class="kpi-label">Saldo Capital</div>
-      <div class="kpi-value" id="kpi-saldo">Q162.1M</div>
+      <div class="kpi-value" id="kpi-saldo">Q160.3M</div>
       <div class="kpi-sub">Total cartera</div>
     </div>
     <div class="kpi-card green">
       <div class="kpi-label">Al Día</div>
-      <div class="kpi-value" id="kpi-aldia">661</div>
-      <div class="kpi-sub" id="kpi-aldia-pct">69.00% de cartera</div>
+      <div class="kpi-value" id="kpi-aldia">672</div>
+      <div class="kpi-sub" id="kpi-aldia-pct">69.64% de cartera</div>
     </div>
     <div class="kpi-card orange">
       <div class="kpi-label">En Mora</div>
-      <div class="kpi-value" id="kpi-mora">177</div>
+      <div class="kpi-value" id="kpi-mora">173</div>
       <div class="kpi-sub">1-90 días</div>
     </div>
     <div class="kpi-card red">
       <div class="kpi-label">Jurídico</div>
-      <div class="kpi-value" id="kpi-juridico">123</div>
-      <div class="kpi-sub" id="kpi-juridico-pct">12.84% cartera</div>
+      <div class="kpi-value" id="kpi-juridico">120</div>
+      <div class="kpi-sub" id="kpi-juridico-pct">12.44% cartera</div>
     </div>
   </div>
 
@@ -377,10 +378,10 @@
       <div class="chart-title">Rango de Días</div>
       <div class="chart-subtitle">Cantidad de créditos por estado</div>
       <div class="tab-row">
-        <button class="tab" onclick="updateRango('NOVIEMBRE', this)">NOV</button>
-        <button class="tab" onclick="updateRango('DICIEMBRE', this)">DIC</button>
-        <button class="tab" onclick="updateRango('ENERO', this)">ENE</button>
-        <button class="tab active" onclick="updateRango('TODOS', this)">TODOS</button>
+        <button class="tab" onclick="updateRango('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateRango('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateRango('ENERO', this)">ENE 2026</button>
+        <button class="tab" onclick="updateRango('TODOS', this)">TODOS</button>
       </div>
       <div class="chart-container" style="height:200px">
         <canvas id="rangoChart"></canvas>
@@ -391,10 +392,10 @@
       <div class="chart-title">% Rango Días</div>
       <div class="chart-subtitle">Distribución porcentual por estado</div>
       <div class="tab-row">
-        <button class="tab" onclick="updatePct('NOVIEMBRE', this)">NOV</button>
-        <button class="tab" onclick="updatePct('DICIEMBRE', this)">DIC</button>
-        <button class="tab" onclick="updatePct('ENERO', this)">ENE</button>
-        <button class="tab active" onclick="updatePct('TODOS', this)">TODOS</button>
+        <button class="tab" onclick="updatePct('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updatePct('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updatePct('ENERO', this)">ENE 2026</button>
+        <button class="tab" onclick="updatePct('TODOS', this)">TODOS</button>
       </div>
       <div class="chart-container" style="height:230px">
         <canvas id="pctChart"></canvas>
@@ -508,6 +509,7 @@ const data = {
 };
 
 const MESES = ['NOVIEMBRE','DICIEMBRE','ENERO'];
+const MESES_DISPLAY = ['NOVIEMBRE 2025','DICIEMBRE 2025','ENERO 2026'];
 const COLORS = ['#5271ff','#f39519','#27ae60','#e84545','#8e44ad','#f38a00'];
 const MONTH_COLORS = ['#283551','#f39519','#27ae60'];
 const LABELS = ['Al día','1 a 30','31 a 60','61 a 90','Prejuridico','Jurídico'];
@@ -615,7 +617,7 @@ let rangoChart = new Chart(document.getElementById('rangoChart'), {
 
 function applyRango(mes) {
   if (mes === 'TODOS') {
-    rangoChart.data.labels = MESES;
+    rangoChart.data.labels = MESES_DISPLAY;
     rangoChart.data.datasets = groupedDatasets('rango');
     rangoChart.options.plugins.legend = legendBottom;
     rangoChart.options.layout = { padding: { top: 28, right: 8, bottom: 4 } };
@@ -650,7 +652,7 @@ let pctChart = new Chart(document.getElementById('pctChart'), {
 
 function applyPct(mes) {
   if (mes === 'TODOS') {
-    pctChart.data.labels = MESES;
+    pctChart.data.labels = MESES_DISPLAY;
     pctChart.data.datasets = groupedDatasetsPct(v => v.toFixed(2)+'%');
     pctChart.options.plugins.legend = legendBottom;
     pctChart.options.layout = { padding: { top: 55, right: 8, bottom: 4 } };
@@ -675,7 +677,7 @@ function updatePct(mes, btn) {
 new Chart(document.getElementById('inmueblesChart'), {
   type: 'bar',
   data: {
-    labels: ['NOVIEMBRE', 'DICIEMBRE', 'ENERO'],
+    labels: ['NOVIEMBRE 2025', 'DICIEMBRE 2025', 'ENERO 2026'],
     datasets: [
       { label: 'Saldo Capital', data: [5493334, 5521804, 7006698], backgroundColor: '#5271ff', borderRadius: 6, borderSkipped: false, yAxisID: 'y',
         datalabels: { display: true, color: '#fff', font: { weight: '700', size: 10 }, anchor: 'center', align: 'center', formatter: v => 'Q' + (v/1000000).toFixed(2) + 'M' } },
@@ -689,7 +691,7 @@ new Chart(document.getElementById('inmueblesChart'), {
     scales: {
       x: chartDefaults.scales.x,
       y: { ...chartDefaults.scales.y, position: 'left', ticks: { color: 'rgba(255,255,255,0.55)', callback: v => 'Q' + (v/1000000).toFixed(1) + 'M' } },
-      y1: { position: 'right', grid: { display: false }, ticks: { color: '#f39519', font: { size: 11 } } }
+      y1: { position: 'right', grid: { display: false }, ticks: { color: '#f39519', font: { size: 11 } }, max: 100 }
     }
   }
 });
@@ -743,7 +745,7 @@ new Chart(document.getElementById('tiempoChart'), {
 
 // ─── GLOBAL MONTH FILTER ──────────────────────────────────────────────────────
 function setMonth(mes) {
-  const btnLabels = { NOVIEMBRE: 'NOV', DICIEMBRE: 'DIC', ENERO: 'ENE', TODOS: 'TODOS' };
+  const btnLabels = { NOVIEMBRE: 'NOV 2025', DICIEMBRE: 'DIC 2025', ENERO: 'ENE 2026', TODOS: 'TODOS' };
   document.querySelectorAll('header .filter-btn').forEach(b => {
     b.classList.toggle('active', b.textContent === btnLabels[mes]);
   });
@@ -785,8 +787,8 @@ function setMonth(mes) {
   }
 }
 
-// Init with TODOS
-setMonth('TODOS');
+// Init with NOVIEMBRE
+setMonth('NOVIEMBRE');
 
 </script>
 </body>
