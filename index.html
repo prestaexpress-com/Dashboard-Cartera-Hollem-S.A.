@@ -34,6 +34,7 @@
     font-family: 'DM Sans', sans-serif;
     color: var(--text-primary);
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   header {
@@ -43,6 +44,7 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 4px 20px rgba(40,53,81,0.25);
+    flex-wrap: wrap;
   }
 
   header h1 {
@@ -76,6 +78,35 @@
     background: var(--brand-orange);
     color: #fff;
     border-color: var(--brand-orange);
+  }
+
+  .page-nav-btn {
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.75);
+    padding: 8px 22px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+    margin-left: 20px;
+  }
+
+  .page-nav-btn.active, .page-nav-btn:hover {
+    background: var(--brand-navy);
+    color: #fff;
+    border-color: var(--brand-navy);
+  }
+
+  .page-view {
+    display: none;
+  }
+
+  .page-view.active {
+    display: block;
   }
 
   .dashboard {
@@ -121,7 +152,7 @@
   .kpi-card.red::before    { background: var(--red); }
 
   .kpi-label {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -131,7 +162,7 @@
 
   .kpi-value {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     font-weight: 700;
     letter-spacing: 1px;
     line-height: 1;
@@ -145,7 +176,7 @@
   .kpi-card.red .kpi-value    { color: var(--red); }
 
   .kpi-sub {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: var(--text-muted);
   }
 
@@ -159,32 +190,55 @@
   .charts-row-2 {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 24px;
+    gap: 16px;
+  }
+
+  /* Grid para página 2 - 3 columnas */
+  .charts-row-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .charts-row-4col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
 
   .chart-card {
     background: #283551;
     border: 1px solid #1e2a42;
-    border-radius: 14px;
-    padding: 28px;
+    border-radius: 12px;
+    padding: 18px 16px;
     position: relative;
     box-shadow: 0 2px 16px rgba(40,53,81,0.18);
   }
 
   .chart-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 2px;
+    font-size: 1.55rem;
+    letter-spacing: 1.5px;
     color: #f39519;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
   .chart-subtitle {
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     color: rgba(255,255,255,0.5);
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
+  }
+
+  .data-table-card .chart-title {
+    font-size: 1.45rem;
+    margin-bottom: 2px;
+  }
+
+  .data-table-card .chart-subtitle {
+    font-size: 0.75rem;
+    margin-bottom: 8px;
   }
 
   .chart-container { position: relative; }
@@ -231,10 +285,18 @@
   .gender-icon {
     font-size: 3rem;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+  }
+
+  .gender-icon img {
+    display: block;
   }
 
   .gender-name {
-    font-size: 1rem;
+    font-size: 1.15rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: rgba(255,255,255,0.55);
@@ -243,13 +305,13 @@
 
   .gender-stat .val {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: #fff;
     letter-spacing: 1px;
   }
 
   .gender-stat .lbl {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: rgba(255,255,255,0.5);
     display: block;
   }
@@ -261,7 +323,7 @@
     border-radius: 20px;
     padding: 4px 14px;
     display: inline-block;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #f39519;
   }
@@ -269,16 +331,20 @@
   /* Tabs */
   .tab-row {
     display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .data-table-card .tab-row {
+    margin-bottom: 8px;
   }
 
   .tab {
-    padding: 6px 18px;
+    padding: 5px 14px;
     border-radius: 6px;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     cursor: pointer;
     border: 1.5px solid rgba(255,255,255,0.2);
     background: transparent;
@@ -291,6 +357,11 @@
     background: #f39519;
     color: #fff;
     border-color: #f39519;
+  }
+
+  .tab.active.secondary {
+    background: #27ae60;
+    border-color: #27ae60;
   }
 
   .pie-legend { margin-top: 16px; }
@@ -317,6 +388,619 @@
     color: #f39519;
   }
 
+  /* Tabla de Tasas de Interés */
+  .data-table-card {
+    background: #283551;
+    border: 1px solid #1e2a42;
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 2px 16px rgba(40,53,81,0.18);
+  }
+
+  .depto-card {
+    max-width: 520px;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    font-size: 0.68rem;
+  }
+
+  .data-table thead {
+    background: rgba(243, 149, 25, 0.1);
+  }
+
+  .data-table th {
+    padding: 5px 5px;
+    text-align: left;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.4px;
+    color: #f39519;
+    border-bottom: 2px solid #f39519;
+  }
+
+  .data-table td {
+    padding: 4px 5px;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.78rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-weight: 500;
+  }
+
+  .data-table tbody tr {
+    transition: all 0.2s;
+  }
+
+  .data-table tbody tr:hover {
+    background: rgba(243, 149, 25, 0.08);
+  }
+
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .data-table .tasa-col {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.05rem;
+    color: #5271ff;
+    font-weight: 700;
+  }
+
+  .data-table .amount-col {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.95);
+  }
+
+  .data-table .bar-cell {
+    position: relative;
+    padding: 6px 10px;
+  }
+
+  .data-table .bar-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(82, 113, 255, 0.2) 0%, rgba(82, 113, 255, 0.05) 100%);
+    border-radius: 4px;
+    z-index: 0;
+    width: 0;
+    transition: width 0.6s ease;
+  }
+
+  .data-table .bar-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .data-table tfoot {
+    background: rgba(243, 149, 25, 0.15);
+    font-weight: 700;
+  }
+
+  .data-table tfoot td {
+    padding: 6px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: #f39519;
+    border-top: 2px solid #f39519;
+    border-bottom: none;
+    text-align: center;
+  }
+
+  /* Segmento Cards */
+  .segmento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .segmento-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 8px 10px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+  }
+
+  .segmento-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--brand-orange);
+    box-shadow: 0 6px 20px rgba(243, 149, 25, 0.2);
+  }
+
+  .segmento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .segmento-card.diamante::before { background: linear-gradient(90deg, #9b59b6, #b19cd9); }
+  .segmento-card.oro::before { background: linear-gradient(90deg, #ffd700, #ffed4e); }
+  .segmento-card.plata::before { background: linear-gradient(90deg, #c0c0c0, #e8e8e8); }
+  .segmento-card.sin-segmento::before { background: linear-gradient(90deg, #34495e, #5d6d7e); }
+
+  .segmento-icon {
+    font-size: 1.6rem;
+    margin-bottom: 3px;
+    display: block;
+  }
+
+  .segmento-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 4px;
+  }
+
+  .segmento-total {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 3px;
+    line-height: 1;
+  }
+
+  .segmento-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .segmento-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .segmento-stat {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .segmento-stat .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: #f39519;
+    display: block;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .segmento-stat .lbl {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+  }
+
+  /* Rango Avalúos Cards */
+  .rango-avaluos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .rango-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 10px 12px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .rango-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--brand-orange);
+    box-shadow: 0 6px 20px rgba(243, 149, 25, 0.2);
+  }
+
+  .rango-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .rango-card.menor::before { background: linear-gradient(90deg, #27ae60, #58d68d); }
+  .rango-card.mayor::before { background: linear-gradient(90deg, #e84545, #ff6b6b); }
+  .rango-card.pendiente::before { background: linear-gradient(90deg, #95a5a6, #bdc3c7); }
+
+  .rango-icon {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .rango-categoria {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+  }
+
+  .rango-creditos {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 3px;
+    line-height: 1;
+  }
+
+  .rango-creditos-label {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+
+  .rango-saldo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    color: #f39519;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .rango-saldo-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Avalúos Pendientes Grid */
+  .avaluos-pend-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .avaluo-pend-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 8px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .avaluo-pend-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(243, 149, 25, 0.15);
+  }
+
+  .avaluo-pend-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+  }
+
+  .avaluo-pend-card.aldia::before { background: #27ae60; }
+  .avaluo-pend-card.rango1::before { background: #f39519; }
+  .avaluo-pend-card.rango2::before { background: #ff9800; }
+  .avaluo-pend-card.rango3::before { background: #ff5722; }
+  .avaluo-pend-card.prejuridico::before { background: #e84545; }
+  .avaluo-pend-card.juridico::before { background: #8e44ad; }
+
+  .avaluo-pend-icon {
+    font-size: 1.6rem;
+    margin-bottom: 3px;
+    display: block;
+  }
+
+  .avaluo-pend-categoria {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.7px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 5px;
+  }
+
+  .avaluo-pend-creditos {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .avaluo-pend-label {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+  }
+
+  .avaluo-pend-saldo {
+    font-size: 0.85rem;
+    color: #f39519;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-weight: 700;
+  }
+
+  /* Tiempo Cards */
+  .tiempo-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .tiempo-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .tiempo-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .tiempo-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .tiempo-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.8px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .tiempo-pct {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.3rem;
+    color: #fff;
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  .tiempo-bar-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tiempo-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease-out;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .tiempo-bar.t1 { background: linear-gradient(90deg, #5271ff, #7b8fff); }
+  .tiempo-bar.t2 { background: linear-gradient(90deg, #f39519, #ffad42); }
+  .tiempo-bar.t3 { background: linear-gradient(90deg, #f38a00, #ffa733); }
+  .tiempo-bar.t4 { background: linear-gradient(90deg, #27ae60, #58d68d); }
+  .tiempo-bar.t5 { background: linear-gradient(90deg, #8e44ad, #a569bd); }
+
+  /* Departamentos Table */
+  .depto-table {
+    width: 100%;
+    max-width: 420px;
+    border-collapse: collapse;
+    font-size: 0.58rem;
+    margin-top: 6px;
+  }
+
+  .depto-table thead th {
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 3px 4px;
+    font-size: 0.7rem;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+  }
+
+  .depto-table thead th:nth-child(1) {
+    width: 60%;
+  }
+
+  .depto-table thead th:nth-child(2) {
+    width: 20%;
+    text-align: center;
+  }
+
+  .depto-table thead th:nth-child(3) {
+    width: 20%;
+    text-align: center;
+  }
+
+  .depto-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+  }
+
+  .depto-table tbody tr:hover {
+    background: rgba(243,149,25,0.08);
+  }
+
+  .depto-table tbody td {
+    padding: 2px 4px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.3;
+  }
+
+  .depto-table .depto-icon {
+    display: inline-block;
+    margin-right: 3px;
+    font-size: 0.7rem;
+  }
+
+  .depto-table .depto-name {
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.72rem;
+  }
+
+  .depto-table .depto-creditos {
+    text-align: center;
+    font-weight: 700;
+    color: #f39519;
+    font-size: 0.78rem;
+  }
+
+  .depto-table .depto-pct {
+    text-align: center;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.72rem;
+  }
+
+  .depto-table tfoot {
+    border-top: 2px solid #f39519;
+    font-weight: 700;
+  }
+
+  .depto-table tfoot td {
+    padding: 4px;
+    color: #f39519;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  /* Municipio Table Styles */
+  .table-scroll-container {
+    overflow-x: auto;
+    margin-top: 6px;
+  }
+
+  .municipio-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    font-size: 0.55rem;
+  }
+
+  .municipio-table thead th {
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 3px 4px;
+    font-size: 0.82rem;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+
+  .municipio-table thead th:nth-child(1) {
+    text-align: left;
+    width: 25%;
+    min-width: 150px;
+  }
+
+  .municipio-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+  }
+
+  .municipio-table tbody tr:hover {
+    background: rgba(243,149,25,0.08);
+  }
+
+  .municipio-table tbody td {
+    padding: 2px 4px;
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    line-height: 1.3;
+    font-size: 0.9rem;
+  }
+
+  .municipio-table tbody td:nth-child(1) {
+    text-align: left;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .municipio-table tbody td:nth-child(2) {
+    color: #27ae60;
+    font-weight: 600;
+  }
+
+  .municipio-table tbody td:nth-child(3),
+  .municipio-table tbody td:nth-child(4),
+  .municipio-table tbody td:nth-child(5) {
+    color: #f39519;
+    font-weight: 600;
+  }
+
+  .municipio-table tbody td:nth-child(6),
+  .municipio-table tbody td:nth-child(7) {
+    color: #e84545;
+    font-weight: 600;
+  }
+
+  .municipio-table tbody td:nth-child(8) {
+    color: #5271ff;
+    font-weight: 700;
+  }
+
+  .municipio-table tfoot {
+    border-top: 2px solid #f39519;
+    font-weight: 700;
+  }
+
+  .municipio-table tfoot td {
+    padding: 4px;
+    color: #f39519;
+    text-align: center;
+    font-size: 0.92rem;
+  }
+
+  .municipio-table tfoot td:nth-child(1) {
+    text-align: left;
+    color: rgba(255,255,255,0.9);
+  }
+
   footer {
     text-align: center;
     padding: 18px;
@@ -325,6 +1009,506 @@
     border-top: 1px solid var(--card-border);
     margin-top: 8px;
     background: var(--white);
+  }
+
+  /* ========== RESPONSIVE DESIGN ========== */
+  
+  /* Tablets y pantallas medianas (768px - 1200px) */
+  @media (max-width: 1200px) {
+    header {
+      padding: 16px 24px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .filter-btn,
+    .page-nav-btn {
+      padding: 6px 14px;
+      font-size: 0.7rem;
+    }
+
+    .dashboard {
+      padding: 16px;
+    }
+
+    .kpi-row {
+      gap: 14px;
+    }
+
+    .charts-row-3col {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .charts-row-4col {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .charts-row-2 {
+      gap: 14px;
+    }
+
+    .kpi-card {
+      padding: 16px 14px;
+    }
+
+    .kpi-value {
+      font-size: 2rem;
+    }
+
+    .kpi-label {
+      font-size: 0.75rem;
+    }
+
+    .chart-card,
+    .data-table-card {
+      padding: 16px 14px;
+    }
+
+    .chart-title {
+      font-size: 1.15rem;
+    }
+
+    .chart-subtitle {
+      font-size: 0.6rem;
+    }
+
+    .gender-icon img {
+      width: 85px !important;
+      height: 85px !important;
+    }
+  }
+
+  /* Tablets pequeñas y móviles grandes (max-width: 768px) */
+  @media (max-width: 768px) {
+    header {
+      padding: 12px 16px;
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    header h1 {
+      font-size: 1.3rem;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+
+    .header-controls {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .filter-btn,
+    .page-nav-btn {
+      padding: 6px 12px;
+      font-size: 0.65rem;
+      margin-left: 0;
+      flex: 1 1 auto;
+      min-width: 80px;
+    }
+
+    .dashboard {
+      padding: 12px;
+    }
+
+    .kpi-row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .kpi-card {
+      padding: 14px 12px;
+    }
+
+    .kpi-value {
+      font-size: 1.6rem;
+    }
+
+    .kpi-label {
+      font-size: 0.65rem;
+    }
+
+    .kpi-sub {
+      font-size: 0.7rem;
+    }
+
+    .charts-row-3col,
+    .charts-row-4col,
+    .charts-row-2 {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .chart-card,
+    .data-table-card {
+      padding: 14px 12px;
+    }
+
+    .chart-title {
+      font-size: 1.1rem;
+      letter-spacing: 1.2px;
+    }
+
+    .chart-subtitle {
+      font-size: 0.58rem;
+      margin-bottom: 10px;
+    }
+
+    .gender-row {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .gender-card {
+      padding: 14px;
+    }
+
+    .gender-icon img {
+      width: 75px !important;
+      height: 75px !important;
+    }
+
+    .gender-name {
+      font-size: 0.8rem;
+    }
+
+    .gender-stat .val {
+      font-size: 1.2rem;
+    }
+
+    .gender-stat .lbl {
+      font-size: 0.6rem;
+    }
+
+    .tab-row {
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .tab {
+      padding: 5px 10px;
+      font-size: 0.58rem;
+      letter-spacing: 0.6px;
+    }
+
+    .data-table th {
+      padding: 5px 4px;
+      font-size: 0.62rem;
+    }
+
+    .data-table td {
+      padding: 4px 4px;
+      font-size: 0.6rem;
+    }
+
+    .depto-card {
+      max-width: 100%;
+    }
+
+    .municipio-card {
+      max-width: 100%;
+    }
+
+    .municipio-table {
+      font-size: 0.52rem;
+      min-width: 600px;
+    }
+
+    .municipio-table thead th {
+      font-size: 0.5rem;
+      padding: 3px 2px;
+    }
+
+    .municipio-table tbody td {
+      font-size: 0.52rem;
+      padding: 2px 3px;
+    }
+
+    .municipio-table tfoot td {
+      font-size: 0.54rem;
+    }
+
+    .segmento-grid {
+      gap: 6px;
+    }
+
+    .segmento-card {
+      padding: 10px;
+    }
+
+    .rango-avaluos-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .avaluos-pend-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .pie-legend-item {
+      padding: 5px 0;
+    }
+
+    .pie-legend-left {
+      font-size: 0.68rem;
+    }
+
+    .pie-legend-pct {
+      font-size: 0.7rem;
+    }
+  }
+
+  /* Móviles pequeños (max-width: 480px) */
+  @media (max-width: 480px) {
+    header {
+      padding: 10px 12px;
+    }
+
+    header h1 {
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .filter-btn,
+    .page-nav-btn {
+      padding: 5px 10px;
+      font-size: 0.6rem;
+      min-width: 70px;
+    }
+
+    .dashboard {
+      padding: 10px;
+    }
+
+    .kpi-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .kpi-card {
+      padding: 12px 10px;
+    }
+
+    .kpi-value {
+      font-size: 1.5rem;
+    }
+
+    .kpi-label {
+      font-size: 0.6rem;
+      letter-spacing: 1px;
+    }
+
+    .kpi-sub {
+      font-size: 0.65rem;
+    }
+
+    .charts-row-3col,
+    .charts-row-4col,
+    .charts-row-2 {
+      gap: 10px;
+    }
+
+    .chart-card,
+    .data-table-card {
+      padding: 12px 10px;
+      border-radius: 10px;
+    }
+
+    .chart-title {
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .chart-subtitle {
+      font-size: 0.55rem;
+      margin-bottom: 8px;
+    }
+
+    .gender-icon img {
+      width: 65px !important;
+      height: 65px !important;
+    }
+
+    .gender-name {
+      font-size: 0.75rem;
+    }
+
+    .gender-stat .val {
+      font-size: 1.1rem;
+    }
+
+    .gender-stat .lbl {
+      font-size: 0.55rem;
+    }
+
+    .gender-pct {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+    }
+
+    .tab {
+      padding: 4px 8px;
+      font-size: 0.55rem;
+      letter-spacing: 0.5px;
+    }
+
+    .data-table th {
+      font-size: 0.58rem;
+      padding: 4px 3px;
+    }
+
+    .data-table td {
+      font-size: 0.55rem;
+      padding: 3px 3px;
+    }
+
+    .segmento-card,
+    .rango-card,
+    .avaluo-pend-card {
+      padding: 8px;
+    }
+
+    .segmento-icon,
+    .avaluo-pend-icon {
+      font-size: 1.15rem;
+      margin-bottom: 3px;
+    }
+
+    .rango-icon {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .segmento-name,
+    .rango-categoria,
+    .avaluo-pend-categoria {
+      font-size: 0.68rem;
+      margin-bottom: 4px;
+    }
+
+    .segmento-total,
+    .rango-creditos,
+    .avaluo-pend-creditos {
+      font-size: 1.2rem;
+    }
+
+    .segmento-label,
+    .rango-creditos-label,
+    .avaluo-pend-label {
+      font-size: 0.52rem;
+    }
+
+    .municipio-table {
+      font-size: 0.5rem;
+      min-width: 550px;
+    }
+
+    .municipio-table thead th {
+      font-size: 0.48rem;
+      padding: 2px 2px;
+    }
+
+    .municipio-table tbody td {
+      font-size: 0.5rem;
+      padding: 2px 2px;
+    }
+
+    .avaluos-pend-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pie-legend-item {
+      padding: 4px 0;
+    }
+
+    .pie-legend-left {
+      font-size: 0.62rem;
+    }
+
+    .pie-legend-pct {
+      font-size: 0.65rem;
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  /* Pantallas muy pequeñas (max-width: 360px) */
+  @media (max-width: 360px) {
+    header h1 {
+      font-size: 0.95rem;
+    }
+
+    .filter-btn,
+    .page-nav-btn {
+      padding: 4px 8px;
+      font-size: 0.55rem;
+      min-width: 60px;
+    }
+
+    .kpi-value {
+      font-size: 1.3rem;
+    }
+
+    .chart-title {
+      font-size: 0.95rem;
+    }
+
+    .gender-icon img {
+      width: 55px !important;
+      height: 55px !important;
+    }
+  }
+
+  /* Pantallas grandes (min-width: 1600px) */
+  @media (min-width: 1600px) {
+    .dashboard {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .kpi-row {
+      gap: 24px;
+    }
+
+    .kpi-value {
+      font-size: 2.8rem;
+    }
+
+    .chart-title {
+      font-size: 1.5rem;
+    }
+
+    .chart-subtitle {
+      font-size: 0.75rem;
+    }
+
+    .chart-card,
+    .data-table-card {
+      padding: 22px 18px;
+    }
+
+    .charts-row-3col {
+      gap: 20px;
+    }
+
+    .charts-row-4col {
+      gap: 20px;
+    }
+
+    .charts-row-2 {
+      gap: 24px;
+    }
   }
 </style>
 </head>
@@ -337,9 +1521,13 @@
     <button class="filter-btn" onclick="setMonth('DICIEMBRE')">DIC 2025</button>
     <button class="filter-btn" onclick="setMonth('ENERO')">ENE 2026</button>
     <button class="filter-btn" onclick="setMonth('TODOS')">TODOS</button>
+    <button class="page-nav-btn active" onclick="switchPage(1)">PÁGINA 1</button>
+    <button class="page-nav-btn" onclick="switchPage(2)">PÁGINA 2</button>
   </div>
 </header>
 
+<!-- Page 1 - Current Dashboard -->
+<div class="page-view active" id="page1">
 <div class="dashboard">
 
   <!-- KPI Row -->
@@ -412,15 +1600,23 @@
 
   </div>
 
-  <!-- Row 2: Cartera Género + Rangos de Tiempo -->
-  <div class="charts-row-2">
+  <!-- Row 2: Rangos de Tiempo + Cartera Género + Segmento Producto -->
+  <div class="charts-row-3col">
+
+    <div class="chart-card">
+      <div class="chart-title">Rangos de Tiempo</div>
+      <div class="chart-subtitle">Suma de saldo capital por plazo</div>
+      <div id="tiempoCardsGrid" class="tiempo-grid">
+        <!-- Tiempo cards will be rendered here -->
+      </div>
+    </div>
 
     <div class="chart-card">
       <div class="chart-title">Cartera por Género</div>
       <div class="chart-subtitle">Distribución de créditos y saldo capital</div>
       <div class="gender-row">
         <div class="gender-card">
-          <div class="gender-icon">👨</div>
+          <div class="gender-icon"><img src="https://i.ibb.co/4Z3j1mnB/Designer-1.png" alt="Masculino" style="width:100px;height:100px;object-fit:contain;"></div>
           <div class="gender-name">Hombre</div>
           <div class="gender-stat">
             <span class="val">492</span>
@@ -433,7 +1629,7 @@
           <div class="gender-pct">50.60%</div>
         </div>
         <div class="gender-card">
-          <div class="gender-icon">👩</div>
+          <div class="gender-icon"><img src="https://i.ibb.co/4nLnc7ZW/Designer.png" alt="Femenino" style="width:100px;height:100px;object-fit:contain;"></div>
           <div class="gender-name">Mujer</div>
           <div class="gender-stat">
             <span class="val">466</span>
@@ -452,38 +1648,245 @@
     </div>
 
     <div class="chart-card">
-      <div class="chart-title">Rangos de Tiempo</div>
-      <div class="chart-subtitle">Suma de saldo capital por plazo</div>
-      <div style="height:220px; position:relative">
-        <canvas id="tiempoChart"></canvas>
+      <div class="chart-title">Segmento Producto</div>
+      <div class="chart-subtitle">Distribución de créditos por segmento</div>
+      <div class="tab-row">
+        <button class="tab active" onclick="updateSegmentoCards('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateSegmentoCards('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateSegmentoCards('ENERO', this)">ENE 2026</button>
       </div>
-      <div class="pie-legend">
-        <div class="pie-legend-item">
-          <div class="pie-legend-left"><div class="legend-dot" style="background:#5271ff"></div>Menor a 6 meses</div>
-          <div class="pie-legend-pct">59%</div>
-        </div>
-        <div class="pie-legend-item">
-          <div class="pie-legend-left"><div class="legend-dot" style="background:#f39519"></div>De 7 meses a 1 año</div>
-          <div class="pie-legend-pct">30%</div>
-        </div>
-        <div class="pie-legend-item">
-          <div class="pie-legend-left"><div class="legend-dot" style="background:#f38a00"></div>De 1 a 1.5 años</div>
-          <div class="pie-legend-pct">4%</div>
-        </div>
-        <div class="pie-legend-item">
-          <div class="pie-legend-left"><div class="legend-dot" style="background:#27ae60"></div>De 1.6 a 2 años</div>
-          <div class="pie-legend-pct">1%</div>
-        </div>
-        <div class="pie-legend-item">
-          <div class="pie-legend-left"><div class="legend-dot" style="background:#8e44ad"></div>Mayor a 2 años</div>
-          <div class="pie-legend-pct">6%</div>
-        </div>
+      
+      <div class="segmento-grid" id="segmentoCardsContainer">
+        <!-- Cards will be generated by JavaScript -->
       </div>
     </div>
 
   </div>
 
 </div>
+</div>
+<!-- End Page 1 -->
+
+<!-- Page 2 - Additional Charts -->
+<div class="page-view" id="page2">
+<div class="dashboard">
+
+  <!-- Row with 3 columns - Tasa, Avalúos, Departamento -->
+  <div class="charts-row-3col">
+    
+    <!-- Tasa de Interes Table -->
+    <div class="data-table-card">
+      <div class="chart-title">Tasa de Interés</div>
+      <div class="chart-subtitle">Distribución de saldo capital por tasa</div>
+      <div class="tab-row">
+        <button class="tab active" onclick="updateTasaTable('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateTasaTable('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateTasaTable('ENERO', this)">ENE 2026</button>
+      </div>
+      
+      <table class="data-table" id="tasaTable">
+        <thead>
+          <tr>
+            <th>TASA</th>
+            <th>SALDO (Q)</th>
+            <th>%</th>
+          </tr>
+        </thead>
+        <tbody id="tasaTableBody">
+          <!-- Rows will be generated by JavaScript -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" id="tasaTotal">Q 164,917,085</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Avalúos -->
+    <div class="data-table-card">
+      <div class="chart-title">Avalúos</div>
+      <div class="chart-subtitle">Distribución de créditos por rango de avalúo</div>
+      <div class="tab-row">
+        <button class="tab active" onclick="updateAvaluosTable('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateAvaluosTable('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateAvaluosTable('ENERO', this)">ENE 2026</button>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Rango</th>
+            <th>Créditos</th>
+            <th>Saldo</th>
+          </tr>
+        </thead>
+        <tbody id="avaluosTableBody">
+          <!-- Rows will be generated by JavaScript -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" id="avaluosTotal">Q 164,917,085</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Cartera por Departamento -->
+    <div class="data-table-card depto-card">
+      <div class="chart-title">Cartera por Departamento</div>
+      <div class="chart-subtitle">Distribución geográfica de créditos</div>
+      <div class="tab-row">
+        <button class="tab active" onclick="updateDeptoTable('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateDeptoTable('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateDeptoTable('ENERO', this)">ENE 2026</button>
+      </div>
+      
+      <table class="depto-table">
+        <thead>
+          <tr>
+            <th>Departamento</th>
+            <th>Créditos</th>
+            <th>%</th>
+          </tr>
+        </thead>
+        <tbody id="deptoTableBody">
+          <!-- Rows will be generated by JavaScript -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" id="deptoTotal">965 créditos</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Row with 3 columns for Rango Avalúos, Avalúos Pendientes and Municipios -->
+  <div class="charts-row-3col" style="margin-top: 20px;">
+    
+    <div class="chart-card">
+      <div class="chart-title">Rango Avalúos</div>
+      <div class="chart-subtitle">Clasificación de créditos por rango de avalúo</div>
+      <div class="tab-row">
+        <button class="tab active" onclick="updateRangoAvaluosCards('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateRangoAvaluosCards('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateRangoAvaluosCards('ENERO', this)">ENE 2026</button>
+      </div>
+      
+      <div class="rango-avaluos-grid" id="rangoAvaluosContainer">
+        <!-- Cards will be generated by JavaScript -->
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Avalúos Pendientes</div>
+      <div class="chart-subtitle">Estado de créditos pendientes de avalúo</div>
+      <div class="tab-row">
+        <button class="tab active" onclick="updateAvaluosPendCards('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateAvaluosPendCards('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateAvaluosPendCards('ENERO', this)">ENE 2026</button>
+      </div>
+      
+      <div class="avaluos-pend-grid" id="avaluosPendContainer">
+        <!-- Cards will be generated by JavaScript -->
+      </div>
+    </div>
+
+    <div class="data-table-card municipio-card">
+      <div class="chart-title">Cartera por Municipio</div>
+      <div class="chart-subtitle">Desglose por estado de cartera</div>
+      <div class="tab-row">
+        <button class="tab active" onclick="updateMunicipioTable('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateMunicipioTable('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateMunicipioTable('ENERO', this)">ENE 2026</button>
+      </div>
+      
+      <div class="table-scroll-container">
+        <table class="municipio-table">
+          <thead>
+            <tr>
+              <th>Municipio</th>
+              <th>Al día</th>
+              <th>1 a 30</th>
+              <th>31 a 60</th>
+              <th>61 a 90</th>
+              <th>Prejuridico</th>
+              <th>Juridico</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="municipioTableBody">
+            <!-- Rows will be generated by JavaScript -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>TOTAL</td>
+              <td id="municipioTotalAldia">0</td>
+              <td id="municipioTotal1_30">0</td>
+              <td id="municipioTotal31_60">0</td>
+              <td id="municipioTotal61_90">0</td>
+              <td id="municipioTotalPrejuridico">0</td>
+              <td id="municipioTotalJuridico">0</td>
+              <td id="municipioTotalGeneral">0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Row with Clientes con Avalúos Pendientes -->
+  <!-- Row with Clientes con Avalúos Pendientes - Full Width -->
+  <div style="margin-top: 20px;">
+    
+    <!-- Clientes con Avalúos Pendientes -->
+    <div class="data-table-card">
+      <div class="chart-title">Clientes con Avalúos Pendientes</div>
+      <div class="chart-subtitle">Jurídico - Avalúos pendientes por departamento</div>
+      <div class="tab-row">
+        <button class="tab active" onclick="updateAvaluosPendientesClientesTable('NOVIEMBRE', this)">NOV 2025</button>
+        <button class="tab" onclick="updateAvaluosPendientesClientesTable('DICIEMBRE', this)">DIC 2025</button>
+        <button class="tab" onclick="updateAvaluosPendientesClientesTable('ENERO', this)">ENE 2026</button>
+      </div>
+      
+      <div class="table-scroll-container">
+        <table class="municipio-table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Alta Verapaz</th>
+              <th>Escuintla</th>
+              <th>Guatemala</th>
+              <th>Sacatepéquez</th>
+              <th>Suchitepéquez</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="avaluosPendientesClientesBody">
+            <!-- Rows will be generated by JavaScript -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>TOTAL GENERAL</td>
+              <td id="avalPendAltaVerapaz">0</td>
+              <td id="avalPendEscuintla">0</td>
+              <td id="avalPendGuatemala">0</td>
+              <td id="avalPendSacatepequez">0</td>
+              <td id="avalPendSuchitepequez">0</td>
+              <td id="avalPendTotalGeneral">0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+<!-- End Page 2 -->
 
 
 <script>
@@ -494,17 +1897,349 @@ const data = {
   NOVIEMBRE: {
     rango: [672, 76, 32, 21, 44, 120],
     pct: [69.64, 7.88, 3.32, 2.18, 4.58, 12.44],
-    kpi: { total: 965, saldo: 'Q160.3M', aldia: 672, aldia_pct: '69.64%', mora: 173, juridico: 120, juridico_pct: '12.44%' }
+    kpi: { total: 965, saldo: 'Q160.3M', aldia: 672, aldia_pct: '69.64%', mora: 173, juridico: 120, juridico_pct: '12.44%' },
+    tasas: [
+      { tasa: 2.25, saldo: 82213206 },
+      { tasa: 2.50, saldo: 47201692 },
+      { tasa: 2.00, saldo: 29616648 },
+      { tasa: 2.75, saldo: 1958254 },
+      { tasa: 1.80, saldo: 1333118 },
+      { tasa: 1.95, saldo: 1515882 },
+      { tasa: 3.00, saldo: 654866 },
+      { tasa: 1.04, saldo: 563896 },
+      { tasa: 1.25, saldo: 189890 },
+      { tasa: 1.85, saldo: 140881 },
+      { tasa: 1.00, saldo: 135000 },
+      { tasa: 1.50, saldo: 39460 },
+      { tasa: 2.95, saldo: 9292 }
+    ],
+    segmento: {
+      DIAMANTE: { total: 1, aldia: 1, mora: 0, juridico: 0 },
+      ORO: { total: 26, aldia: 26, mora: 0, juridico: 0 },
+      PLATA: { total: 24, aldia: 24, mora: 0, juridico: 0 },
+      'SIN SEGMENTO': { total: 914, aldia: 621, mora: 173, juridico: 120 }
+    },
+    avaluos: [
+      { rango: 'DE 01% A 10%', creditos: 13, saldo: 754956 },
+      { rango: 'DE 11% A 20%', creditos: 84, saldo: 9757253 },
+      { rango: 'DE 21% A 30%', creditos: 150, saldo: 21303318 },
+      { rango: 'DE 31% A 40%', creditos: 260, saldo: 41104693 },
+      { rango: 'DE 41% A 50%', creditos: 157, saldo: 32819296 },
+      { rango: 'DE 51% A 60%', creditos: 81, saldo: 16678518 },
+      { rango: 'DE 61% A 70%', creditos: 59, saldo: 12379517 },
+      { rango: 'DE 71% A 80%', creditos: 29, saldo: 6654358 },
+      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3419315 },
+      { rango: 'DE 91% A 100%', creditos: 8, saldo: 1064988 },
+      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1446882 },
+      { rango: 'DE 126% A 150%', creditos: 3, saldo: 294467 },
+      { rango: 'MAS DE 151%', creditos: 2, saldo: 776111 },
+      { rango: 'PENDIENTE', creditos: 87, saldo: 16463413 }
+    ],
+    rango_avaluos: [
+      { categoria: 'MENOR A 40%', creditos: 507, saldo: 72920220 },
+      { categoria: 'MAYOR A 40%', creditos: 371, saldo: 75533452 },
+      { categoria: 'PENDIENTE', creditos: 87, saldo: 16463413 }
+    ],
+    avaluos_pendientes: [
+      { categoria: 'Al día', creditos: 672, saldo: 102578220, clientes: 672 },
+      { categoria: '1 a 30', creditos: 76, saldo: 11552975, clientes: 76 },
+      { categoria: '31 a 60', creditos: 32, saldo: 3999267, clientes: 32 },
+      { categoria: '61 a 90', creditos: 21, saldo: 6459512, clientes: 21 },
+      { categoria: 'Prejurídico', creditos: 44, saldo: 6838880, clientes: 44 },
+      { categoria: 'Jurídico', creditos: 120, saldo: 33488231, clientes: 120 }
+    ],
+    departamentos: [
+      { depto: 'GUATEMALA', creditos: 626, pct: 61.02 },
+      { depto: 'ESCUINTLA', creditos: 81, pct: 8.78 },
+      { depto: 'SACATEPÉQUEZ', creditos: 58, pct: 5.78 },
+      { depto: 'ALTA VERAPAZ', creditos: 31, pct: 3.97 },
+      { depto: 'PETÉN', creditos: 28, pct: 3.90 },
+      { depto: 'SANTA ROSA', creditos: 28, pct: 2.86 },
+      { depto: 'CHIMALTENANGO', creditos: 24, pct: 2.73 },
+      { depto: 'SUCHITEPÉQUEZ', creditos: 16, pct: 2.02 },
+      { depto: 'EL PROGRESO', creditos: 15, pct: 1.69 },
+      { depto: 'IZABAL', creditos: 12, pct: 1.51 },
+      { depto: 'QUETZALTENANGO', creditos: 8, pct: 1.08 },
+      { depto: 'JUTIAPA', creditos: 8, pct: 0.90 },
+      { depto: 'JALAPA', creditos: 6, pct: 0.74 },
+      { depto: 'ZACAPA', creditos: 5, pct: 0.63 },
+      { depto: 'RETALHULEU', creditos: 5, pct: 0.57 },
+      { depto: 'SAN MARCOS', creditos: 5, pct: 0.71 },
+      { depto: 'CHIQUIMULA', creditos: 3, pct: 0.36 },
+      { depto: 'QUICHÉ', creditos: 3, pct: 0.36 },
+      { depto: 'BAJA VERAPAZ', creditos: 2, pct: 0.24 },
+      { depto: 'TOTONICAPÁN', creditos: 1, pct: 0.14 }
+    ],
+    municipios: [
+      { municipio: 'GUATEMALA', aldia: 447, rango1_30: 44, rango31_60: 21, rango61_90: 13, prejuridico: 25, juridico: 76, total: 626 },
+      { municipio: 'ESCUINTLA', aldia: 50, rango1_30: 5, rango31_60: 5, rango61_90: 3, prejuridico: 3, juridico: 6, total: 72 },
+      { municipio: 'MIXCO', aldia: 28, rango1_30: 2, rango31_60: 2, rango61_90: 5, prejuridico: 3, juridico: 18, total: 58 },
+      { municipio: 'VILLA NUEVA', aldia: 42, rango1_30: 6, rango31_60: 1, rango61_90: 0, prejuridico: 4, juridico: 5, total: 58 },
+      { municipio: 'ANTIGUA GUATEMALA', aldia: 34, rango1_30: 5, rango31_60: 1, rango61_90: 1, prejuridico: 2, juridico: 14, total: 57 },
+      { municipio: 'SAN MIGUEL PETAPA', aldia: 24, rango1_30: 8, rango31_60: 3, rango61_90: 1, prejuridico: 3, juridico: 5, total: 44 },
+      { municipio: 'AMATITLÁN', aldia: 31, rango1_30: 6, rango31_60: 0, rango61_90: 1, prejuridico: 1, juridico: 4, total: 43 },
+      { municipio: 'SANTA LUCÍA COTZUMALGUAPA', aldia: 13, rango1_30: 2, rango31_60: 1, rango61_90: 1, prejuridico: 2, juridico: 5, total: 24 },
+      { municipio: 'VILLA CANALES', aldia: 13, rango1_30: 5, rango31_60: 2, rango61_90: 2, prejuridico: 1, juridico: 1, total: 24 },
+      { municipio: 'CHINAUTLA', aldia: 18, rango1_30: 2, rango31_60: 1, rango61_90: 0, prejuridico: 0, juridico: 2, total: 23 },
+      { municipio: 'FLORES', aldia: 18, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 2, total: 21 },
+      { municipio: 'SAN JUAN SACATEPÉQUEZ', aldia: 18, rango1_30: 0, rango31_60: 0, rango61_90: 2, prejuridico: 0, juridico: 1, total: 21 },
+      { municipio: 'COBÁN', aldia: 13, rango1_30: 1, rango31_60: 1, rango61_90: 2, prejuridico: 0, juridico: 3, total: 20 },
+      { municipio: 'PUERTO BARRIOS', aldia: 7, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 1, total: 10 },
+      { municipio: 'FRAIJANES', aldia: 7, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 10 },
+      { municipio: 'SANTA CATARINA PINULA', aldia: 6, rango1_30: 1, rango31_60: 1, rango61_90: 1, prejuridico: 0, juridico: 1, total: 10 },
+      { municipio: 'GUASTATOYA', aldia: 5, rango1_30: 0, rango31_60: 2, rango61_90: 1, prejuridico: 0, juridico: 1, total: 9 },
+      { municipio: 'SAN JOSÉ PINULA', aldia: 6, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 9 },
+      { municipio: 'PETAPA', aldia: 3, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 4, total: 8 },
+      { municipio: 'MAZATENANGO', aldia: 6, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 1, total: 8 }
+    ],
+    avaluos_pendientes_clientes: [
+      { cliente: 'CLAUDIA ELIZABETH LIMA BURGOS', altaVerapaz: 0, escuintla: 0, guatemala: 1200000, sacatepequez: 0, suchitepequez: 0, total: 1200000 },
+      { cliente: 'RAFAEL CARLOS PORRAS ESTRADA', altaVerapaz: 0, escuintla: 0, guatemala: 399999, sacatepequez: 0, suchitepequez: 0, total: 399999 },
+      { cliente: 'MIGUEL ANGEL FUENTES HERNANDEZ', altaVerapaz: 0, escuintla: 0, guatemala: 250000, sacatepequez: 0, suchitepequez: 0, total: 250000 },
+      { cliente: 'CARLOS HUMBERTO PINELO VALLE', altaVerapaz: 0, escuintla: 0, guatemala: 215000, sacatepequez: 0, suchitepequez: 0, total: 215000 },
+      { cliente: 'JHONATTAN JOSUE EMANUEL GARCIA GONZALEZ', altaVerapaz: 0, escuintla: 0, guatemala: 125000, sacatepequez: 0, suchitepequez: 0, total: 125000 },
+      { cliente: 'IRMA VIDALIA AGUILAR GONZALEZ DE CORTEZ', altaVerapaz: 0, escuintla: 115000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 115000 },
+      { cliente: 'NIDIA KARINA HERNANDEZ AGUILAR', altaVerapaz: 0, escuintla: 0, guatemala: 89489, sacatepequez: 0, suchitepequez: 0, total: 89489 },
+      { cliente: 'NIDIA YOLANDA ORTIZ JACINTO', altaVerapaz: 0, escuintla: 60000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 60000 },
+      { cliente: 'LUIS ADOLFO GUZMAN MONTESDEOCA', altaVerapaz: 0, escuintla: 0, guatemala: 55888, sacatepequez: 0, suchitepequez: 0, total: 55888 },
+      { cliente: 'ELEN DALILA MEOÑO RUIZ DE URIZAR', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 50000, total: 50000 },
+      { cliente: 'ANGELINA  LOPEZ DE GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 49169, sacatepequez: 0, suchitepequez: 0, total: 49169 },
+      { cliente: 'MANUEL  BUTZ TZUL', altaVerapaz: 40000, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 40000 },
+      { cliente: 'KARLA ISABEL MENDOZA MELENDEZ DE GALLARDO', altaVerapaz: 0, escuintla: 0, guatemala: 35000, sacatepequez: 0, suchitepequez: 0, total: 35000 },
+      { cliente: 'SANTIAGO  ASIG CAAL', altaVerapaz: 34765, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 34765 },
+      { cliente: 'ASHLEY ARELI SANDOVAL GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 25000, sacatepequez: 0, suchitepequez: 0, total: 25000 },
+      { cliente: 'HORACIO ROMEO SANCHEZ VALLE', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 0 }
+    ]
   },
   DICIEMBRE: {
     rango: [661, 69, 43, 23, 42, 121],
     pct: [68.93, 7.19, 4.48, 2.40, 4.35, 12.62],
-    kpi: { total: 959, saldo: 'Q161.4M', aldia: 661, aldia_pct: '68.93%', mora: 177, juridico: 121, juridico_pct: '12.62%' }
+    kpi: { total: 959, saldo: 'Q161.4M', aldia: 661, aldia_pct: '68.93%', mora: 177, juridico: 121, juridico_pct: '12.62%' },
+    tasas: [
+      { tasa: 2.25, saldo: 80109121 },
+      { tasa: 2.50, saldo: 46330657 },
+      { tasa: 2.00, saldo: 28882579 },
+      { tasa: 2.75, saldo: 2270259 },
+      { tasa: 1.80, saldo: 1333118 },
+      { tasa: 1.95, saldo: 1000000 },
+      { tasa: 3.00, saldo: 651868 },
+      { tasa: 1.04, saldo: 362440 },
+      { tasa: 1.25, saldo: 188956 },
+      { tasa: 1.85, saldo: 140881 },
+      { tasa: 1.50, saldo: 39165 },
+      { tasa: 2.95, saldo: 9292 }
+    ],
+    segmento: {
+      DIAMANTE: { total: 1, aldia: 1, mora: 0, juridico: 0 },
+      ORO: { total: 34, aldia: 32, mora: 2, juridico: 0 },
+      PLATA: { total: 31, aldia: 30, mora: 1, juridico: 0 },
+      'SIN SEGMENTO': { total: 893, aldia: 598, mora: 174, juridico: 121 }
+    },
+    avaluos: [
+      { rango: 'DE 01% A 10%', creditos: 11, saldo: 642683 },
+      { rango: 'DE 11% A 20%', creditos: 87, saldo: 10409482 },
+      { rango: 'DE 21% A 30%', creditos: 154, saldo: 21882996 },
+      { rango: 'DE 31% A 40%', creditos: 253, saldo: 39160652 },
+      { rango: 'DE 41% A 50%', creditos: 154, saldo: 29336846 },
+      { rango: 'DE 51% A 60%', creditos: 81, saldo: 17400668 },
+      { rango: 'DE 61% A 70%', creditos: 58, saldo: 11844590 },
+      { rango: 'DE 71% A 80%', creditos: 30, saldo: 7135079 },
+      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3415113 },
+      { rango: 'DE 91% A 100%', creditos: 8, saldo: 1064718 },
+      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1441540 },
+      { rango: 'DE 126% A 150%', creditos: 3, saldo: 293780 },
+      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715 },
+      { rango: 'PENDIENTE', creditos: 87, saldo: 16713475 }
+    ],
+    rango_avaluos: [
+      { categoria: 'MENOR A 40%', creditos: 1012, saldo: 145016032 },
+      { categoria: 'MAYOR A 40%', creditos: 738, saldo: 148042501 },
+      { categoria: 'PENDIENTE', creditos: 174, saldo: 33176888 }
+    ],
+    avaluos_pendientes: [
+      { categoria: 'Al día', creditos: 661, saldo: 99595741, clientes: 661 },
+      { categoria: '1 a 30', creditos: 69, saldo: 9862300, clientes: 69 },
+      { categoria: '31 a 60', creditos: 43, saldo: 5288095, clientes: 43 },
+      { categoria: '61 a 90', creditos: 23, saldo: 7346642, clientes: 23 },
+      { categoria: 'Prejurídico', creditos: 42, saldo: 6165744, clientes: 42 },
+      { categoria: 'Jurídico', creditos: 121, saldo: 33059814, clientes: 121 }
+    ],
+    departamentos: [
+      { depto: 'GUATEMALA', creditos: 620, pct: 60.79 },
+      { depto: 'ESCUINTLA', creditos: 86, pct: 9.46 },
+      { depto: 'SACATEPÉQUEZ', creditos: 55, pct: 5.42 },
+      { depto: 'ALTA VERAPAZ', creditos: 32, pct: 4.11 },
+      { depto: 'PETÉN', creditos: 27, pct: 3.85 },
+      { depto: 'SANTA ROSA', creditos: 26, pct: 2.59 },
+      { depto: 'CHIMALTENANGO', creditos: 23, pct: 2.62 },
+      { depto: 'SUCHITEPÉQUEZ', creditos: 17, pct: 2.20 },
+      { depto: 'EL PROGRESO', creditos: 14, pct: 1.53 },
+      { depto: 'IZABAL', creditos: 11, pct: 1.37 },
+      { depto: 'QUETZALTENANGO', creditos: 8, pct: 1.07 },
+      { depto: 'JUTIAPA', creditos: 8, pct: 0.90 },
+      { depto: 'RETALHULEU', creditos: 7, pct: 0.88 },
+      { depto: 'JALAPA', creditos: 6, pct: 0.74 },
+      { depto: 'ZACAPA', creditos: 5, pct: 0.63 },
+      { depto: 'SAN MARCOS', creditos: 5, pct: 0.73 },
+      { depto: 'CHIQUIMULA', creditos: 3, pct: 0.36 },
+      { depto: 'QUICHÉ', creditos: 3, pct: 0.36 },
+      { depto: 'BAJA VERAPAZ', creditos: 2, pct: 0.24 },
+      { depto: 'TOTONICAPÁN', creditos: 1, pct: 0.14 }
+    ],
+    municipios: [
+      { municipio: 'GUATEMALA', aldia: 434, rango1_30: 40, rango31_60: 23, rango61_90: 13, prejuridico: 27, juridico: 83, total: 620 },
+      { municipio: 'ESCUINTLA', aldia: 53, rango1_30: 5, rango31_60: 6, rango61_90: 3, prejuridico: 3, juridico: 6, total: 76 },
+      { municipio: 'MIXCO', aldia: 26, rango1_30: 2, rango31_60: 2, rango61_90: 5, prejuridico: 2, juridico: 18, total: 55 },
+      { municipio: 'VILLA NUEVA', aldia: 40, rango1_30: 6, rango31_60: 2, rango61_90: 1, prejuridico: 4, juridico: 5, total: 58 },
+      { municipio: 'ANTIGUA GUATEMALA', aldia: 32, rango1_30: 6, rango31_60: 0, rango61_90: 1, prejuridico: 2, juridico: 13, total: 54 },
+      { municipio: 'SAN MIGUEL PETAPA', aldia: 22, rango1_30: 8, rango31_60: 3, rango61_90: 2, prejuridico: 3, juridico: 5, total: 43 },
+      { municipio: 'AMATITLÁN', aldia: 29, rango1_30: 6, rango31_60: 0, rango61_90: 1, prejuridico: 1, juridico: 4, total: 41 },
+      { municipio: 'SANTA LUCÍA COTZUMALGUAPA', aldia: 14, rango1_30: 2, rango31_60: 1, rango61_90: 1, prejuridico: 3, juridico: 5, total: 26 },
+      { municipio: 'VILLA CANALES', aldia: 15, rango1_30: 4, rango31_60: 2, rango61_90: 2, prejuridico: 1, juridico: 1, total: 25 },
+      { municipio: 'CHINAUTLA', aldia: 17, rango1_30: 2, rango31_60: 2, rango61_90: 0, prejuridico: 0, juridico: 2, total: 23 },
+      { municipio: 'FLORES', aldia: 17, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 2, total: 20 },
+      { municipio: 'SAN JUAN SACATEPÉQUEZ', aldia: 17, rango1_30: 0, rango31_60: 0, rango61_90: 2, prejuridico: 0, juridico: 1, total: 20 },
+      { municipio: 'COBÁN', aldia: 13, rango1_30: 1, rango31_60: 1, rango61_90: 2, prejuridico: 0, juridico: 3, total: 20 },
+      { municipio: 'PUERTO BARRIOS', aldia: 7, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 1, total: 10 },
+      { municipio: 'FRAIJANES', aldia: 7, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 10 },
+      { municipio: 'SANTA CATARINA PINULA', aldia: 5, rango1_30: 1, rango31_60: 1, rango61_90: 1, prejuridico: 0, juridico: 1, total: 9 },
+      { municipio: 'GUASTATOYA', aldia: 5, rango1_30: 0, rango31_60: 2, rango61_90: 1, prejuridico: 0, juridico: 1, total: 9 },
+      { municipio: 'SAN JOSÉ PINULA', aldia: 6, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 9 },
+      { municipio: 'PETAPA', aldia: 2, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 4, total: 7 },
+      { municipio: 'MAZATENANGO', aldia: 6, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 1, total: 8 }
+    ],
+    avaluos_pendientes_clientes: [
+      { cliente: 'CLAUDIA ELIZABETH LIMA BURGOS', altaVerapaz: 0, escuintla: 0, guatemala: 1200000, sacatepequez: 0, suchitepequez: 0, total: 1200000 },
+      { cliente: 'RAFAEL CARLOS PORRAS ESTRADA', altaVerapaz: 0, escuintla: 0, guatemala: 399999, sacatepequez: 0, suchitepequez: 0, total: 399999 },
+      { cliente: 'MIGUEL ANGEL FUENTES HERNANDEZ', altaVerapaz: 0, escuintla: 0, guatemala: 250000, sacatepequez: 0, suchitepequez: 0, total: 250000 },
+      { cliente: 'CARLOS HUMBERTO PINELO VALLE', altaVerapaz: 0, escuintla: 0, guatemala: 215000, sacatepequez: 0, suchitepequez: 0, total: 215000 },
+      { cliente: 'JHONATTAN JOSUE EMANUEL GARCIA GONZALEZ', altaVerapaz: 0, escuintla: 0, guatemala: 125000, sacatepequez: 0, suchitepequez: 0, total: 125000 },
+      { cliente: 'IRMA VIDALIA AGUILAR GONZALEZ DE CORTEZ', altaVerapaz: 0, escuintla: 115000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 115000 },
+      { cliente: 'NIDIA KARINA HERNANDEZ AGUILAR', altaVerapaz: 0, escuintla: 0, guatemala: 89489, sacatepequez: 0, suchitepequez: 0, total: 89489 },
+      { cliente: 'NIDIA YOLANDA ORTIZ JACINTO', altaVerapaz: 0, escuintla: 60000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 60000 },
+      { cliente: 'LUIS ADOLFO GUZMAN MONTESDEOCA', altaVerapaz: 0, escuintla: 0, guatemala: 55888, sacatepequez: 0, suchitepequez: 0, total: 55888 },
+      { cliente: 'ELEN DALILA MEOÑO RUIZ DE URIZAR', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 50000, total: 50000 },
+      { cliente: 'ANGELINA  LOPEZ DE GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 49169, sacatepequez: 0, suchitepequez: 0, total: 49169 },
+      { cliente: 'SANTIAGO  ASIG CAAL', altaVerapaz: 34765, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 34765 },
+      { cliente: 'ASHLEY ARELI SANDOVAL GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 25000, sacatepequez: 0, suchitepequez: 0, total: 25000 },
+      { cliente: 'HORACIO ROMEO SANCHEZ VALLE', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 0 }
+    ]
   },
   ENERO: {
     rango: [661, 77, 38, 22, 37, 123],
     pct: [69.00, 8.04, 3.97, 2.30, 3.86, 12.84],
-    kpi: { total: 958, saldo: 'Q162.1M', aldia: 661, aldia_pct: '69.00%', mora: 174, juridico: 123, juridico_pct: '12.84%' }
+    kpi: { total: 958, saldo: 'Q162.1M', aldia: 661, aldia_pct: '69.00%', mora: 174, juridico: 123, juridico_pct: '12.84%' },
+    tasas: [
+      { tasa: 2.25, saldo: 79945233 },
+      { tasa: 2.50, saldo: 47859276 },
+      { tasa: 2.00, saldo: 27686581 },
+      { tasa: 2.75, saldo: 2919467 },
+      { tasa: 1.80, saldo: 1333118 },
+      { tasa: 1.95, saldo: 1000000 },
+      { tasa: 3.00, saldo: 649106 },
+      { tasa: 1.04, saldo: 360969 },
+      { tasa: 1.25, saldo: 187959 },
+      { tasa: 1.85, saldo: 140881 },
+      { tasa: 1.50, saldo: 39023 },
+      { tasa: 2.95, saldo: 9163 }
+    ],
+    segmento: {
+      DIAMANTE: { total: 3, aldia: 3, mora: 0, juridico: 0 },
+      ORO: { total: 51, aldia: 48, mora: 3, juridico: 0 },
+      PLATA: { total: 42, aldia: 41, mora: 1, juridico: 0 },
+      'SIN SEGMENTO': { total: 862, aldia: 569, mora: 170, juridico: 123 }
+    },
+    avaluos: [
+      { rango: 'DE 01% A 10%', creditos: 12, saldo: 642176 },
+      { rango: 'DE 11% A 20%', creditos: 79, saldo: 9581470 },
+      { rango: 'DE 21% A 30%', creditos: 151, saldo: 21293886 },
+      { rango: 'DE 31% A 40%', creditos: 236, saldo: 36212654 },
+      { rango: 'DE 41% A 50%', creditos: 146, saldo: 28442219 },
+      { rango: 'DE 51% A 60%', creditos: 74, saldo: 15277716 },
+      { rango: 'DE 61% A 70%', creditos: 59, saldo: 11260287 },
+      { rango: 'DE 71% A 80%', creditos: 30, saldo: 7131994 },
+      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3407240 },
+      { rango: 'DE 91% A 100%', creditos: 7, saldo: 501540 },
+      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1435813 },
+      { rango: 'DE 126% A 150%', creditos: 3, saldo: 293027 },
+      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715 },
+      { rango: 'PENDIENTE', creditos: 128, saldo: 26074042 }
+    ],
+    rango_avaluos: [
+      { categoria: 'MENOR A 40%', creditos: 478, saldo: 67730186 },
+      { categoria: 'MAYOR A 40%', creditos: 352, saldo: 68326549 },
+      { categoria: 'PENDIENTE', creditos: 128, saldo: 26074042 }
+    ],
+    avaluos_pendientes: [
+      { categoria: 'Al día', creditos: 661, saldo: 95260638, clientes: 661 },
+      { categoria: '1 a 30', creditos: 77, saldo: 15363786, clientes: 77 },
+      { categoria: '31 a 60', creditos: 38, saldo: 5381144, clientes: 38 },
+      { categoria: '61 a 90', creditos: 22, saldo: 3837228, clientes: 22 },
+      { categoria: 'Prejurídico', creditos: 37, saldo: 6238253, clientes: 37 },
+      { categoria: 'Jurídico', creditos: 123, saldo: 36049729, clientes: 123 }
+    ],
+    departamentos: [
+      { depto: 'GUATEMALA', creditos: 608, pct: 58.71 },
+      { depto: 'ESCUINTLA', creditos: 86, pct: 9.60 },
+      { depto: 'SACATEPÉQUEZ', creditos: 54, pct: 5.38 },
+      { depto: 'PETÉN', creditos: 33, pct: 4.81 },
+      { depto: 'ALTA VERAPAZ', creditos: 33, pct: 4.43 },
+      { depto: 'SANTA ROSA', creditos: 27, pct: 2.71 },
+      { depto: 'CHIMALTENANGO', creditos: 23, pct: 2.63 },
+      { depto: 'SUCHITEPÉQUEZ', creditos: 20, pct: 2.65 },
+      { depto: 'EL PROGRESO', creditos: 14, pct: 1.53 },
+      { depto: 'IZABAL', creditos: 11, pct: 1.35 },
+      { depto: 'QUETZALTENANGO', creditos: 8, pct: 1.07 },
+      { depto: 'JUTIAPA', creditos: 8, pct: 0.88 },
+      { depto: 'RETALHULEU', creditos: 7, pct: 0.95 },
+      { depto: 'JALAPA', creditos: 6, pct: 0.73 },
+      { depto: 'ZACAPA', creditos: 6, pct: 0.78 },
+      { depto: 'SAN MARCOS', creditos: 5, pct: 0.72 },
+      { depto: 'CHIQUIMULA', creditos: 3, pct: 0.35 },
+      { depto: 'QUICHÉ', creditos: 3, pct: 0.35 },
+      { depto: 'BAJA VERAPAZ', creditos: 2, pct: 0.24 },
+      { depto: 'TOTONICAPÁN', creditos: 1, pct: 0.14 }
+    ],
+    municipios: [
+      { municipio: 'GUATEMALA', aldia: 426, rango1_30: 46, rango31_60: 19, rango61_90: 10, prejuridico: 23, juridico: 84, total: 608 },
+      { municipio: 'ESCUINTLA', aldia: 50, rango1_30: 5, rango31_60: 5, rango61_90: 3, prejuridico: 3, juridico: 6, total: 72 },
+      { municipio: 'MIXCO', aldia: 27, rango1_30: 2, rango31_60: 2, rango61_90: 5, prejuridico: 2, juridico: 17, total: 55 },
+      { municipio: 'VILLA NUEVA', aldia: 41, rango1_30: 7, rango31_60: 1, rango61_90: 0, prejuridico: 4, juridico: 5, total: 58 },
+      { municipio: 'ANTIGUA GUATEMALA', aldia: 30, rango1_30: 7, rango31_60: 0, rango61_90: 1, prejuridico: 2, juridico: 13, total: 53 },
+      { municipio: 'SAN MIGUEL PETAPA', aldia: 20, rango1_30: 8, rango31_60: 3, rango61_90: 2, prejuridico: 3, juridico: 5, total: 41 },
+      { municipio: 'AMATITLÁN', aldia: 27, rango1_30: 6, rango31_60: 0, rango61_90: 1, prejuridico: 1, juridico: 4, total: 39 },
+      { municipio: 'SANTA LUCÍA COTZUMALGUAPA', aldia: 14, rango1_30: 2, rango31_60: 1, rango61_90: 1, prejuridico: 3, juridico: 5, total: 26 },
+      { municipio: 'VILLA CANALES', aldia: 15, rango1_30: 4, rango31_60: 2, rango61_90: 2, prejuridico: 1, juridico: 1, total: 25 },
+      { municipio: 'CHINAUTLA', aldia: 18, rango1_30: 2, rango31_60: 1, rango61_90: 0, prejuridico: 0, juridico: 2, total: 23 },
+      { municipio: 'FLORES', aldia: 18, rango1_30: 2, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 2, total: 22 },
+      { municipio: 'SAN JUAN SACATEPÉQUEZ', aldia: 18, rango1_30: 0, rango31_60: 0, rango61_90: 2, prejuridico: 0, juridico: 1, total: 21 },
+      { municipio: 'COBÁN', aldia: 14, rango1_30: 1, rango31_60: 1, rango61_90: 2, prejuridico: 0, juridico: 3, total: 21 },
+      { municipio: 'PUERTO BARRIOS', aldia: 7, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 1, total: 10 },
+      { municipio: 'FRAIJANES', aldia: 7, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 10 },
+      { municipio: 'SANTA CATARINA PINULA', aldia: 6, rango1_30: 1, rango31_60: 1, rango61_90: 1, prejuridico: 0, juridico: 1, total: 10 },
+      { municipio: 'GUASTATOYA', aldia: 5, rango1_30: 0, rango31_60: 2, rango61_90: 1, prejuridico: 0, juridico: 1, total: 9 },
+      { municipio: 'SAN JOSÉ PINULA', aldia: 6, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 9 },
+      { municipio: 'PETAPA', aldia: 3, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 4, total: 8 },
+      { municipio: 'MAZATENANGO', aldia: 6, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 1, total: 8 }
+    ],
+    avaluos_pendientes_clientes: [
+      { cliente: 'CLAUDIA ELIZABETH LIMA BURGOS', altaVerapaz: 0, escuintla: 0, guatemala: 1200000, sacatepequez: 0, suchitepequez: 0, total: 1200000 },
+      { cliente: 'RAFAEL CARLOS PORRAS ESTRADA', altaVerapaz: 0, escuintla: 0, guatemala: 399999, sacatepequez: 0, suchitepequez: 0, total: 399999 },
+      { cliente: 'MIGUEL ANGEL FUENTES HERNANDEZ', altaVerapaz: 0, escuintla: 0, guatemala: 250000, sacatepequez: 0, suchitepequez: 0, total: 250000 },
+      { cliente: 'CARLOS HUMBERTO PINELO VALLE', altaVerapaz: 0, escuintla: 0, guatemala: 215000, sacatepequez: 0, suchitepequez: 0, total: 215000 },
+      { cliente: 'JHONATTAN JOSUE EMANUEL GARCIA GONZALEZ', altaVerapaz: 0, escuintla: 0, guatemala: 125000, sacatepequez: 0, suchitepequez: 0, total: 125000 },
+      { cliente: 'IRMA VIDALIA AGUILAR GONZALEZ DE CORTEZ', altaVerapaz: 0, escuintla: 115000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 115000 },
+      { cliente: 'NIDIA KARINA HERNANDEZ AGUILAR', altaVerapaz: 0, escuintla: 0, guatemala: 89489, sacatepequez: 0, suchitepequez: 0, total: 89489 },
+      { cliente: 'NIDIA YOLANDA ORTIZ JACINTO', altaVerapaz: 0, escuintla: 60000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 60000 },
+      { cliente: 'LUIS ADOLFO GUZMAN MONTESDEOCA', altaVerapaz: 0, escuintla: 0, guatemala: 55888, sacatepequez: 0, suchitepequez: 0, total: 55888 },
+      { cliente: 'ELEN DALILA MEOÑO RUIZ DE URIZAR', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 50000, total: 50000 },
+      { cliente: 'ANGELINA  LOPEZ DE GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 49169, sacatepequez: 0, suchitepequez: 0, total: 49169 },
+      { cliente: 'CARMEN  RUIZ RUIZ', altaVerapaz: 0, escuintla: 0, guatemala: 44173, sacatepequez: 0, suchitepequez: 0, total: 44173 },
+      { cliente: 'ASTRY ZUZET REYES RECINOS DE CHAVEZ', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 39094, total: 39094 },
+      { cliente: 'SANTIAGO  ASIG CAAL', altaVerapaz: 34765, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 34765 },
+      { cliente: 'ASHLEY ARELI SANDOVAL GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 25000, sacatepequez: 0, suchitepequez: 0, total: 25000 },
+      { cliente: 'JUANA DE JESUS GOMEZ MURALLES DE HERNANDEZ', altaVerapaz: 0, escuintla: 0, guatemala: 23681, sacatepequez: 0, suchitepequez: 0, total: 23681 }
+    ]
   }
 };
 
@@ -513,6 +2248,63 @@ const MESES_DISPLAY = ['NOVIEMBRE 2025','DICIEMBRE 2025','ENERO 2026'];
 const COLORS = ['#5271ff','#f39519','#27ae60','#e84545','#8e44ad','#f38a00'];
 const MONTH_COLORS = ['#283551','#f39519','#27ae60'];
 const LABELS = ['Al día','1 a 30','31 a 60','61 a 90','Prejuridico','Jurídico'];
+
+// ─── MULTI-MONTH SELECTION SYSTEM ────────────────────────────────────────────
+const selectedMonths = {
+  tasa: ['NOVIEMBRE'],
+  segmento: ['NOVIEMBRE'],
+  avaluos: ['NOVIEMBRE'],
+  rangoAvaluos: ['NOVIEMBRE'],
+  avaluosPend: ['NOVIEMBRE'],
+  depto: ['NOVIEMBRE'],
+  municipio: ['NOVIEMBRE'],
+  avaluosPendClientes: ['NOVIEMBRE'],
+  rango: ['NOVIEMBRE'],
+  pct: ['NOVIEMBRE']
+};
+
+function toggleMonthSelection(visualization, mes, btn) {
+  const current = selectedMonths[visualization];
+  const index = current.indexOf(mes);
+  
+  if (index > -1) {
+    // Deselect month - pero siempre debe haber al menos uno
+    if (current.length > 1) {
+      current.splice(index, 1);
+    }
+  } else {
+    // Select month - máximo 2
+    if (current.length < 2) {
+      current.push(mes);
+    } else {
+      // Reemplazar el primero con el nuevo
+      current.shift();
+      current.push(mes);
+    }
+  }
+  
+  // Update tab styles
+  const tabs = btn.parentElement.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    const tabMes = tab.textContent.includes('NOV') ? 'NOVIEMBRE' : 
+                   tab.textContent.includes('DIC') ? 'DICIEMBRE' : 'ENERO';
+    const isSelected = current.indexOf(tabMes) > -1;
+    const isFirst = current[0] === tabMes;
+    
+    if (isSelected) {
+      tab.classList.add('active');
+      if (!isFirst && current.length === 2) {
+        tab.classList.add('secondary');
+      } else {
+        tab.classList.remove('secondary');
+      }
+    } else {
+      tab.classList.remove('active', 'secondary');
+    }
+  });
+  
+  return current;
+}
 
 const tooltipDefaults = {
   backgroundColor: '#283551', borderColor: '#f39519', borderWidth: 1,
@@ -601,6 +2393,23 @@ function groupedDatasetsPct(fmt) {
   }));
 }
 
+// Comparison mode: 2 months side by side
+function compareDatasets(field, meses, fmt) {
+  return meses.map((mes, idx) => ({
+    label: MESES_DISPLAY[MESES.indexOf(mes)],
+    data: data[mes][field],
+    backgroundColor: idx === 0 ? '#f39519' : '#27ae60',
+    borderRadius: 5, borderSkipped: false,
+    categoryPercentage: 0.85, barPercentage: 0.9,
+    datalabels: {
+      display: true, anchor: 'end', align: 'top',
+      color: idx === 0 ? '#f39519' : '#27ae60',
+      font: { weight: '700', size: 11 },
+      formatter: fmt || (v => v)
+    }
+  }));
+}
+
 const legendBottom = { display: true, position: 'bottom', labels: { color: 'rgba(255,255,255,0.75)', font: { size: 10 }, boxWidth: 11, padding: 12 } };
 
 // ─── RANGO CHART ─────────────────────────────────────────────────────────────
@@ -615,16 +2424,26 @@ let rangoChart = new Chart(document.getElementById('rangoChart'), {
   }
 });
 
-function applyRango(mes) {
-  if (mes === 'TODOS') {
+function applyRango(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  if (meses[0] === 'TODOS') {
     rangoChart.data.labels = MESES_DISPLAY;
     rangoChart.data.datasets = groupedDatasets('rango');
     rangoChart.options.plugins.legend = legendBottom;
     rangoChart.options.layout = { padding: { top: 28, right: 8, bottom: 4 } };
     rangoChart.options.scales = gridScales();
-  } else {
+  } else if (meses.length === 2) {
+    // Comparison mode: 2 months
     rangoChart.data.labels = LABELS;
-    rangoChart.data.datasets = singleDataset(data[mes].rango);
+    rangoChart.data.datasets = compareDatasets('rango', meses);
+    rangoChart.options.plugins.legend = legendBottom;
+    rangoChart.options.layout = { padding: { top: 28, right: 8, bottom: 4 } };
+    rangoChart.options.scales = gridScales();
+  } else {
+    // Single month mode
+    rangoChart.data.labels = LABELS;
+    rangoChart.data.datasets = singleDataset(data[meses[0]].rango);
     rangoChart.options.plugins.legend = { display: false };
     rangoChart.options.layout = { padding: { top: 24, right: 8 } };
     rangoChart.options.scales = gridScales();
@@ -633,9 +2452,17 @@ function applyRango(mes) {
 }
 
 function updateRango(mes, btn) {
-  btn.closest('.tab-row').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  applyRango(mes);
+  if (mes === 'TODOS') {
+    // Reset selection and set TODOS mode
+    selectedMonths.rango = ['TODOS'];
+    const tabs = btn.parentElement.querySelectorAll('.tab');
+    tabs.forEach(tab => tab.classList.remove('active', 'secondary'));
+    btn.classList.add('active');
+    applyRango(['TODOS']);
+  } else {
+    const meses = toggleMonthSelection('rango', mes, btn);
+    applyRango(meses);
+  }
 }
 
 // ─── PCT CHART ───────────────────────────────────────────────────────────────
@@ -650,16 +2477,26 @@ let pctChart = new Chart(document.getElementById('pctChart'), {
   }
 });
 
-function applyPct(mes) {
-  if (mes === 'TODOS') {
+function applyPct(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  if (meses[0] === 'TODOS') {
     pctChart.data.labels = MESES_DISPLAY;
     pctChart.data.datasets = groupedDatasetsPct(v => v.toFixed(2)+'%');
     pctChart.options.plugins.legend = legendBottom;
     pctChart.options.layout = { padding: { top: 55, right: 8, bottom: 4 } };
     pctChart.options.scales = gridScales(v => v + '%');
-  } else {
+  } else if (meses.length === 2) {
+    // Comparison mode: 2 months
     pctChart.data.labels = LABELS;
-    pctChart.data.datasets = singleDataset(data[mes].pct, v => v.toFixed(1)+'%');
+    pctChart.data.datasets = compareDatasets('pct', meses, v => v.toFixed(1)+'%');
+    pctChart.options.plugins.legend = legendBottom;
+    pctChart.options.layout = { padding: { top: 28, right: 8, bottom: 4 } };
+    pctChart.options.scales = gridScales(v => v + '%');
+  } else {
+    // Single month mode
+    pctChart.data.labels = LABELS;
+    pctChart.data.datasets = singleDataset(data[meses[0]].pct, v => v.toFixed(1)+'%');
     pctChart.options.plugins.legend = { display: false };
     pctChart.options.layout = { padding: { top: 24, right: 8 } };
     pctChart.options.scales = gridScales(v => v + '%');
@@ -668,9 +2505,17 @@ function applyPct(mes) {
 }
 
 function updatePct(mes, btn) {
-  btn.closest('.tab-row').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  applyPct(mes);
+  if (mes === 'TODOS') {
+    // Reset selection and set TODOS mode
+    selectedMonths.pct = ['TODOS'];
+    const tabs = btn.parentElement.querySelectorAll('.tab');
+    tabs.forEach(tab => tab.classList.remove('active', 'secondary'));
+    btn.classList.add('active');
+    applyPct(['TODOS']);
+  } else {
+    const meses = toggleMonthSelection('pct', mes, btn);
+    applyPct(meses);
+  }
 }
 
 // ─── INMUEBLES CHART ──────────────────────────────────────────────────────────
@@ -743,6 +2588,30 @@ new Chart(document.getElementById('tiempoChart'), {
   }
 });
 
+// ─── RENDER TIEMPO CARDS ──────────────────────────────────────────────────────
+function renderTiempoCards() {
+  const tiempoData = [
+    { label: 'Menor a 6 meses', pct: 59, class: 't1' },
+    { label: 'De 7 meses a 1 año', pct: 30, class: 't2' },
+    { label: 'Mayor a 2 años', pct: 6, class: 't5' },
+    { label: 'De 1 a 1.5 años', pct: 4, class: 't3' },
+    { label: 'De 1.6 a 2 años', pct: 1, class: 't4' }
+  ];
+
+  const grid = document.getElementById('tiempoCardsGrid');
+  grid.innerHTML = tiempoData.map(t => `
+    <div class="tiempo-card">
+      <div class="tiempo-card-header">
+        <div class="tiempo-label">${t.label}</div>
+        <div class="tiempo-pct">${t.pct}%</div>
+      </div>
+      <div class="tiempo-bar-container">
+        <div class="tiempo-bar ${t.class}" style="width: ${t.pct}%"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
 // ─── GLOBAL MONTH FILTER ──────────────────────────────────────────────────────
 function setMonth(mes) {
   const btnLabels = { NOVIEMBRE: 'NOV 2025', DICIEMBRE: 'DIC 2025', ENERO: 'ENE 2026', TODOS: 'TODOS' };
@@ -769,8 +2638,8 @@ function setMonth(mes) {
     document.getElementById('kpi-juridico').textContent = Math.round(totals.juridico / 3);
     document.getElementById('kpi-juridico-pct').textContent = 'promedio 3 meses';
 
-    applyRango('TODOS');
-    applyPct('TODOS');
+    applyRango(['TODOS']);
+    applyPct(['TODOS']);
 
   } else {
     const d = data[mes];
@@ -782,13 +2651,646 @@ function setMonth(mes) {
     document.getElementById('kpi-juridico').textContent = d.kpi.juridico;
     document.getElementById('kpi-juridico-pct').textContent = d.kpi.juridico_pct + ' cartera';
 
-    applyRango(mes);
-    applyPct(mes);
+    applyRango([mes]);
+    applyPct([mes]);
   }
 }
 
 // Init with NOVIEMBRE
 setMonth('NOVIEMBRE');
+
+// ─── PAGE SWITCHING ───────────────────────────────────────────────────────────
+function switchPage(pageNum) {
+  // Hide all pages
+  document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+  
+  // Show selected page
+  document.getElementById('page' + pageNum).classList.add('active');
+  
+  // Update button states
+  const buttons = document.querySelectorAll('.page-nav-btn');
+  buttons.forEach((btn, idx) => {
+    btn.classList.toggle('active', idx + 1 === pageNum);
+  });
+  
+  // Initialize visualizations if switching to page 2
+  if (pageNum === 2 && !window.page2Initialized) {
+    renderTasaTable(['NOVIEMBRE']);
+    renderSegmentoCards(['NOVIEMBRE']);
+    renderAvaluosTable(['NOVIEMBRE']);
+    renderRangoAvaluosCards(['NOVIEMBRE']);
+    renderAvaluosPendCards(['NOVIEMBRE']);
+    renderDeptoTable(['NOVIEMBRE']);
+    renderMunicipioTable(['NOVIEMBRE']);
+    renderAvaluosPendientesClientesTable(['NOVIEMBRE']);
+    window.page2Initialized = true;
+  }
+}
+
+// ─── TASA DE INTERES TABLE ───────────────────────────────────────────────────
+function formatCurrency(num) {
+  if (num >= 1000000) {
+    return 'Q' + (num / 1000000).toFixed(1) + 'M';
+  } else if (num >= 1000) {
+    return 'Q' + (num / 1000).toFixed(0) + 'K';
+  }
+  return 'Q' + num.toLocaleString('es-GT', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function renderTasaTable(meses) {
+  // Asegurar que meses sea un array
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  const tbody = document.getElementById('tasaTableBody');
+  tbody.innerHTML = '';
+  
+  if (meses.length === 1) {
+    // Modo simple: un solo mes
+    const tasas = data[meses[0]].tasas;
+    const total = tasas.reduce((sum, item) => sum + item.saldo, 0);
+    
+    tasas.forEach((item) => {
+      const row = document.createElement('tr');
+      const percentage = ((item.saldo / total) * 100).toFixed(1);
+      
+      row.innerHTML = `
+        <td class="tasa-col">${item.tasa.toFixed(2)}%</td>
+        <td class="amount-col">${formatCurrency(item.saldo)}</td>
+        <td class="amount-col" style="text-align: right; color: #f39519; font-weight: 700;">${percentage}%</td>
+      `;
+      
+      tbody.appendChild(row);
+    });
+    
+    document.getElementById('tasaTotal').textContent = formatCurrency(total);
+  } else {
+    // Modo comparativo: dos meses
+    const tasas1 = data[meses[0]].tasas;
+    const tasas2 = data[meses[1]].tasas;
+    const total1 = tasas1.reduce((sum, item) => sum + item.saldo, 0);
+    const total2 = tasas2.reduce((sum, item) => sum + item.saldo, 0);
+    
+    // Obtener todas las tasas únicas
+    const allTasas = [...new Set([...tasas1.map(t => t.tasa), ...tasas2.map(t => t.tasa)])].sort((a, b) => b - a);
+    
+    allTasas.forEach((tasa) => {
+      const item1 = tasas1.find(t => t.tasa === tasa);
+      const item2 = tasas2.find(t => t.tasa === tasa);
+      const saldo1 = item1 ? item1.saldo : 0;
+      const saldo2 = item2 ? item2.saldo : 0;
+      const pct1 = item1 ? ((item1.saldo / total1) * 100).toFixed(1) : '0.0';
+      const pct2 = item2 ? ((item2.saldo / total2) * 100).toFixed(1) : '0.0';
+      
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="tasa-col" rowspan="2" style="vertical-align: middle;">${tasa.toFixed(2)}%</td>
+        <td class="amount-col" style="background: rgba(243,149,25,0.1);">${formatCurrency(saldo1)}</td>
+        <td class="amount-col" style="text-align: right; background: rgba(243,149,25,0.1); color: #f39519; font-weight: 700;">${pct1}%</td>
+      `;
+      tbody.appendChild(row);
+      
+      const row2 = document.createElement('tr');
+      row2.innerHTML = `
+        <td class="amount-col" style="background: rgba(39,174,96,0.1);">${formatCurrency(saldo2)}</td>
+        <td class="amount-col" style="text-align: right; background: rgba(39,174,96,0.1); color: #27ae60; font-weight: 700;">${pct2}%</td>
+      `;
+      tbody.appendChild(row2);
+    });
+    
+    document.getElementById('tasaTotal').innerHTML = `
+      <span style="color: #f39519;">${MESES_DISPLAY[MESES.indexOf(meses[0])]}: ${formatCurrency(total1)}</span><br>
+      <span style="color: #27ae60;">${MESES_DISPLAY[MESES.indexOf(meses[1])]}: ${formatCurrency(total2)}</span>
+    `;
+  }
+}
+
+
+function updateTasaTable(mes, btn) {
+  const meses = toggleMonthSelection('tasa', mes, btn);
+  renderTasaTable(meses);
+}
+
+
+// ─── SEGMENTO PRODUCTO CARDS ──────────────────────────────────────────────────
+function renderSegmentoCards(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  const container = document.getElementById('segmentoCardsContainer');
+  const segmentosConfig = [
+    { key: 'DIAMANTE', icon: '💎', class: 'diamante' },
+    { key: 'ORO', icon: '🥇', class: 'oro' },
+    { key: 'PLATA', icon: '🥈', class: 'plata' },
+    { key: 'SIN SEGMENTO', icon: '📊', class: 'sin-segmento' }
+  ];
+  
+  container.innerHTML = '';
+  
+  segmentosConfig.forEach(seg => {
+    const card = document.createElement('div');
+    card.className = `segmento-card ${seg.class}`;
+    
+    let innerHTML = `
+      <span class="segmento-icon">${seg.icon}</span>
+      <div class="segmento-name">${seg.key}</div>
+    `;
+    
+    meses.forEach((mes, idx) => {
+      const datos = data[mes].segmento[seg.key];
+      const aldiaPercent = datos.total > 0 ? ((datos.aldia / datos.total) * 100).toFixed(1) : '0';
+      const borderColor = idx === 0 ? '#f39519' : '#27ae60';
+      const bgColor = idx === 0 ? 'rgba(243,149,25,0.1)' : 'rgba(39,174,96,0.1)';
+      
+      if (meses.length > 1) {
+        innerHTML += `
+          <div style="padding: 8px; margin: 4px 0; border-left: 3px solid ${borderColor}; background: ${bgColor};">
+            <div style="font-size: 0.55rem; opacity: 0.7; margin-bottom: 2px;">${MESES_DISPLAY[MESES.indexOf(mes)]}</div>
+            <div class="segmento-total">${datos.total}</div>
+            <div class="segmento-label">Total Créditos</div>
+            <div class="segmento-breakdown" style="font-size: 0.8rem;">
+              <div class="segmento-stat"><span class="num">${datos.aldia}</span><span class="lbl">Al día</span></div>
+              <div class="segmento-stat"><span class="num">${datos.mora}</span><span class="lbl">Mora</span></div>
+              <div class="segmento-stat"><span class="num">${datos.juridico}</span><span class="lbl">Jurídico</span></div>
+              <div class="segmento-stat"><span class="num">${aldiaPercent}%</span><span class="lbl">% Cumpl.</span></div>
+            </div>
+          </div>
+        `;
+      } else {
+        innerHTML += `
+          <div class="segmento-total">${datos.total}</div>
+          <div class="segmento-label">Total Créditos</div>
+          <div class="segmento-breakdown">
+            <div class="segmento-stat"><span class="num">${datos.aldia}</span><span class="lbl">Al día</span></div>
+            <div class="segmento-stat"><span class="num">${datos.mora}</span><span class="lbl">Mora</span></div>
+            <div class="segmento-stat"><span class="num">${datos.juridico}</span><span class="lbl">Jurídico</span></div>
+            <div class="segmento-stat"><span class="num">${aldiaPercent}%</span><span class="lbl">% Cumplimiento</span></div>
+          </div>
+        `;
+      }
+    });
+    
+    card.innerHTML = innerHTML;
+    container.appendChild(card);
+  });
+}
+
+function updateSegmentoCards(mes, btn) {
+  const meses = toggleMonthSelection('segmento', mes, btn);
+  renderSegmentoCards(meses);
+}
+
+// ─── AVALÚOS TABLE ────────────────────────────────────────────────────────────
+function renderAvaluosTable(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  const tbody = document.getElementById('avaluosTableBody');
+  tbody.innerHTML = '';
+  
+  if (meses.length === 1) {
+    const avaluos = data[meses[0]].avaluos;
+    const totalCreditos = avaluos.reduce((sum, item) => sum + item.creditos, 0);
+    const totalSaldo = avaluos.reduce((sum, item) => sum + item.saldo, 0);
+    
+    avaluos.forEach((item) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="rango-col" style="text-align: left; font-weight: 600; color: rgba(255,255,255,0.75);">${item.rango}</td>
+        <td class="amount-col" style="text-align: center; color: #f39519; font-weight: 700;">${item.creditos}</td>
+        <td class="amount-col">${formatCurrency(item.saldo)}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    
+    document.getElementById('avaluosTotal').textContent = `${totalCreditos} créditos • ${formatCurrency(totalSaldo)}`;
+  } else {
+    const avaluos1 = data[meses[0]].avaluos;
+    const avaluos2 = data[meses[1]].avaluos;
+    const totalCreditos1 = avaluos1.reduce((sum, item) => sum + item.creditos, 0);
+    const totalSaldo1 = avaluos1.reduce((sum, item) => sum + item.saldo, 0);
+    const totalCreditos2 = avaluos2.reduce((sum, item) => sum + item.creditos, 0);
+    const totalSaldo2 = avaluos2.reduce((sum, item) => sum + item.saldo, 0);
+    
+    avaluos1.forEach((item, idx) => {
+      const item2 = avaluos2[idx];
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="rango-col" rowspan="2" style="text-align: left; font-weight: 600; color: rgba(255,255,255,0.75); vertical-align: middle;">${item.rango}</td>
+        <td class="amount-col" style="text-align: center; background: rgba(243,149,25,0.1); color: #f39519; font-weight: 700;">${item.creditos}</td>
+        <td class="amount-col" style="background: rgba(243,149,25,0.1);">${formatCurrency(item.saldo)}</td>
+      `;
+      tbody.appendChild(row);
+      
+      const row2 = document.createElement('tr');
+      row2.innerHTML = `
+        <td class="amount-col" style="text-align: center; background: rgba(39,174,96,0.1); color: #27ae60; font-weight: 700;">${item2 ? item2.creditos : 0}</td>
+        <td class="amount-col" style="background: rgba(39,174,96,0.1);">${item2 ? formatCurrency(item2.saldo) : 'Q0'}</td>
+      `;
+      tbody.appendChild(row2);
+    });
+    
+    document.getElementById('avaluosTotal').innerHTML = `
+      <span style="color: #f39519;">${MESES_DISPLAY[MESES.indexOf(meses[0])]}: ${totalCreditos1} créditos • ${formatCurrency(totalSaldo1)}</span><br>
+      <span style="color: #27ae60;">${MESES_DISPLAY[MESES.indexOf(meses[1])]}: ${totalCreditos2} créditos • ${formatCurrency(totalSaldo2)}</span>
+    `;
+  }
+}
+
+
+function updateAvaluosTable(mes, btn) {
+  const meses = toggleMonthSelection('avaluos', mes, btn);
+  renderAvaluosTable(meses);
+}
+
+// ─── RANGO AVALÚOS CARDS ──────────────────────────────────────────────────────
+function renderRangoAvaluosCards(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  const container = document.getElementById('rangoAvaluosContainer');
+  const rangosConfig = [
+    { key: 'MENOR A 40%', icon: '✅', class: 'menor' },
+    { key: 'MAYOR A 40%', icon: '⚠️', class: 'mayor' },
+    { key: 'PENDIENTE', icon: '⏳', class: 'pendiente' }
+  ];
+  
+  container.innerHTML = '';
+  
+  rangosConfig.forEach(cfg => {
+    const card = document.createElement('div');
+    card.className = `rango-card ${cfg.class}`;
+    
+    let innerHTML = `
+      <span class="rango-icon">${cfg.icon}</span>
+      <div class="rango-categoria">${cfg.key}</div>
+    `;
+    
+    meses.forEach((mes, idx) => {
+      const rangos = data[mes].rango_avaluos;
+      const rango = rangos.find(r => r.categoria === cfg.key);
+      if (!rango) return;
+      
+      const borderColor = idx === 0 ? '#f39519' : '#27ae60';
+      const bgColor = idx === 0 ? 'rgba(243,149,25,0.1)' : 'rgba(39,174,96,0.1)';
+      
+      if (meses.length > 1) {
+        innerHTML += `
+          <div style="padding: 6px; margin: 4px 0; border-left: 3px solid ${borderColor}; background: ${bgColor};">
+            <div style="font-size: 0.55rem; opacity: 0.7;">${MESES_DISPLAY[MESES.indexOf(mes)]}</div>
+            <div class="rango-creditos">${rango.creditos.toLocaleString('es-GT')}</div>
+            <div class="rango-creditos-label">Créditos</div>
+            <div class="rango-saldo">
+              ${formatCurrency(rango.saldo)}
+              <span class="rango-saldo-label">Saldo Capital</span>
+            </div>
+          </div>
+        `;
+      } else {
+        innerHTML += `
+          <div class="rango-creditos">${rango.creditos.toLocaleString('es-GT')}</div>
+          <div class="rango-creditos-label">Créditos</div>
+          <div class="rango-saldo">
+            ${formatCurrency(rango.saldo)}
+            <span class="rango-saldo-label">Saldo Capital</span>
+          </div>
+        `;
+      }
+    });
+    
+    card.innerHTML = innerHTML;
+    container.appendChild(card);
+  });
+}
+
+
+function updateRangoAvaluosCards(mes, btn) {
+  const meses = toggleMonthSelection('rangoAvaluos', mes, btn);
+  renderRangoAvaluosCards(meses);
+}
+
+// ─── AVALÚOS PENDIENTES CARDS ─────────────────────────────────────────────────
+function renderAvaluosPendCards(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  const container = document.getElementById('avaluosPendContainer');
+  const categoriasConfig = [
+    { key: 'Al día', icon: '✅', class: 'aldia' },
+    { key: '1 a 30', icon: '🟡', class: 'rango1' },
+    { key: '31 a 60', icon: '🟠', class: 'rango2' },
+    { key: '61 a 90', icon: '🔴', class: 'rango3' },
+    { key: 'Prejurídico', icon: '⚠️', class: 'prejuridico' },
+    { key: 'Jurídico', icon: '⚖️', class: 'juridico' }
+  ];
+  
+  container.innerHTML = '';
+  
+  categoriasConfig.forEach(cfg => {
+    const card = document.createElement('div');
+    card.className = `avaluo-pend-card ${cfg.class}`;
+    
+    let innerHTML = `
+      <span class="avaluo-pend-icon">${cfg.icon}</span>
+      <div class="avaluo-pend-categoria">${cfg.key}</div>
+    `;
+    
+    meses.forEach((mes, idx) => {
+      const avaluosPend = data[mes].avaluos_pendientes;
+      const item = avaluosPend.find(a => a.categoria === cfg.key);
+      if (!item) return;
+      
+      const borderColor = idx === 0 ? '#f39519' : '#27ae60';
+      const bgColor = idx === 0 ? 'rgba(243,149,25,0.1)' : 'rgba(39,174,96,0.1)';
+      
+      if (meses.length > 1) {
+        innerHTML += `
+          <div style="padding: 6px; margin: 3px 0; border-left: 3px solid ${borderColor}; background: ${bgColor};">
+            <div style="font-size: 0.52rem; opacity: 0.7;">${MESES_DISPLAY[MESES.indexOf(mes)]}</div>
+            <div class="avaluo-pend-creditos">${item.creditos}</div>
+            <div class="avaluo-pend-label">Créditos</div>
+            <div class="avaluo-pend-saldo">${formatCurrency(item.saldo)}</div>
+          </div>
+        `;
+      } else {
+        innerHTML += `
+          <div class="avaluo-pend-creditos">${item.creditos}</div>
+          <div class="avaluo-pend-label">Créditos</div>
+          <div class="avaluo-pend-saldo">${formatCurrency(item.saldo)}</div>
+        `;
+      }
+    });
+    
+    card.innerHTML = innerHTML;
+    container.appendChild(card);
+  });
+}
+
+function updateAvaluosPendCards(mes, btn) {
+  const meses = toggleMonthSelection('avaluosPend', mes, btn);
+  renderAvaluosPendCards(meses);
+}
+
+// ─── DEPARTAMENTOS TABLE ──────────────────────────────────────────────────────
+function renderDeptoTable(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  const tbody = document.getElementById('deptoTableBody');
+  tbody.innerHTML = '';
+  
+  const iconMap = {
+    'GUATEMALA': '🏛️', 'ESCUINTLA': '🏖️', 'SACATEPÉQUEZ': '⛰️', 'PETÉN': '🌴',
+    'ALTA VERAPAZ': '🌲', 'SANTA ROSA': '🌹', 'CHIMALTENANGO': '🏔️', 'SUCHITEPÉQUEZ': '🌾',
+    'EL PROGRESO': '📍', 'IZABAL': '⚓', 'QUETZALTENANGO': '🏔️', 'JUTIAPA': '📍',
+    'RETALHULEU': '📍', 'JALAPA': '📍', 'ZACAPA': '📍', 'SAN MARCOS': '📍',
+    'CHIQUIMULA': '📍', 'QUICHÉ': '📍', 'BAJA VERAPAZ': '📍', 'TOTONICAPÁN': '📍'
+  };
+  
+  if (meses.length === 1) {
+    const deptos = data[meses[0]].departamentos;
+    const totalCreditos = deptos.reduce((sum, d) => sum + d.creditos, 0);
+    
+    deptos.forEach((depto) => {
+      const row = document.createElement('tr');
+      const icon = iconMap[depto.depto] || '📍';
+      row.innerHTML = `
+        <td><span class="depto-icon">${icon}</span><span class="depto-name">${depto.depto}</span></td>
+        <td class="depto-creditos">${depto.creditos}</td>
+        <td class="depto-pct">${depto.pct.toFixed(2)}%</td>
+      `;
+      tbody.appendChild(row);
+    });
+    
+    document.getElementById('deptoTotal').textContent = `${totalCreditos} créditos • 100%`;
+  } else {
+    const deptos1 = data[meses[0]].departamentos;
+    const deptos2 = data[meses[1]].departamentos;
+    const totalCreditos1 = deptos1.reduce((sum, d) => sum + d.creditos, 0);
+    const totalCreditos2 = deptos2.reduce((sum, d) => sum + d.creditos, 0);
+    
+    deptos1.forEach((depto, idx) => {
+      const depto2 = deptos2[idx];
+      const row = document.createElement('tr');
+      const icon = iconMap[depto.depto] || '📍';
+      row.innerHTML = `
+        <td rowspan="2" style="vertical-align: middle;"><span class="depto-icon">${icon}</span><span class="depto-name">${depto.depto}</span></td>
+        <td class="depto-creditos" style="background: rgba(243,149,25,0.1);">${depto.creditos}</td>
+        <td class="depto-pct" style="background: rgba(243,149,25,0.1); color: #f39519;">${depto.pct.toFixed(2)}%</td>
+      `;
+      tbody.appendChild(row);
+      
+      const row2 = document.createElement('tr');
+      row2.innerHTML = `
+        <td class="depto-creditos" style="background: rgba(39,174,96,0.1);">${depto2 ? depto2.creditos : 0}</td>
+        <td class="depto-pct" style="background: rgba(39,174,96,0.1); color: #27ae60;">${depto2 ? depto2.pct.toFixed(2) : '0.00'}%</td>
+      `;
+      tbody.appendChild(row2);
+    });
+    
+    document.getElementById('deptoTotal').innerHTML = `
+      <span style="color: #f39519;">${MESES_DISPLAY[MESES.indexOf(meses[0])]}: ${totalCreditos1} créditos</span><br>
+      <span style="color: #27ae60;">${MESES_DISPLAY[MESES.indexOf(meses[1])]}: ${totalCreditos2} créditos</span>
+    `;
+  }
+}
+
+
+function updateDeptoTable(mes, btn) {
+  const meses = toggleMonthSelection('depto', mes, btn);
+  renderDeptoTable(meses);
+}
+
+// ─── MUNICIPIO TABLE ──────────────────────────────────────────────────────────
+function renderMunicipioTable(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  const tbody = document.getElementById('municipioTableBody');
+  tbody.innerHTML = '';
+  
+  let totals = {
+    aldia: 0, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 0, total: 0
+  };
+  
+  if (meses.length === 1) {
+    const municipios = data[meses[0]].municipios;
+    
+    municipios.forEach(mun => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${mun.municipio}</td>
+        <td>${mun.aldia}</td>
+        <td>${mun.rango1_30}</td>
+        <td>${mun.rango31_60}</td>
+        <td>${mun.rango61_90}</td>
+        <td>${mun.prejuridico}</td>
+        <td>${mun.juridico}</td>
+        <td>${mun.total}</td>
+      `;
+      tbody.appendChild(row);
+      
+      totals.aldia += mun.aldia;
+      totals.rango1_30 += mun.rango1_30;
+      totals.rango31_60 += mun.rango31_60;
+      totals.rango61_90 += mun.rango61_90;
+      totals.prejuridico += mun.prejuridico;
+      totals.juridico += mun.juridico;
+      totals.total += mun.total;
+    });
+    
+    document.getElementById('municipioTotalAldia').textContent = totals.aldia;
+    document.getElementById('municipioTotal1_30').textContent = totals.rango1_30;
+    document.getElementById('municipioTotal31_60').textContent = totals.rango31_60;
+    document.getElementById('municipioTotal61_90').textContent = totals.rango61_90;
+    document.getElementById('municipioTotalPrejuridico').textContent = totals.prejuridico;
+    document.getElementById('municipioTotalJuridico').textContent = totals.juridico;
+    document.getElementById('municipioTotalGeneral').textContent = totals.total;
+  } else {
+    // Modo comparativo: mostrar mensaje
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td colspan="8" style="padding: 20px; text-align: center; color: rgba(255,255,255,0.7);">
+        <strong>Comparación de 2 meses:</strong><br>
+        <span style="color: #f39519;">${MESES_DISPLAY[MESES.indexOf(meses[0])]}</span> vs 
+        <span style="color: #27ae60;">${MESES_DISPLAY[MESES.indexOf(meses[1])]}</span><br>
+        <small>Selecciona un solo mes para ver detalles</small>
+      </td>
+    `;
+    tbody.appendChild(row);
+    
+    document.getElementById('municipioTotalAldia').textContent = '-';
+    document.getElementById('municipioTotal1_30').textContent = '-';
+    document.getElementById('municipioTotal31_60').textContent = '-';
+    document.getElementById('municipioTotal61_90').textContent = '-';
+    document.getElementById('municipioTotalPrejuridico').textContent = '-';
+    document.getElementById('municipioTotalJuridico').textContent = '-';
+    document.getElementById('municipioTotalGeneral').textContent = 'Comparación activa';
+  }
+}
+
+
+function updateMunicipioTable(mes, btn) {
+  const meses = toggleMonthSelection('municipio', mes, btn);
+  renderMunicipioTable(meses);
+}
+
+// ─── AVALUOS PENDIENTES CLIENTES TABLE ───────────────────────────────────────
+function renderAvaluosPendientesClientesTable(meses) {
+  if (!Array.isArray(meses)) meses = [meses];
+  
+  const tbody = document.getElementById('avaluosPendientesClientesBody');
+  tbody.innerHTML = '';
+  
+  let totals = {
+    altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 0
+  };
+  
+  if (meses.length === 1) {
+    const clientes = data[meses[0]].avaluos_pendientes_clientes;
+    if (!clientes) return;
+    
+    clientes.forEach(cliente => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${cliente.cliente}</td>
+        <td>${cliente.altaVerapaz > 0 ? formatCurrency(cliente.altaVerapaz) : ''}</td>
+        <td>${cliente.escuintla > 0 ? formatCurrency(cliente.escuintla) : ''}</td>
+        <td>${cliente.guatemala > 0 ? formatCurrency(cliente.guatemala) : ''}</td>
+        <td>${cliente.sacatepequez > 0 ? formatCurrency(cliente.sacatepequez) : ''}</td>
+        <td>${cliente.suchitepequez > 0 ? formatCurrency(cliente.suchitepequez) : ''}</td>
+        <td>${formatCurrency(cliente.total)}</td>
+      `;
+      tbody.appendChild(row);
+      
+      totals.altaVerapaz += cliente.altaVerapaz;
+      totals.escuintla += cliente.escuintla;
+      totals.guatemala += cliente.guatemala;
+      totals.sacatepequez += cliente.sacatepequez;
+      totals.suchitepequez += cliente.suchitepequez;
+      totals.total += cliente.total;
+    });
+    
+    document.getElementById('avalPendAltaVerapaz').textContent = formatCurrency(totals.altaVerapaz);
+    document.getElementById('avalPendEscuintla').textContent = formatCurrency(totals.escuintla);
+    document.getElementById('avalPendGuatemala').textContent = formatCurrency(totals.guatemala);
+    document.getElementById('avalPendSacatepequez').textContent = formatCurrency(totals.sacatepequez);
+    document.getElementById('avalPendSuchitepequez').textContent = formatCurrency(totals.suchitepequez);
+    document.getElementById('avalPendTotalGeneral').textContent = formatCurrency(totals.total);
+  } else {
+    // Modo comparativo - Mostrar ambos meses
+    const clientes1 = data[meses[0]].avaluos_pendientes_clientes || [];
+    const clientes2 = data[meses[1]].avaluos_pendientes_clientes || [];
+    
+    // Obtener lista única de clientes
+    const clientesSet = new Set();
+    clientes1.forEach(c => clientesSet.add(c.cliente));
+    clientes2.forEach(c => clientesSet.add(c.cliente));
+    
+    let totals1 = { altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 0 };
+    let totals2 = { altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 0 };
+    
+    Array.from(clientesSet).forEach(nombreCliente => {
+      const cliente1 = clientes1.find(c => c.cliente === nombreCliente);
+      const cliente2 = clientes2.find(c => c.cliente === nombreCliente);
+      
+      const row = document.createElement('tr');
+      
+      const formatCompare = (val1, val2) => {
+        const v1 = val1 || 0;
+        const v2 = val2 || 0;
+        if (v1 === 0 && v2 === 0) return '';
+        return `<span style="color:#f39519">${v1 > 0 ? formatCurrency(v1) : '-'}</span> / <span style="color:#27ae60">${v2 > 0 ? formatCurrency(v2) : '-'}</span>`;
+      };
+      
+      row.innerHTML = `
+        <td>${nombreCliente}</td>
+        <td style="font-size:0.75rem">${formatCompare(cliente1?.altaVerapaz, cliente2?.altaVerapaz)}</td>
+        <td style="font-size:0.75rem">${formatCompare(cliente1?.escuintla, cliente2?.escuintla)}</td>
+        <td style="font-size:0.75rem">${formatCompare(cliente1?.guatemala, cliente2?.guatemala)}</td>
+        <td style="font-size:0.75rem">${formatCompare(cliente1?.sacatepequez, cliente2?.sacatepequez)}</td>
+        <td style="font-size:0.75rem">${formatCompare(cliente1?.suchitepequez, cliente2?.suchitepequez)}</td>
+        <td style="font-size:0.75rem">${formatCompare(cliente1?.total, cliente2?.total)}</td>
+      `;
+      tbody.appendChild(row);
+      
+      // Acumular totales
+      if (cliente1) {
+        totals1.altaVerapaz += cliente1.altaVerapaz;
+        totals1.escuintla += cliente1.escuintla;
+        totals1.guatemala += cliente1.guatemala;
+        totals1.sacatepequez += cliente1.sacatepequez;
+        totals1.suchitepequez += cliente1.suchitepequez;
+        totals1.total += cliente1.total;
+      }
+      if (cliente2) {
+        totals2.altaVerapaz += cliente2.altaVerapaz;
+        totals2.escuintla += cliente2.escuintla;
+        totals2.guatemala += cliente2.guatemala;
+        totals2.sacatepequez += cliente2.sacatepequez;
+        totals2.suchitepequez += cliente2.suchitepequez;
+        totals2.total += cliente2.total;
+      }
+    });
+    
+    // Actualizar totales con formato comparativo
+    const formatTotalCompare = (v1, v2) => `<span style="color:#f39519">${formatCurrency(v1)}</span> / <span style="color:#27ae60">${formatCurrency(v2)}</span>`;
+    
+    document.getElementById('avalPendAltaVerapaz').innerHTML = formatTotalCompare(totals1.altaVerapaz, totals2.altaVerapaz);
+    document.getElementById('avalPendEscuintla').innerHTML = formatTotalCompare(totals1.escuintla, totals2.escuintla);
+    document.getElementById('avalPendGuatemala').innerHTML = formatTotalCompare(totals1.guatemala, totals2.guatemala);
+    document.getElementById('avalPendSacatepequez').innerHTML = formatTotalCompare(totals1.sacatepequez, totals2.sacatepequez);
+    document.getElementById('avalPendSuchitepequez').innerHTML = formatTotalCompare(totals1.suchitepequez, totals2.suchitepequez);
+    document.getElementById('avalPendTotalGeneral').innerHTML = formatTotalCompare(totals1.total, totals2.total);
+  }
+}
+
+
+function updateAvaluosPendientesClientesTable(mes, btn) {
+  const meses = toggleMonthSelection('avaluosPendClientes', mes, btn);
+  renderAvaluosPendientesClientesTable(meses);
+}
+
+// ─── INITIALIZE PAGE 1 ON LOAD ────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  // Initialize Segmento Producto cards on page load
+  renderSegmentoCards(['NOVIEMBRE']);
+  // Initialize Tiempo cards
+  renderTiempoCards();
+});
 
 </script>
 </body>
