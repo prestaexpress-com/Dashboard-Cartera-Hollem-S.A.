@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1517,9 +1516,9 @@
 <header>
   <h1> Dashboard Cartera Hollem, S.A.</h1>
   <div class="header-controls">
-    <button class="filter-btn active" onclick="setMonth('NOVIEMBRE')">NOV 2025</button>
     <button class="filter-btn" onclick="setMonth('DICIEMBRE')">DIC 2025</button>
     <button class="filter-btn" onclick="setMonth('ENERO')">ENE 2026</button>
+    <button class="filter-btn active" onclick="setMonth('FEBRERO')">FEB 2026</button>
     <button class="filter-btn" onclick="setMonth('TODOS')">TODOS</button>
     <button class="page-nav-btn active" onclick="switchPage(1)">PÁGINA 1</button>
     <button class="page-nav-btn" onclick="switchPage(2)">PÁGINA 2</button>
@@ -1566,9 +1565,9 @@
       <div class="chart-title">Rango de Días</div>
       <div class="chart-subtitle">Cantidad de créditos por estado</div>
       <div class="tab-row">
-        <button class="tab" onclick="updateRango('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateRango('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateRango('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateRango('FEBRERO', this)">FEB 2026</button>
         <button class="tab" onclick="updateRango('TODOS', this)">TODOS</button>
       </div>
       <div class="chart-container" style="height:200px">
@@ -1580,9 +1579,9 @@
       <div class="chart-title">% Rango Días</div>
       <div class="chart-subtitle">Distribución porcentual por estado</div>
       <div class="tab-row">
-        <button class="tab" onclick="updatePct('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updatePct('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updatePct('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updatePct('FEBRERO', this)">FEB 2026</button>
         <button class="tab" onclick="updatePct('TODOS', this)">TODOS</button>
       </div>
       <div class="chart-container" style="height:230px">
@@ -1607,9 +1606,9 @@
       <div class="chart-title">Rangos de Tiempo</div>
       <div class="chart-subtitle">Suma de saldo capital por plazo</div>
       <div class="tab-row">
-        <button class="tab active" onclick="updateTiempo('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateTiempo('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateTiempo('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateTiempo('FEBRERO', this)">FEB 2026</button>
         <button class="tab" onclick="updateTiempo('TODOS', this)">TODOS</button>
       </div>
       <div id="tiempoCardsGrid" class="tiempo-grid">
@@ -1657,9 +1656,9 @@
       <div class="chart-title">Segmento Producto</div>
       <div class="chart-subtitle">Distribución de créditos por segmento</div>
       <div class="tab-row">
-        <button class="tab active" onclick="updateSegmentoCards('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateSegmentoCards('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateSegmentoCards('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateSegmentoCards('FEBRERO', this)">FEB 2026</button>
       </div>
       
       <div class="segmento-grid" id="segmentoCardsContainer">
@@ -1685,9 +1684,9 @@
       <div class="chart-title">Tasa de Interés</div>
       <div class="chart-subtitle">Distribución de saldo capital por tasa</div>
       <div class="tab-row">
-        <button class="tab active" onclick="updateTasaTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateTasaTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateTasaTable('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateTasaTable('FEBRERO', this)">FEB 2026</button>
       </div>
       
       <table class="data-table" id="tasaTable">
@@ -1714,9 +1713,9 @@
       <div class="chart-title">Avalúos</div>
       <div class="chart-subtitle">Distribución de créditos por rango de avalúo</div>
       <div class="tab-row">
-        <button class="tab active" onclick="updateAvaluosTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateAvaluosTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateAvaluosTable('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateAvaluosTable('FEBRERO', this)">FEB 2026</button>
       </div>
       <table class="data-table">
         <thead>
@@ -1742,9 +1741,9 @@
       <div class="chart-title">Rango Avalúos</div>
       <div class="chart-subtitle">Clasificación de créditos por rango de avalúo</div>
       <div class="tab-row">
-        <button class="tab active" onclick="updateRangoAvaluosCards('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateRangoAvaluosCards('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateRangoAvaluosCards('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateRangoAvaluosCards('FEBRERO', this)">FEB 2026</button>
       </div>
       
       <div class="rango-avaluos-grid" id="rangoAvaluosContainer">
@@ -1761,9 +1760,9 @@
       <div class="chart-title">Cartera por Departamento</div>
       <div class="chart-subtitle">Distribución geográfica de créditos</div>
       <div class="tab-row">
-        <button class="tab active" onclick="updateDeptoTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateDeptoTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateDeptoTable('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateDeptoTable('FEBRERO', this)">FEB 2026</button>
       </div>
       
       <table class="depto-table">
@@ -1789,9 +1788,9 @@
       <div class="chart-title">Cartera por Municipio</div>
       <div class="chart-subtitle">Desglose por estado de cartera</div>
       <div class="tab-row">
-        <button class="tab active" onclick="updateMunicipioTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateMunicipioTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateMunicipioTable('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateMunicipioTable('FEBRERO', this)">FEB 2026</button>
       </div>
       
       <div class="table-scroll-container">
@@ -1838,9 +1837,9 @@
       <div class="chart-title">Clientes con Avalúos Pendientes</div>
       <div class="chart-subtitle">Jurídico - Avalúos pendientes por departamento</div>
       <div class="tab-row">
-        <button class="tab active" onclick="updateAvaluosPendientesClientesTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateAvaluosPendientesClientesTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateAvaluosPendientesClientesTable('ENERO', this)">ENE 2026</button>
+        <button class="tab active" onclick="updateAvaluosPendientesClientesTable('FEBRERO', this)">FEB 2026</button>
       </div>
       
       <div class="table-scroll-container">
@@ -1886,123 +1885,6 @@
 Chart.register(ChartDataLabels);
 
 const data = {
-  NOVIEMBRE: {
-    rango: [672, 76, 32, 21, 44, 120],
-    pct: [69.64, 7.88, 3.32, 2.18, 4.58, 12.44],
-    kpi: { total: 965, saldo: 'Q160.3M', aldia: 672, aldia_pct: '69.64%', mora: 173, juridico: 120, juridico_pct: '12.44%' },
-    tasas: [
-      { tasa: 2.25, saldo: 82213206 },
-      { tasa: 2.50, saldo: 47201692 },
-      { tasa: 2.00, saldo: 29616648 },
-      { tasa: 2.75, saldo: 1958254 },
-      { tasa: 1.80, saldo: 1333118 },
-      { tasa: 1.95, saldo: 1515882 },
-      { tasa: 3.00, saldo: 654866 },
-      { tasa: 1.04, saldo: 563896 },
-      { tasa: 1.25, saldo: 189890 },
-      { tasa: 1.85, saldo: 140881 },
-      { tasa: 1.00, saldo: 135000 },
-      { tasa: 1.50, saldo: 39460 },
-      { tasa: 2.95, saldo: 9292 }
-    ],
-    segmento: {
-      DIAMANTE: { total: 1, aldia: 1, mora: 0, juridico: 0 },
-      ORO: { total: 26, aldia: 26, mora: 0, juridico: 0 },
-      PLATA: { total: 24, aldia: 24, mora: 0, juridico: 0 },
-      'SIN SEGMENTO': { total: 914, aldia: 621, mora: 173, juridico: 120 }
-    },
-    avaluos: [
-      { rango: 'DE 01% A 10%', creditos: 13, saldo: 754956 },
-      { rango: 'DE 11% A 20%', creditos: 84, saldo: 9757253 },
-      { rango: 'DE 21% A 30%', creditos: 150, saldo: 21303318 },
-      { rango: 'DE 31% A 40%', creditos: 260, saldo: 41104693 },
-      { rango: 'DE 41% A 50%', creditos: 157, saldo: 32819296 },
-      { rango: 'DE 51% A 60%', creditos: 81, saldo: 16678518 },
-      { rango: 'DE 61% A 70%', creditos: 59, saldo: 12379517 },
-      { rango: 'DE 71% A 80%', creditos: 29, saldo: 6654358 },
-      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3419315 },
-      { rango: 'DE 91% A 100%', creditos: 8, saldo: 1064988 },
-      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1446882 },
-      { rango: 'DE 126% A 150%', creditos: 3, saldo: 294467 },
-      { rango: 'MAS DE 151%', creditos: 2, saldo: 776111 },
-      { rango: 'PENDIENTE', creditos: 87, saldo: 16463413 }
-    ],
-    rango_avaluos: [
-      { categoria: 'MENOR A 40%', creditos: 507, saldo: 72920220 },
-      { categoria: 'MAYOR A 40%', creditos: 371, saldo: 75533452 },
-      { categoria: 'PENDIENTE', creditos: 87, saldo: 16463413 }
-    ],
-    avaluos_pendientes: [
-      { categoria: 'Al día', creditos: 672, saldo: 102578220, clientes: 672 },
-      { categoria: '1 a 30', creditos: 76, saldo: 11552975, clientes: 76 },
-      { categoria: '31 a 60', creditos: 32, saldo: 3999267, clientes: 32 },
-      { categoria: '61 a 90', creditos: 21, saldo: 6459512, clientes: 21 },
-      { categoria: 'Prejurídico', creditos: 44, saldo: 6838880, clientes: 44 },
-      { categoria: 'Jurídico', creditos: 120, saldo: 33488231, clientes: 120 }
-    ],
-    departamentos: [
-      { depto: 'GUATEMALA', creditos: 626, pct: 61.02 },
-      { depto: 'ESCUINTLA', creditos: 81, pct: 8.78 },
-      { depto: 'SACATEPÉQUEZ', creditos: 58, pct: 5.78 },
-      { depto: 'ALTA VERAPAZ', creditos: 31, pct: 3.97 },
-      { depto: 'PETÉN', creditos: 28, pct: 3.90 },
-      { depto: 'SANTA ROSA', creditos: 28, pct: 2.86 },
-      { depto: 'CHIMALTENANGO', creditos: 24, pct: 2.73 },
-      { depto: 'SUCHITEPÉQUEZ', creditos: 16, pct: 2.02 },
-      { depto: 'EL PROGRESO', creditos: 15, pct: 1.69 },
-      { depto: 'IZABAL', creditos: 12, pct: 1.51 },
-      { depto: 'QUETZALTENANGO', creditos: 8, pct: 1.08 },
-      { depto: 'JUTIAPA', creditos: 8, pct: 0.90 },
-      { depto: 'JALAPA', creditos: 6, pct: 0.74 },
-      { depto: 'ZACAPA', creditos: 5, pct: 0.63 },
-      { depto: 'RETALHULEU', creditos: 5, pct: 0.57 },
-      { depto: 'SAN MARCOS', creditos: 5, pct: 0.71 },
-      { depto: 'CHIQUIMULA', creditos: 3, pct: 0.36 },
-      { depto: 'QUICHÉ', creditos: 3, pct: 0.36 },
-      { depto: 'BAJA VERAPAZ', creditos: 2, pct: 0.24 },
-      { depto: 'TOTONICAPÁN', creditos: 1, pct: 0.14 }
-    ],
-    municipios: [
-      { municipio: 'GUATEMALA', aldia: 447, rango1_30: 44, rango31_60: 21, rango61_90: 13, prejuridico: 25, juridico: 76, total: 626 },
-      { municipio: 'ESCUINTLA', aldia: 50, rango1_30: 5, rango31_60: 5, rango61_90: 3, prejuridico: 3, juridico: 6, total: 72 },
-      { municipio: 'MIXCO', aldia: 28, rango1_30: 2, rango31_60: 2, rango61_90: 5, prejuridico: 3, juridico: 18, total: 58 },
-      { municipio: 'VILLA NUEVA', aldia: 42, rango1_30: 6, rango31_60: 1, rango61_90: 0, prejuridico: 4, juridico: 5, total: 58 },
-      { municipio: 'ANTIGUA GUATEMALA', aldia: 34, rango1_30: 5, rango31_60: 1, rango61_90: 1, prejuridico: 2, juridico: 14, total: 57 },
-      { municipio: 'SAN MIGUEL PETAPA', aldia: 24, rango1_30: 8, rango31_60: 3, rango61_90: 1, prejuridico: 3, juridico: 5, total: 44 },
-      { municipio: 'AMATITLÁN', aldia: 31, rango1_30: 6, rango31_60: 0, rango61_90: 1, prejuridico: 1, juridico: 4, total: 43 },
-      { municipio: 'SANTA LUCÍA COTZUMALGUAPA', aldia: 13, rango1_30: 2, rango31_60: 1, rango61_90: 1, prejuridico: 2, juridico: 5, total: 24 },
-      { municipio: 'VILLA CANALES', aldia: 13, rango1_30: 5, rango31_60: 2, rango61_90: 2, prejuridico: 1, juridico: 1, total: 24 },
-      { municipio: 'CHINAUTLA', aldia: 18, rango1_30: 2, rango31_60: 1, rango61_90: 0, prejuridico: 0, juridico: 2, total: 23 },
-      { municipio: 'FLORES', aldia: 18, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 2, total: 21 },
-      { municipio: 'SAN JUAN SACATEPÉQUEZ', aldia: 18, rango1_30: 0, rango31_60: 0, rango61_90: 2, prejuridico: 0, juridico: 1, total: 21 },
-      { municipio: 'COBÁN', aldia: 13, rango1_30: 1, rango31_60: 1, rango61_90: 2, prejuridico: 0, juridico: 3, total: 20 },
-      { municipio: 'PUERTO BARRIOS', aldia: 7, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 1, total: 10 },
-      { municipio: 'FRAIJANES', aldia: 7, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 10 },
-      { municipio: 'SANTA CATARINA PINULA', aldia: 6, rango1_30: 1, rango31_60: 1, rango61_90: 1, prejuridico: 0, juridico: 1, total: 10 },
-      { municipio: 'GUASTATOYA', aldia: 5, rango1_30: 0, rango31_60: 2, rango61_90: 1, prejuridico: 0, juridico: 1, total: 9 },
-      { municipio: 'SAN JOSÉ PINULA', aldia: 6, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 9 },
-      { municipio: 'PETAPA', aldia: 3, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 4, total: 8 },
-      { municipio: 'MAZATENANGO', aldia: 6, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 1, total: 8 }
-    ],
-    avaluos_pendientes_clientes: [
-      { cliente: 'CLAUDIA ELIZABETH LIMA BURGOS', altaVerapaz: 0, escuintla: 0, guatemala: 1200000, sacatepequez: 0, suchitepequez: 0, total: 1200000 },
-      { cliente: 'RAFAEL CARLOS PORRAS ESTRADA', altaVerapaz: 0, escuintla: 0, guatemala: 399999, sacatepequez: 0, suchitepequez: 0, total: 399999 },
-      { cliente: 'MIGUEL ANGEL FUENTES HERNANDEZ', altaVerapaz: 0, escuintla: 0, guatemala: 250000, sacatepequez: 0, suchitepequez: 0, total: 250000 },
-      { cliente: 'CARLOS HUMBERTO PINELO VALLE', altaVerapaz: 0, escuintla: 0, guatemala: 215000, sacatepequez: 0, suchitepequez: 0, total: 215000 },
-      { cliente: 'JHONATTAN JOSUE EMANUEL GARCIA GONZALEZ', altaVerapaz: 0, escuintla: 0, guatemala: 125000, sacatepequez: 0, suchitepequez: 0, total: 125000 },
-      { cliente: 'IRMA VIDALIA AGUILAR GONZALEZ DE CORTEZ', altaVerapaz: 0, escuintla: 115000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 115000 },
-      { cliente: 'NIDIA KARINA HERNANDEZ AGUILAR', altaVerapaz: 0, escuintla: 0, guatemala: 89489, sacatepequez: 0, suchitepequez: 0, total: 89489 },
-      { cliente: 'NIDIA YOLANDA ORTIZ JACINTO', altaVerapaz: 0, escuintla: 60000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 60000 },
-      { cliente: 'LUIS ADOLFO GUZMAN MONTESDEOCA', altaVerapaz: 0, escuintla: 0, guatemala: 55888, sacatepequez: 0, suchitepequez: 0, total: 55888 },
-      { cliente: 'ELEN DALILA MEOÑO RUIZ DE URIZAR', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 50000, total: 50000 },
-      { cliente: 'ANGELINA  LOPEZ DE GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 49169, sacatepequez: 0, suchitepequez: 0, total: 49169 },
-      { cliente: 'MANUEL  BUTZ TZUL', altaVerapaz: 40000, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 40000 },
-      { cliente: 'KARLA ISABEL MENDOZA MELENDEZ DE GALLARDO', altaVerapaz: 0, escuintla: 0, guatemala: 35000, sacatepequez: 0, suchitepequez: 0, total: 35000 },
-      { cliente: 'SANTIAGO  ASIG CAAL', altaVerapaz: 34765, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 34765 },
-      { cliente: 'ASHLEY ARELI SANDOVAL GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 25000, sacatepequez: 0, suchitepequez: 0, total: 25000 },
-      { cliente: 'HORACIO ROMEO SANCHEZ VALLE', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 0 }
-    ]
-  },
   DICIEMBRE: {
     rango: [661, 69, 43, 23, 42, 121],
     pct: [68.93, 7.19, 4.48, 2.40, 4.35, 12.62],
@@ -2232,27 +2114,144 @@ const data = {
       { cliente: 'ASHLEY ARELI SANDOVAL GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 25000, sacatepequez: 0, suchitepequez: 0, total: 25000 },
       { cliente: 'JUANA DE JESUS GOMEZ MURALLES DE HERNANDEZ', altaVerapaz: 0, escuintla: 0, guatemala: 23681, sacatepequez: 0, suchitepequez: 0, total: 23681 }
     ]
+  },
+  FEBRERO: {
+    rango: [639, 115, 24, 17, 28, 127],
+    pct: [67.26, 12.11, 2.53, 1.79, 2.95, 13.37],
+    kpi: { total: 950, saldo: 'Q162.3M', aldia: 639, aldia_pct: '67.26%', mora: 184, juridico: 127, juridico_pct: '13.37%' },
+    tasas: [
+      { tasa: 2.25, saldo: 79878239 },
+      { tasa: 2.50, saldo: 48679139 },
+      { tasa: 2.00, saldo: 27072583 },
+      { tasa: 2.75, saldo: 2940442 },
+      { tasa: 1.80, saldo: 1333117 },
+      { tasa: 1.95, saldo: 1000000 },
+      { tasa: 3.00, saldo: 647681 },
+      { tasa: 1.04, saldo: 359484 },
+      { tasa: 1.25, saldo: 186829 },
+      { tasa: 1.85, saldo: 140881 },
+      { tasa: 1.50, saldo: 39023 },
+      { tasa: 2.95, saldo: 8983 }
+    ],
+    segmento: {
+      DIAMANTE: { total: 3, aldia: 3, mora: 0, juridico: 0 },
+      ORO: { total: 66, aldia: 58, mora: 8, juridico: 0 },
+      PLATA: { total: 48, aldia: 41, mora: 7, juridico: 0 },
+      'NO APLICA': { total: 24, aldia: 10, mora: 14, juridico: 0 },
+      'SIN SEGMENTO': { total: 809, aldia: 527, mora: 155, juridico: 127 }
+    },
+    avaluos: [
+      { rango: 'DE 01% A 10%', creditos: 12, saldo: 672462 },
+      { rango: 'DE 11% A 20%', creditos: 84, saldo: 10483852 },
+      { rango: 'DE 21% A 30%', creditos: 158, saldo: 21903187 },
+      { rango: 'DE 31% A 40%', creditos: 247, saldo: 38453474 },
+      { rango: 'DE 41% A 50%', creditos: 157, saldo: 31108179 },
+      { rango: 'DE 51% A 60%', creditos: 80, saldo: 17363633 },
+      { rango: 'DE 61% A 70%', creditos: 58, saldo: 11314544 },
+      { rango: 'DE 71% A 80%', creditos: 31, saldo: 7333541 },
+      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3402239 },
+      { rango: 'DE 91% A 100%', creditos: 6, saldo: 357115 },
+      { rango: 'DE 101% A 125%', creditos: 11, saldo: 2230172 },
+      { rango: 'DE 126% A 150%', creditos: 3, saldo: 292257 },
+      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715 },
+      { rango: 'PENDIENTE', creditos: 81, saldo: 16795031 }
+    ],
+    rango_avaluos: [
+      { categoria: 'MENOR A 40%', creditos: 501, saldo: 71512975 },
+      { categoria: 'MAYOR A 40%', creditos: 368, saldo: 73978393 },
+      { categoria: 'PENDIENTE', creditos: 81, saldo: 16795031 }
+    ],
+    avaluos_pendientes: [
+      { categoria: 'Al día', creditos: 639, saldo: 91615437, clientes: 639 },
+      { categoria: '1 a 30', creditos: 115, saldo: 21890716, clientes: 115 },
+      { categoria: '31 a 60', creditos: 24, saldo: 3397574, clientes: 24 },
+      { categoria: '61 a 90', creditos: 17, saldo: 3112491, clientes: 17 },
+      { categoria: 'Prejurídico', creditos: 28, saldo: 6113815, clientes: 28 },
+      { categoria: 'Jurídico', creditos: 127, saldo: 36156366, clientes: 127 }
+    ],
+    departamentos: [
+      { depto: 'GUATEMALA', creditos: 601, pct: 63.26 },
+      { depto: 'ESCUINTLA', creditos: 86, pct: 9.05 },
+      { depto: 'SACATEPÉQUEZ', creditos: 49, pct: 5.16 },
+      { depto: 'ALTA VERAPAZ', creditos: 36, pct: 3.79 },
+      { depto: 'PETÉN', creditos: 33, pct: 3.47 },
+      { depto: 'SANTA ROSA', creditos: 25, pct: 2.63 },
+      { depto: 'CHIMALTENANGO', creditos: 23, pct: 2.42 },
+      { depto: 'SUCHITEPÉQUEZ', creditos: 19, pct: 2.00 },
+      { depto: 'EL PROGRESO', creditos: 15, pct: 1.58 },
+      { depto: 'QUETZALTENANGO', creditos: 11, pct: 1.16 },
+      { depto: 'IZABAL', creditos: 11, pct: 1.16 },
+      { depto: 'JUTIAPA', creditos: 8, pct: 0.84 },
+      { depto: 'RETALHULEU', creditos: 7, pct: 0.74 },
+      { depto: 'JALAPA', creditos: 6, pct: 0.63 },
+      { depto: 'ZACAPA', creditos: 6, pct: 0.63 },
+      { depto: 'SAN MARCOS', creditos: 5, pct: 0.53 },
+      { depto: 'CHIQUIMULA', creditos: 3, pct: 0.32 },
+      { depto: 'QUICHÉ', creditos: 3, pct: 0.32 },
+      { depto: 'BAJA VERAPAZ', creditos: 2, pct: 0.21 },
+      { depto: 'TOTONICAPÁN', creditos: 1, pct: 0.11 }
+    ],
+    municipios: [
+      { municipio: 'GUATEMALA', aldia: 421, rango1_30: 67, rango31_60: 11, rango61_90: 8, prejuridico: 13, juridico: 81, total: 601 },
+      { municipio: 'ESCUINTLA', aldia: 53, rango1_30: 16, rango31_60: 3, rango61_90: 3, prejuridico: 2, juridico: 9, total: 86 },
+      { municipio: 'MIXCO', aldia: 26, rango1_30: 9, rango31_60: 1, rango61_90: 2, prejuridico: 2, juridico: 17, total: 57 },
+      { municipio: 'VILLA NUEVA', aldia: 41, rango1_30: 12, rango31_60: 1, rango61_90: 0, prejuridico: 2, juridico: 5, total: 61 },
+      { municipio: 'ANTIGUA GUATEMALA', aldia: 28, rango1_30: 10, rango31_60: 0, rango61_90: 1, prejuridico: 2, juridico: 12, total: 53 },
+      { municipio: 'SAN MIGUEL PETAPA', aldia: 19, rango1_30: 10, rango31_60: 2, rango61_90: 2, prejuridico: 1, juridico: 5, total: 39 },
+      { municipio: 'AMATITLÁN', aldia: 26, rango1_30: 7, rango31_60: 0, rango61_90: 1, prejuridico: 1, juridico: 4, total: 39 },
+      { municipio: 'SANTA LUCÍA COTZUMALGUAPA', aldia: 14, rango1_30: 5, rango31_60: 1, rango61_90: 0, prejuridico: 2, juridico: 4, total: 26 },
+      { municipio: 'VILLA CANALES', aldia: 14, rango1_30: 8, rango31_60: 1, rango61_90: 1, prejuridico: 0, juridico: 1, total: 25 },
+      { municipio: 'CHINAUTLA', aldia: 17, rango1_30: 3, rango31_60: 1, rango61_90: 0, prejuridico: 0, juridico: 2, total: 23 },
+      { municipio: 'FLORES', aldia: 17, rango1_30: 3, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 2, total: 22 },
+      { municipio: 'SAN JUAN SACATEPÉQUEZ', aldia: 17, rango1_30: 2, rango31_60: 0, rango61_90: 1, prejuridico: 0, juridico: 1, total: 21 },
+      { municipio: 'COBÁN', aldia: 15, rango1_30: 1, rango31_60: 1, rango61_90: 1, prejuridico: 1, juridico: 3, total: 22 },
+      { municipio: 'PUERTO BARRIOS', aldia: 6, rango1_30: 2, rango31_60: 1, rango61_90: 0, prejuridico: 0, juridico: 2, total: 11 },
+      { municipio: 'FRAIJANES', aldia: 6, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 10 },
+      { municipio: 'SANTA CATARINA PINULA', aldia: 6, rango1_30: 1, rango31_60: 1, rango61_90: 1, prejuridico: 0, juridico: 1, total: 10 },
+      { municipio: 'GUASTATOYA', aldia: 6, rango1_30: 0, rango31_60: 1, rango61_90: 1, prejuridico: 0, juridico: 1, total: 9 },
+      { municipio: 'SAN JOSÉ PINULA', aldia: 5, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 9 },
+      { municipio: 'PETAPA', aldia: 2, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 4, total: 8 },
+      { municipio: 'MAZATENANGO', aldia: 6, rango1_30: 2, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 1, total: 9 }
+    ],
+    avaluos_pendientes_clientes: [
+      { cliente: 'CLAUDIA ELIZABETH LIMA BURGOS', altaVerapaz: 0, escuintla: 0, guatemala: 1200000, sacatepequez: 0, suchitepequez: 0, total: 1200000 },
+      { cliente: 'RAFAEL CARLOS PORRAS ESTRADA', altaVerapaz: 0, escuintla: 0, guatemala: 399999, sacatepequez: 0, suchitepequez: 0, total: 399999 },
+      { cliente: 'MIGUEL ANGEL FUENTES HERNANDEZ', altaVerapaz: 0, escuintla: 0, guatemala: 250000, sacatepequez: 0, suchitepequez: 0, total: 250000 },
+      { cliente: 'CARLOS HUMBERTO PINELO VALLE', altaVerapaz: 0, escuintla: 0, guatemala: 215000, sacatepequez: 0, suchitepequez: 0, total: 215000 },
+      { cliente: 'JHONATTAN JOSUE EMANUEL GARCIA GONZALEZ', altaVerapaz: 0, escuintla: 0, guatemala: 125000, sacatepequez: 0, suchitepequez: 0, total: 125000 },
+      { cliente: 'IRMA VIDALIA AGUILAR GONZALEZ DE CORTEZ', altaVerapaz: 0, escuintla: 115000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 115000 },
+      { cliente: 'NIDIA KARINA HERNANDEZ AGUILAR', altaVerapaz: 0, escuintla: 0, guatemala: 89489, sacatepequez: 0, suchitepequez: 0, total: 89489 },
+      { cliente: 'NIDIA YOLANDA ORTIZ JACINTO', altaVerapaz: 0, escuintla: 60000, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 60000 },
+      { cliente: 'LUIS ADOLFO GUZMAN MONTESDEOCA', altaVerapaz: 0, escuintla: 0, guatemala: 55888, sacatepequez: 0, suchitepequez: 0, total: 55888 },
+      { cliente: 'ELEN DALILA MEOÑO RUIZ DE URIZAR', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 50000, total: 50000 },
+      { cliente: 'ANGELINA  LOPEZ DE GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 49169, sacatepequez: 0, suchitepequez: 0, total: 49169 },
+      { cliente: 'CARMEN  RUIZ RUIZ', altaVerapaz: 0, escuintla: 0, guatemala: 44173, sacatepequez: 0, suchitepequez: 0, total: 44173 },
+      { cliente: 'ASTRY ZUZET REYES RECINOS DE CHAVEZ', altaVerapaz: 0, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 39094, total: 39094 },
+      { cliente: 'SANTIAGO  ASIG CAAL', altaVerapaz: 34765, escuintla: 0, guatemala: 0, sacatepequez: 0, suchitepequez: 0, total: 34765 },
+      { cliente: 'ASHLEY ARELI SANDOVAL GARCIA', altaVerapaz: 0, escuintla: 0, guatemala: 25000, sacatepequez: 0, suchitepequez: 0, total: 25000 },
+      { cliente: 'JUANA DE JESUS GOMEZ MURALLES DE HERNANDEZ', altaVerapaz: 0, escuintla: 0, guatemala: 23681, sacatepequez: 0, suchitepequez: 0, total: 23681 }
+    ]
   }
 };
 
-const MESES = ['NOVIEMBRE','DICIEMBRE','ENERO'];
-const MESES_DISPLAY = ['NOVIEMBRE 2025','DICIEMBRE 2025','ENERO 2026'];
+const MESES = ['DICIEMBRE','ENERO','FEBRERO'];
+const MESES_DISPLAY = ['DICIEMBRE 2025','ENERO 2026','FEBRERO 2026'];
 const COLORS = ['#5271ff','#f39519','#27ae60','#e84545','#8e44ad','#f38a00'];
 const MONTH_COLORS = ['#283551','#f39519','#27ae60'];
 const LABELS = ['Al día','1 a 30','31 a 60','61 a 90','Prejuridico','Jurídico'];
 
 // ─── MULTI-MONTH SELECTION SYSTEM ────────────────────────────────────────────
 const selectedMonths = {
-  tasa: ['NOVIEMBRE'],
-  segmento: ['NOVIEMBRE'],
-  avaluos: ['NOVIEMBRE'],
-  rangoAvaluos: ['NOVIEMBRE'],
-  avaluosPend: ['NOVIEMBRE'],
-  depto: ['NOVIEMBRE'],
-  municipio: ['NOVIEMBRE'],
-  avaluosPendClientes: ['NOVIEMBRE'],
-  rango: ['NOVIEMBRE'],
-  pct: ['NOVIEMBRE']
+  tasa: ['FEBRERO'],
+ segmento: ['FEBRERO'],
+  avaluos: ['FEBRERO'],
+  rangoAvaluos: ['FEBRERO'],
+  avaluosPend: ['FEBRERO'],
+  depto: ['FEBRERO'],
+  municipio: ['FEBRERO'],
+  avaluosPendClientes: ['FEBRERO'],
+  rango: ['FEBRERO'],
+  pct: ['FEBRERO']
 };
 
 function toggleMonthSelection(visualization, mes, btn) {
@@ -2275,11 +2274,21 @@ function toggleMonthSelection(visualization, mes, btn) {
     }
   }
   
+  // Sincronizar con globalSelectedMonths
+  globalSelectedMonths = [...current];
+  
+  // Sincronizar los demás selectedMonths con el actual
+  Object.keys(selectedMonths).forEach(key => {
+    if (key !== visualization) {
+      selectedMonths[key] = [...current];
+    }
+  });
+  
   // Update tab styles
   const tabs = btn.parentElement.querySelectorAll('.tab');
   tabs.forEach(tab => {
-    const tabMes = tab.textContent.includes('NOV') ? 'NOVIEMBRE' : 
-                   tab.textContent.includes('DIC') ? 'DICIEMBRE' : 'ENERO';
+    const tabMes = tab.textContent.includes('DIC') ? 'DICIEMBRE' : 
+                   tab.textContent.includes('ENE') ? 'ENERO' : 'FEBRERO';
     const isSelected = current.indexOf(tabMes) > -1;
     const isFirst = current[0] === tabMes;
     
@@ -2294,6 +2303,31 @@ function toggleMonthSelection(visualization, mes, btn) {
       tab.classList.remove('active', 'secondary');
     }
   });
+  
+  // Actualizar también los botones del header
+  const btnLabels = { DICIEMBRE: 'DIC 2025', ENERO: 'ENE 2026', FEBRERO: 'FEB 2026', TODOS: 'TODOS' };
+  document.querySelectorAll('header .filter-btn').forEach(b => {
+    const btnText = b.textContent.trim();
+    const mesBtn = Object.keys(btnLabels).find(key => btnLabels[key] === btnText);
+    
+    // Siempre determinar si debe estar activo o no
+    if (mesBtn && current.includes(mesBtn)) {
+      const isFirst = current[0] === mesBtn;
+      b.classList.add('active');
+      if (!isFirst && current.length === 2 && mesBtn !== 'TODOS') {
+        b.style.opacity = '0.7';
+      } else {
+        b.style.opacity = '1';
+      }
+    } else {
+      // No está seleccionado - remover active
+      b.classList.remove('active');
+      b.style.opacity = '1';
+    }
+  });
+  
+  // Actualizar KPIs
+  updateKPIs(current);
   
   return current;
 }
@@ -2404,18 +2438,10 @@ function compareDatasets(field, meses, fmt) {
 
 const legendBottom = { display: true, position: 'bottom', labels: { color: 'rgba(255,255,255,0.75)', font: { size: 10 }, boxWidth: 11, padding: 12 } };
 
-// ─── RANGO CHART ─────────────────────────────────────────────────────────────
-let rangoChart = new Chart(document.getElementById('rangoChart'), {
-  type: 'bar',
-  data: { labels: LABELS, datasets: singleDataset(data.NOVIEMBRE.rango) },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    layout: { padding: { top: 24, right: 8 } },
-    plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
-    scales: gridScales()
-  }
-});
+// ─── CHART VARIABLES (initialized in DOMContentLoaded) ───────────────────────
+let rangoChart, pctChart, inmueblesChart, generoChart, tiempoChart;
 
+// ─── RANGO CHART ─────────────────────────────────────────────────────────────
 function applyRango(meses) {
   if (!Array.isArray(meses)) meses = [meses];
   
@@ -2447,9 +2473,41 @@ function updateRango(mes, btn) {
   if (mes === 'TODOS') {
     // Reset selection and set TODOS mode
     selectedMonths.rango = ['TODOS'];
+    globalSelectedMonths = ['TODOS'];
+    
+    // Sincronizar todos los selectedMonths
+    Object.keys(selectedMonths).forEach(key => {
+      selectedMonths[key] = ['TODOS'];
+    });
+    
     const tabs = btn.parentElement.querySelectorAll('.tab');
     tabs.forEach(tab => tab.classList.remove('active', 'secondary'));
     btn.classList.add('active');
+    
+    // Actualizar botones del header
+    document.querySelectorAll('header .filter-btn').forEach(b => {
+      if (b.textContent.trim() === 'TODOS') {
+        b.classList.add('active');
+        b.style.opacity = '1';
+      } else {
+        b.classList.remove('active');
+        b.style.opacity = '1';
+      }
+    });
+    
+    // Actualizar todas las tabs
+    document.querySelectorAll('.tab-row').forEach(row => {
+      row.querySelectorAll('.tab').forEach(t => {
+        if (t.textContent.trim() === 'TODOS') {
+          t.classList.add('active');
+          t.classList.remove('secondary');
+        } else {
+          t.classList.remove('active', 'secondary');
+        }
+      });
+    });
+    
+    updateKPIs(['TODOS']);
     applyRango(['TODOS']);
   } else {
     const meses = toggleMonthSelection('rango', mes, btn);
@@ -2458,17 +2516,6 @@ function updateRango(mes, btn) {
 }
 
 // ─── PCT CHART ───────────────────────────────────────────────────────────────
-let pctChart = new Chart(document.getElementById('pctChart'), {
-  type: 'bar',
-  data: { labels: LABELS, datasets: singleDataset(data.NOVIEMBRE.pct, v => v.toFixed(1)+'%') },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    layout: { padding: { top: 24, right: 8 } },
-    plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
-    scales: gridScales(v => v + '%')
-  }
-});
-
 function applyPct(meses) {
   if (!Array.isArray(meses)) meses = [meses];
   
@@ -2500,9 +2547,41 @@ function updatePct(mes, btn) {
   if (mes === 'TODOS') {
     // Reset selection and set TODOS mode
     selectedMonths.pct = ['TODOS'];
+    globalSelectedMonths = ['TODOS'];
+    
+    // Sincronizar todos los selectedMonths
+    Object.keys(selectedMonths).forEach(key => {
+      selectedMonths[key] = ['TODOS'];
+    });
+    
     const tabs = btn.parentElement.querySelectorAll('.tab');
     tabs.forEach(tab => tab.classList.remove('active', 'secondary'));
     btn.classList.add('active');
+    
+    // Actualizar botones del header
+    document.querySelectorAll('header .filter-btn').forEach(b => {
+      if (b.textContent.trim() === 'TODOS') {
+        b.classList.add('active');
+        b.style.opacity = '1';
+      } else {
+        b.classList.remove('active');
+        b.style.opacity = '1';
+      }
+    });
+    
+    // Actualizar todas las tabs
+    document.querySelectorAll('.tab-row').forEach(row => {
+      row.querySelectorAll('.tab').forEach(t => {
+        if (t.textContent.trim() === 'TODOS') {
+          t.classList.add('active');
+          t.classList.remove('secondary');
+        } else {
+          t.classList.remove('active', 'secondary');
+        }
+      });
+    });
+    
+    updateKPIs(['TODOS']);
     applyPct(['TODOS']);
   } else {
     const meses = toggleMonthSelection('pct', mes, btn);
@@ -2510,93 +2589,25 @@ function updatePct(mes, btn) {
   }
 }
 
-// ─── INMUEBLES CHART ──────────────────────────────────────────────────────────
-new Chart(document.getElementById('inmueblesChart'), {
-  type: 'bar',
-  data: {
-    labels: ['NOVIEMBRE 2025', 'DICIEMBRE 2025', 'ENERO 2026'],
-    datasets: [
-      { label: 'Saldo Capital', data: [5493334, 5521804, 7006698], backgroundColor: '#5271ff', borderRadius: 6, borderSkipped: false, yAxisID: 'y',
-        datalabels: { display: true, color: '#fff', font: { weight: '700', size: 10 }, anchor: 'center', align: 'center', formatter: v => 'Q' + (v/1000000).toFixed(2) + 'M' } },
-      { label: 'N° Créditos', data: [44, 41, 48], backgroundColor: '#f39519', borderRadius: 6, borderSkipped: false, yAxisID: 'y1',
-        datalabels: { display: true, color: '#fff', font: { weight: '700', size: 11 }, anchor: 'center', align: 'center', formatter: v => v } }
-    ]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: true, labels: { color: 'rgba(255,255,255,0.75)', font: { size: 11 }, boxWidth: 12 } }, tooltip: tooltipDefaults, datalabels: {} },
-    scales: {
-      x: chartDefaults.scales.x,
-      y: { ...chartDefaults.scales.y, position: 'left', ticks: { color: 'rgba(255,255,255,0.55)', callback: v => 'Q' + (v/1000000).toFixed(1) + 'M' } },
-      y1: { position: 'right', grid: { display: false }, ticks: { color: '#f39519', font: { size: 11 } }, max: 100 }
-    }
-  }
-});
-
-// ─── GENERO CHART ─────────────────────────────────────────────────────────────
-new Chart(document.getElementById('generoChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Hombre', 'Mujer'],
-    datasets: [{ label: 'N° Créditos', data: [492, 466], backgroundColor: ['#5271ff', '#f39519'], borderRadius: 6, borderSkipped: false,
-      datalabels: { display: true, color: '#fff', font: { weight: '700', size: 13 }, anchor: 'center', align: 'center', formatter: v => v } }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
-    scales: { x: chartDefaults.scales.x, y: chartDefaults.scales.y }
-  }
-});
-
-// ─── TIEMPO (PIE) ─────────────────────────────────────────────────────────────
-new Chart(document.getElementById('tiempoChart'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Menor a 6 meses','De 7 meses a 1 año','De 1 a 1.5 años','De 1.6 a 2 años','Mayor a 2 años'],
-    datasets: [{ 
-      data: [59, 30, 4, 1, 6], 
-      backgroundColor: ['#5271ff','#f39519','#f38a00','#27ae60','#8e44ad'], 
-      borderWidth: 4, 
-      borderColor: '#283551', 
-      hoverOffset: 12,
-      spacing: 2
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false, cutout: '55%',
-    plugins: {
-      legend: { display: false },
-      tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}%` } },
-      datalabels: { 
-        display: true, 
-        color: '#fff', 
-        font: { weight: '700', size: 12 }, 
-        formatter: (v, ctx) => {
-          // Para valores pequeños, mostrar el % sin importar el tamaño
-          return v + '%';
-        }
-      }
-    }
-  }
-});
+// ─── STATIC CHARTS (initialized in DOMContentLoaded) ─────────────────────────
 
 // ─── RENDER TIEMPO CARDS ──────────────────────────────────────────────────────
 const tiempoDataByMonth = {
-  NOVIEMBRE: [
+  DICIEMBRE: [
     { label: 'Menor a 6 meses', saldo: 2457245, creditos: 19, pct: 43.18, class: 't1' },
     { label: 'De 7 meses a 1 año', saldo: 2172648, creditos: 13, pct: 29.55, class: 't2' },
     { label: 'De 1 a 1.5 años', saldo: 493148, creditos: 7, pct: 15.91, class: 't3' },
     { label: 'De 1.6 a 2 años', saldo: 70293, creditos: 2, pct: 4.55, class: 't4' },
     { label: 'Mayor a 2 años', saldo: 300000, creditos: 3, pct: 6.82, class: 't5' }
   ],
-  DICIEMBRE: [
+  ENERO: [
     { label: 'Menor a 6 meses', saldo: 2639386, creditos: 18, pct: 43.90, class: 't1' },
     { label: 'De 7 meses a 1 año', saldo: 2093670, creditos: 11, pct: 26.83, class: 't2' },
     { label: 'De 1 a 1.5 años', saldo: 418455, creditos: 7, pct: 17.07, class: 't3' },
     { label: 'De 1.6 a 2 años', saldo: 70293, creditos: 2, pct: 4.88, class: 't4' },
     { label: 'Mayor a 2 años', saldo: 300000, creditos: 3, pct: 7.32, class: 't5' }
   ],
-  ENERO: [
+  FEBRERO: [
     { label: 'Menor a 6 meses', saldo: 4124281, creditos: 26, pct: 54.17, class: 't1' },
     { label: 'De 7 meses a 1 año', saldo: 2093670, creditos: 11, pct: 22.92, class: 't2' },
     { label: 'De 1 a 1.5 años', saldo: 418455, creditos: 6, pct: 12.50, class: 't3' },
@@ -2605,13 +2616,13 @@ const tiempoDataByMonth = {
   ]
 };
 
-function renderTiempoCards(mes = 'NOVIEMBRE') {
+function renderTiempoCards(mes = 'DICIEMBRE') {
   let tiempoData;
   
   if (mes === 'TODOS') {
     // Calcular totales consolidados
     const consolidado = {};
-    ['NOVIEMBRE', 'DICIEMBRE', 'ENERO'].forEach(m => {
+    ['DICIEMBRE', 'ENERO', 'FEBRERO'].forEach(m => {
       tiempoDataByMonth[m].forEach(item => {
         if (!consolidado[item.label]) {
           consolidado[item.label] = { label: item.label, saldo: 0, creditos: 0, class: item.class };
@@ -2656,37 +2667,124 @@ function updateTiempo(mes, btn) {
   }
 }
 
-// ─── GLOBAL MONTH FILTER ──────────────────────────────────────────────────────
+// ─── GLOBAL MONTH FILTER WITH MULTI-SELECT ────────────────────────────────────
+let globalSelectedMonths = ['FEBRERO']; // Estado global de meses seleccionados
+
 function setMonth(mes) {
-  const btnLabels = { NOVIEMBRE: 'NOV 2025', DICIEMBRE: 'DIC 2025', ENERO: 'ENE 2026', TODOS: 'TODOS' };
-  document.querySelectorAll('header .filter-btn').forEach(b => {
-    b.classList.toggle('active', b.textContent === btnLabels[mes]);
+  const btnLabels = { DICIEMBRE: 'DIC 2025', ENERO: 'ENE 2026', FEBRERO: 'FEB 2026', TODOS: 'TODOS' };
+  
+  if (mes === 'TODOS') {
+    // TODOS es exclusivo
+    globalSelectedMonths = ['TODOS'];
+  } else {
+    // Si TODOS está seleccionado, reemplazarlo
+    if (globalSelectedMonths.includes('TODOS')) {
+      globalSelectedMonths = [mes];
+    } else {
+      const index = globalSelectedMonths.indexOf(mes);
+      if (index > -1) {
+        // Ya está seleccionado - deseleccionar (pero mantener al menos uno)
+        if (globalSelectedMonths.length > 1) {
+          globalSelectedMonths.splice(index, 1);
+        }
+      } else {
+        // No está seleccionado - agregarlo (máximo 2 meses)
+        if (globalSelectedMonths.length < 2) {
+          globalSelectedMonths.push(mes);
+        } else {
+          // Reemplazar el primero con el nuevo
+          globalSelectedMonths.shift();
+          globalSelectedMonths.push(mes);
+        }
+      }
+    }
+  }
+  
+  // Sincronizar todos los selectedMonths individuales con el global
+  Object.keys(selectedMonths).forEach(key => {
+    selectedMonths[key] = [...globalSelectedMonths];
   });
+  
+  // Actualizar estilos de botones del header
+  document.querySelectorAll('header .filter-btn').forEach(b => {
+    const btnText = b.textContent.trim();
+    const mesBtn = Object.keys(btnLabels).find(key => btnLabels[key] === btnText);
+    
+    // Siempre determinar si debe estar activo o no
+    if (mesBtn && globalSelectedMonths.includes(mesBtn)) {
+      const isFirst = globalSelectedMonths[0] === mesBtn;
+      b.classList.add('active');
+      // Si hay 2 meses seleccionados y este es el segundo, darle un estilo diferente
+      if (!isFirst && globalSelectedMonths.length === 2 && mesBtn !== 'TODOS') {
+        b.style.opacity = '0.7';
+      } else {
+        b.style.opacity = '1';
+      }
+    } else {
+      // No está seleccionado - remover active
+      b.classList.remove('active');
+      b.style.opacity = '1';
+    }
+  });
+  
+  // Actualizar todas las tabs en las visualizaciones
   document.querySelectorAll('.tab-row').forEach(row => {
     row.querySelectorAll('.tab').forEach(t => {
-      t.classList.toggle('active', t.textContent === btnLabels[mes] || (mes === 'TODOS' && t.textContent === 'TODOS'));
+      const tabText = t.textContent.trim();
+      const mesTab = Object.keys(btnLabels).find(key => btnLabels[key] === tabText);
+      
+      if (mesTab && globalSelectedMonths.includes(mesTab)) {
+        const isFirst = globalSelectedMonths[0] === mesTab;
+        t.classList.add('active');
+        if (!isFirst && globalSelectedMonths.length === 2) {
+          t.classList.add('secondary');
+        } else {
+          t.classList.remove('secondary');
+        }
+      } else {
+        t.classList.remove('active', 'secondary');
+      }
     });
   });
 
-  if (mes === 'TODOS') {
+  // Actualizar KPIs
+  updateKPIs(globalSelectedMonths);
+  
+  // Actualizar TODAS las visualizaciones
+  applyRango(globalSelectedMonths);
+  applyPct(globalSelectedMonths);
+  renderTiempoCards(globalSelectedMonths[0]);
+  renderTasaTable(globalSelectedMonths);
+  renderSegmentoCards(globalSelectedMonths);
+  renderAvaluosTable(globalSelectedMonths);
+  renderRangoAvaluosCards(globalSelectedMonths);
+  renderAvaluosPendCards(globalSelectedMonths);
+  renderDeptoTable(globalSelectedMonths);
+  renderMunicipioTable(globalSelectedMonths);
+  renderAvaluosPendientesClientesTable(globalSelectedMonths);
+}
+
+function updateKPIs(meses) {
+  if (meses.includes('TODOS')) {
+    // Sumar todos los meses
     const totals = MESES.reduce((acc, m) => {
-      acc.total += data[m].kpi.total; acc.aldia += data[m].kpi.aldia;
-      acc.mora += data[m].kpi.mora; acc.juridico += data[m].kpi.juridico;
+      acc.total += data[m].kpi.total;
+      acc.aldia += data[m].kpi.aldia;
+      acc.mora += data[m].kpi.mora;
+      acc.juridico += data[m].kpi.juridico;
       return acc;
     }, { total: 0, aldia: 0, mora: 0, juridico: 0 });
+    
     document.getElementById('kpi-total').textContent = totals.total;
-    document.getElementById('kpi-saldo').textContent = 'Q161.3M';
+    document.getElementById('kpi-saldo').textContent = 'Q485.7M';
     document.getElementById('kpi-aldia').textContent = totals.aldia;
     document.getElementById('kpi-aldia-pct').textContent = 'suma 3 meses';
     document.getElementById('kpi-mora').textContent = totals.mora;
     document.getElementById('kpi-juridico').textContent = totals.juridico;
     document.getElementById('kpi-juridico-pct').textContent = 'suma 3 meses';
-
-    applyRango(['TODOS']);
-    applyPct(['TODOS']);
-
-  } else {
-    const d = data[mes];
+  } else if (meses.length === 1) {
+    // Un solo mes
+    const d = data[meses[0]];
     document.getElementById('kpi-total').textContent = d.kpi.total;
     document.getElementById('kpi-saldo').textContent = d.kpi.saldo;
     document.getElementById('kpi-aldia').textContent = d.kpi.aldia;
@@ -2694,14 +2792,25 @@ function setMonth(mes) {
     document.getElementById('kpi-mora').textContent = d.kpi.mora;
     document.getElementById('kpi-juridico').textContent = d.kpi.juridico;
     document.getElementById('kpi-juridico-pct').textContent = d.kpi.juridico_pct + ' cartera';
-
-    applyRango([mes]);
-    applyPct([mes]);
+  } else if (meses.length === 2) {
+    // Dos meses - mostrar suma
+    const totals = meses.reduce((acc, m) => {
+      acc.total += data[m].kpi.total;
+      acc.aldia += data[m].kpi.aldia;
+      acc.mora += data[m].kpi.mora;
+      acc.juridico += data[m].kpi.juridico;
+      return acc;
+    }, { total: 0, aldia: 0, mora: 0, juridico: 0 });
+    
+    document.getElementById('kpi-total').textContent = totals.total;
+    document.getElementById('kpi-saldo').textContent = 'Q323.4M';
+    document.getElementById('kpi-aldia').textContent = totals.aldia;
+    document.getElementById('kpi-aldia-pct').textContent = 'suma 2 meses';
+    document.getElementById('kpi-mora').textContent = totals.mora;
+    document.getElementById('kpi-juridico').textContent = totals.juridico;
+    document.getElementById('kpi-juridico-pct').textContent = 'suma 2 meses';
   }
 }
-
-// Init with NOVIEMBRE
-setMonth('NOVIEMBRE');
 
 // ─── PAGE SWITCHING ───────────────────────────────────────────────────────────
 function switchPage(pageNum) {
@@ -2719,14 +2828,14 @@ function switchPage(pageNum) {
   
   // Initialize visualizations if switching to page 2
   if (pageNum === 2 && !window.page2Initialized) {
-    renderTasaTable(['NOVIEMBRE']);
-    renderSegmentoCards(['NOVIEMBRE']);
-    renderAvaluosTable(['NOVIEMBRE']);
-    renderRangoAvaluosCards(['NOVIEMBRE']);
-    renderAvaluosPendCards(['NOVIEMBRE']);
-    renderDeptoTable(['NOVIEMBRE']);
-    renderMunicipioTable(['NOVIEMBRE']);
-    renderAvaluosPendientesClientesTable(['NOVIEMBRE']);
+    renderTasaTable(['DICIEMBRE']);
+    renderSegmentoCards(['DICIEMBRE']);
+    renderAvaluosTable(['DICIEMBRE']);
+    renderRangoAvaluosCards(['DICIEMBRE']);
+    renderAvaluosPendCards(['DICIEMBRE']);
+    renderDeptoTable(['DICIEMBRE']);
+    renderMunicipioTable(['DICIEMBRE']);
+    renderAvaluosPendientesClientesTable(['DICIEMBRE']);
     window.page2Initialized = true;
   }
 }
@@ -3330,18 +3439,111 @@ function updateAvaluosPendientesClientesTable(mes, btn) {
 
 // ─── INITIALIZE PAGE 1 ON LOAD ────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
+  // Initialize all charts
+  rangoChart = new Chart(document.getElementById('rangoChart'), {
+    type: 'bar',
+    data: { labels: LABELS, datasets: singleDataset(data.FEBRERO.rango) },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      layout: { padding: { top: 24, right: 8 } },
+      plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
+      scales: gridScales()
+    }
+  });
+
+  pctChart = new Chart(document.getElementById('pctChart'), {
+    type: 'bar',
+    data: { labels: LABELS, datasets: singleDataset(data.FEBRERO.pct, v => v.toFixed(1)+'%') },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      layout: { padding: { top: 24, right: 8 } },
+      plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
+      scales: gridScales(v => v + '%')
+    }
+  });
+
+  inmueblesChart = new Chart(document.getElementById('inmueblesChart'), {
+    type: 'bar',
+    data: {
+      labels: ['DICIEMBRE 2025', 'ENERO 2026', 'FEBRERO 2026'],
+      datasets: [
+        { label: 'Saldo Capital', data: [5493334, 5521804, 7006698], backgroundColor: '#5271ff', borderRadius: 6, borderSkipped: false, yAxisID: 'y',
+          datalabels: { display: true, color: '#fff', font: { weight: '700', size: 10 }, anchor: 'center', align: 'center', formatter: v => 'Q' + (v/1000000).toFixed(2) + 'M' } },
+        { label: 'N° Créditos', data: [44, 41, 48], backgroundColor: '#f39519', borderRadius: 6, borderSkipped: false, yAxisID: 'y1',
+          datalabels: { display: true, color: '#fff', font: { weight: '700', size: 11 }, anchor: 'center', align: 'center', formatter: v => v } }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: true, labels: { color: 'rgba(255,255,255,0.75)', font: { size: 11 }, boxWidth: 12 } }, tooltip: tooltipDefaults, datalabels: {} },
+      scales: {
+        x: chartDefaults.scales.x,
+        y: { ...chartDefaults.scales.y, position: 'left', ticks: { color: 'rgba(255,255,255,0.55)', callback: v => 'Q' + (v/1000000).toFixed(1) + 'M' } },
+        y1: { position: 'right', grid: { display: false }, ticks: { color: '#f39519', font: { size: 11 } }, max: 100 }
+      }
+    }
+  });
+
+  generoChart = new Chart(document.getElementById('generoChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Hombre', 'Mujer'],
+      datasets: [{ label: 'N° Créditos', data: [492, 466], backgroundColor: ['#5271ff', '#f39519'], borderRadius: 6, borderSkipped: false,
+        datalabels: { display: true, color: '#fff', font: { weight: '700', size: 13 }, anchor: 'center', align: 'center', formatter: v => v } }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: tooltipDefaults, datalabels: {} },
+      scales: { x: chartDefaults.scales.x, y: chartDefaults.scales.y }
+    }
+  });
+
+  tiempoChart = new Chart(document.getElementById('tiempoChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Menor a 6 meses','De 7 meses a 1 año','De 1 a 1.5 años','De 1.6 a 2 años','Mayor a 2 años'],
+      datasets: [{ 
+        data: [59, 30, 4, 1, 6], 
+        backgroundColor: ['#5271ff','#f39519','#f38a00','#27ae60','#8e44ad'], 
+        borderWidth: 4, 
+        borderColor: '#283551', 
+        hoverOffset: 12,
+        spacing: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '55%',
+      plugins: {
+        legend: { display: false },
+        tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}%` } },
+        datalabels: { 
+          display: true, 
+          color: '#fff', 
+          font: { weight: '700', size: 12 }, 
+          formatter: (v, ctx) => {
+            return v + '%';
+          }
+        }
+      }
+    }
+  });
+
+  // Initialize KPIs
+  updateKPIs(['FEBRERO']);
+  
   // Initialize Segmento Producto cards on page load (page 1)
-  renderSegmentoCards(['NOVIEMBRE']);
+  renderSegmentoCards(['FEBRERO']);
   // Initialize Tiempo cards (page 1)
-  renderTiempoCards('NOVIEMBRE');
+  renderTiempoCards('FEBRERO');
   
   // Initialize all page 2 visualizations
-  renderTasaTable(['NOVIEMBRE']);
-  renderAvaluosTable(['NOVIEMBRE']);
-  renderRangoAvaluosCards(['NOVIEMBRE']);
-  renderDeptoTable(['NOVIEMBRE']);
-  renderMunicipioTable(['NOVIEMBRE']);
-  renderAvaluosPendientesClientesTable(['NOVIEMBRE']);
+  renderTasaTable(['FEBRERO']);
+  renderAvaluosTable(['FEBRERO']);
+  renderRangoAvaluosCards(['FEBRERO']);
+  renderAvaluosPendCards(['FEBRERO']);
+  renderDeptoTable(['FEBRERO']);
+  renderMunicipioTable(['FEBRERO']);
+  renderAvaluosPendientesClientesTable(['FEBRERO']);
   
   // Mark page 2 as initialized
   window.page2Initialized = true;
