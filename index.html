@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1516,6 +1517,7 @@
 <header>
   <h1> Dashboard Cartera Hollem, S.A.</h1>
   <div class="header-controls">
+    <button class="filter-btn" onclick="setMonth('NOVIEMBRE')">NOV 2025</button>
     <button class="filter-btn" onclick="setMonth('DICIEMBRE')">DIC 2025</button>
     <button class="filter-btn" onclick="setMonth('ENERO')">ENE 2026</button>
     <button class="filter-btn active" onclick="setMonth('FEBRERO')">FEB 2026</button>
@@ -1565,12 +1567,13 @@
       <div class="chart-title">Rango de Días</div>
       <div class="chart-subtitle">Cantidad de créditos por estado</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateRango('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateRango('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateRango('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateRango('FEBRERO', this)">FEB 2026</button>
         <button class="tab" onclick="updateRango('TODOS', this)">TODOS</button>
       </div>
-      <div class="chart-container" style="height:200px">
+      <div class="chart-container" style="height:280px">
         <canvas id="rangoChart"></canvas>
       </div>
     </div>
@@ -1579,33 +1582,63 @@
       <div class="chart-title">% Rango Días</div>
       <div class="chart-subtitle">Distribución porcentual por estado</div>
       <div class="tab-row">
+        <button class="tab" onclick="updatePct('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updatePct('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updatePct('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updatePct('FEBRERO', this)">FEB 2026</button>
         <button class="tab" onclick="updatePct('TODOS', this)">TODOS</button>
       </div>
-      <div class="chart-container" style="height:230px">
+      <div class="chart-container" style="height:280px">
         <canvas id="pctChart"></canvas>
       </div>
     </div>
 
     <div class="chart-card">
-      <div class="chart-title">Inmuebles</div>
-      <div class="chart-subtitle">Saldo capital vs. N° créditos</div>
-      <div class="chart-container" style="height:260px">
-        <canvas id="inmueblesChart"></canvas>
+      <div class="chart-title">Cartera por Género</div>
+      <div class="chart-subtitle">Distribución de créditos y saldo capital</div>
+      <div class="gender-row">
+        <div class="gender-card">
+          <div class="gender-icon"><img src="https://i.ibb.co/4Z3j1mnB/Designer-1.png" alt="Masculino" style="width:70px;height:70px;object-fit:contain;"></div>
+          <div class="gender-name">Hombre</div>
+          <div class="gender-stat">
+            <span class="val">492</span>
+            <span class="lbl">N° de créditos</span>
+          </div>
+          <div class="gender-stat" style="margin-top:6px">
+            <span class="val" style="font-size:1rem; color: #5271ff">Q94.5M</span>
+            <span class="lbl">Saldo capital</span>
+          </div>
+          <div class="gender-pct">50.60%</div>
+        </div>
+        <div class="gender-card">
+          <div class="gender-icon"><img src="https://i.ibb.co/4nLnc7ZW/Designer.png" alt="Femenino" style="width:70px;height:70px;object-fit:contain;"></div>
+          <div class="gender-name">Mujer</div>
+          <div class="gender-stat">
+            <span class="val">466</span>
+            <span class="lbl">N° de créditos</span>
+          </div>
+          <div class="gender-stat" style="margin-top:6px">
+            <span class="val" style="font-size:1rem; color: var(--brand-orange)">Q67.7M</span>
+            <span class="lbl">Saldo capital</span>
+          </div>
+          <div class="gender-pct">49.40%</div>
+        </div>
+      </div>
+      <div style="margin-top:15px; height:110px">
+        <canvas id="generoChart"></canvas>
       </div>
     </div>
 
   </div>
 
-  <!-- Row 2: Rangos de Tiempo + Cartera Género + Segmento Producto -->
+  <!-- Row 2: Rangos de Tiempo + Inmuebles + Segmento Producto -->
   <div class="charts-row-3col">
 
     <div class="chart-card">
       <div class="chart-title">Rangos de Tiempo</div>
       <div class="chart-subtitle">Suma de saldo capital por plazo</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateTiempo('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateTiempo('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateTiempo('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateTiempo('FEBRERO', this)">FEB 2026</button>
@@ -1617,38 +1650,10 @@
     </div>
 
     <div class="chart-card">
-      <div class="chart-title">Cartera por Género</div>
-      <div class="chart-subtitle">Distribución de créditos y saldo capital</div>
-      <div class="gender-row">
-        <div class="gender-card">
-          <div class="gender-icon"><img src="https://i.ibb.co/4Z3j1mnB/Designer-1.png" alt="Masculino" style="width:100px;height:100px;object-fit:contain;"></div>
-          <div class="gender-name">Hombre</div>
-          <div class="gender-stat">
-            <span class="val">492</span>
-            <span class="lbl">N° de créditos</span>
-          </div>
-          <div class="gender-stat" style="margin-top:8px">
-            <span class="val" style="font-size:1.1rem; color: #5271ff">Q94.5M</span>
-            <span class="lbl">Saldo capital</span>
-          </div>
-          <div class="gender-pct">50.60%</div>
-        </div>
-        <div class="gender-card">
-          <div class="gender-icon"><img src="https://i.ibb.co/4nLnc7ZW/Designer.png" alt="Femenino" style="width:100px;height:100px;object-fit:contain;"></div>
-          <div class="gender-name">Mujer</div>
-          <div class="gender-stat">
-            <span class="val">466</span>
-            <span class="lbl">N° de créditos</span>
-          </div>
-          <div class="gender-stat" style="margin-top:8px">
-            <span class="val" style="font-size:1.1rem; color: var(--brand-orange)">Q67.7M</span>
-            <span class="lbl">Saldo capital</span>
-          </div>
-          <div class="gender-pct">49.40%</div>
-        </div>
-      </div>
-      <div style="margin-top:20px; height:130px">
-        <canvas id="generoChart"></canvas>
+      <div class="chart-title">Inmuebles</div>
+      <div class="chart-subtitle">Saldo capital vs. N° créditos</div>
+      <div class="chart-container" style="height:400px; padding-top: 10px;">
+        <canvas id="inmueblesChart"></canvas>
       </div>
     </div>
 
@@ -1656,6 +1661,7 @@
       <div class="chart-title">Segmento Producto</div>
       <div class="chart-subtitle">Distribución de créditos por segmento</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateSegmentoCards('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateSegmentoCards('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateSegmentoCards('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateSegmentoCards('FEBRERO', this)">FEB 2026</button>
@@ -1684,6 +1690,7 @@
       <div class="chart-title">Tasa de Interés</div>
       <div class="chart-subtitle">Distribución de saldo capital por tasa</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateTasaTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateTasaTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateTasaTable('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateTasaTable('FEBRERO', this)">FEB 2026</button>
@@ -1713,6 +1720,7 @@
       <div class="chart-title">Avalúos</div>
       <div class="chart-subtitle">Distribución de créditos por rango de avalúo</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateAvaluosTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateAvaluosTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateAvaluosTable('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateAvaluosTable('FEBRERO', this)">FEB 2026</button>
@@ -1723,6 +1731,7 @@
             <th>Rango</th>
             <th>Créditos</th>
             <th>Saldo</th>
+            <th>%</th>
           </tr>
         </thead>
         <tbody id="avaluosTableBody">
@@ -1741,6 +1750,7 @@
       <div class="chart-title">Rango Avalúos</div>
       <div class="chart-subtitle">Clasificación de créditos por rango de avalúo</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateRangoAvaluosCards('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateRangoAvaluosCards('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateRangoAvaluosCards('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateRangoAvaluosCards('FEBRERO', this)">FEB 2026</button>
@@ -1760,6 +1770,7 @@
       <div class="chart-title">Cartera por Departamento</div>
       <div class="chart-subtitle">Distribución geográfica de créditos</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateDeptoTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateDeptoTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateDeptoTable('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateDeptoTable('FEBRERO', this)">FEB 2026</button>
@@ -1788,6 +1799,7 @@
       <div class="chart-title">Cartera por Municipio</div>
       <div class="chart-subtitle">Desglose por estado de cartera</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateMunicipioTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateMunicipioTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateMunicipioTable('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateMunicipioTable('FEBRERO', this)">FEB 2026</button>
@@ -1830,13 +1842,14 @@
 
   <!-- Row with Clientes con Avalúos Pendientes -->
   <!-- Row with Clientes con Avalúos Pendientes - Full Width -->
-  <div style="margin-top: 20px;">
+  <div style="margin-top: 20px; display: none;">
     
     <!-- Clientes con Avalúos Pendientes -->
     <div class="data-table-card">
       <div class="chart-title">Clientes con Avalúos Pendientes</div>
       <div class="chart-subtitle">Jurídico - Avalúos pendientes por departamento</div>
       <div class="tab-row">
+        <button class="tab" onclick="updateAvaluosPendientesClientesTable('NOVIEMBRE', this)">NOV 2025</button>
         <button class="tab" onclick="updateAvaluosPendientesClientesTable('DICIEMBRE', this)">DIC 2025</button>
         <button class="tab" onclick="updateAvaluosPendientesClientesTable('ENERO', this)">ENE 2026</button>
         <button class="tab active" onclick="updateAvaluosPendientesClientesTable('FEBRERO', this)">FEB 2026</button>
@@ -1885,6 +1898,106 @@
 Chart.register(ChartDataLabels);
 
 const data = {
+  NOVIEMBRE: {
+    rango: [672, 76, 32, 21, 44, 120],
+    pct: [69.64, 7.88, 3.32, 2.18, 4.56, 12.44],
+    kpi: { total: 965, saldo: 'Q164.9M', aldia: 672, aldia_pct: '69.64%', mora: 173, juridico: 120, juridico_pct: '12.44%' },
+    tasas: [
+      { tasa: 2.25, saldo: 82213206 },
+      { tasa: 2.50, saldo: 47201692 },
+      { tasa: 2.00, saldo: 29161648 },
+      { tasa: 2.75, saldo: 1958254 },
+      { tasa: 1.95, saldo: 1515882 },
+      { tasa: 1.80, saldo: 1333118 },
+      { tasa: 3.00, saldo: 654866 },
+      { tasa: 1.04, saldo: 363896 },
+      { tasa: 1.25, saldo: 189890 },
+      { tasa: 1.85, saldo: 140881 },
+      { tasa: 1.00, saldo: 135000 },
+      { tasa: 1.50, saldo: 39460 },
+      { tasa: 2.95, saldo: 9292 }
+    ],
+    segmento: {
+      DIAMANTE: { total: 1, aldia: 1, mora: 0, juridico: 0 },
+      ORO: { total: 26, aldia: 26, mora: 0, juridico: 0 },
+      PLATA: { total: 24, aldia: 24, mora: 0, juridico: 0 },
+      'SIN SEGMENTO': { total: 914, aldia: 621, mora: 173, juridico: 120 }
+    },
+    avaluos: [
+      { rango: 'DE 01% A 10%', creditos: 13, saldo: 754956, pct: 0.46 },
+      { rango: 'DE 11% A 20%', creditos: 84, saldo: 9757253, pct: 5.92 },
+      { rango: 'DE 21% A 30%', creditos: 150, saldo: 21303318, pct: 12.92 },
+      { rango: 'DE 31% A 40%', creditos: 260, saldo: 41104693, pct: 24.92 },
+      { rango: 'DE 41% A 50%', creditos: 157, saldo: 32819296, pct: 19.90 },
+      { rango: 'DE 51% A 60%', creditos: 81, saldo: 16678518, pct: 10.11 },
+      { rango: 'DE 61% A 70%', creditos: 59, saldo: 12379517, pct: 7.51 },
+      { rango: 'DE 71% A 80%', creditos: 29, saldo: 6654358, pct: 4.03 },
+      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3419315, pct: 2.07 },
+      { rango: 'DE 91% A 100%', creditos: 8, saldo: 1064988, pct: 0.65 },
+      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1446882, pct: 0.88 },
+      { rango: 'DE 126% A 150%', creditos: 3, saldo: 294467, pct: 0.18 },
+      { rango: 'MAS DE 151%', creditos: 2, saldo: 776111, pct: 0.47 },
+      { rango: 'PENDIENTE', creditos: 87, saldo: 16463413, pct: 9.98 }
+    ],
+    rango_avaluos: [
+      { categoria: 'MENOR A 40%', creditos: 507, saldo: 72920220 },
+      { categoria: 'MAYOR A 40%', creditos: 371, saldo: 76090897 },
+      { categoria: 'PENDIENTE', creditos: 87, saldo: 16463413 }
+    ],
+    avaluos_pendientes: [
+      { categoria: 'Al día', creditos: 672, saldo: 102384750, clientes: 672 },
+      { categoria: '1 a 30', creditos: 76, saldo: 11567890, clientes: 76 },
+      { categoria: '31 a 60', creditos: 32, saldo: 5287640, clientes: 32 },
+      { categoria: '61 a 90', creditos: 21, saldo: 3564210, clientes: 21 },
+      { categoria: 'Prejurídico', creditos: 44, saldo: 7256450, clientes: 44 },
+      { categoria: 'Jurídico', creditos: 120, saldo: 34856145, clientes: 120 }
+    ],
+    departamentos: [
+      { depto: 'GUATEMALA', creditos: 626, pct: 64.87 },
+      { depto: 'ESCUINTLA', creditos: 81, pct: 8.39 },
+      { depto: 'SACATEPÉQUEZ', creditos: 58, pct: 6.01 },
+      { depto: 'ALTA VERAPAZ', creditos: 31, pct: 3.21 },
+      { depto: 'PETÉN', creditos: 28, pct: 2.90 },
+      { depto: 'SANTA ROSA', creditos: 28, pct: 2.90 },
+      { depto: 'CHIMALTENANGO', creditos: 24, pct: 2.49 },
+      { depto: 'SUCHITEPÉQUEZ', creditos: 16, pct: 1.66 },
+      { depto: 'EL PROGRESO', creditos: 15, pct: 1.55 },
+      { depto: 'IZABAL', creditos: 12, pct: 1.24 },
+      { depto: 'QUETZALTENANGO', creditos: 8, pct: 0.83 },
+      { depto: 'JUTIAPA', creditos: 8, pct: 0.83 },
+      { depto: 'JALAPA', creditos: 6, pct: 0.62 },
+      { depto: 'ZACAPA', creditos: 5, pct: 0.52 },
+      { depto: 'RETALHULEU', creditos: 5, pct: 0.52 },
+      { depto: 'SAN MARCOS', creditos: 5, pct: 0.52 },
+      { depto: 'CHIQUIMULA', creditos: 3, pct: 0.31 },
+      { depto: 'QUICHÉ', creditos: 3, pct: 0.31 },
+      { depto: 'BAJA VERAPAZ', creditos: 2, pct: 0.21 },
+      { depto: 'TOTONICAPÁN', creditos: 1, pct: 0.10 }
+    ],
+    municipios: [
+      { municipio: 'GUATEMALA', aldia: 447, rango1_30: 44, rango31_60: 21, rango61_90: 13, prejuridico: 25, juridico: 76, total: 626 },
+      { municipio: 'ESCUINTLA', aldia: 59, rango1_30: 10, rango31_60: 2, rango61_90: 1, prejuridico: 3, juridico: 6, total: 81 },
+      { municipio: 'SACATEPÉQUEZ', aldia: 39, rango1_30: 4, rango31_60: 4, rango61_90: 1, prejuridico: 2, juridico: 8, total: 58 },
+      { municipio: 'ALTA VERAPAZ', aldia: 17, rango1_30: 3, rango31_60: 0, rango61_90: 0, prejuridico: 4, juridico: 7, total: 31 },
+      { municipio: 'PETÉN', aldia: 24, rango1_30: 2, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 1, total: 28 },
+      { municipio: 'SANTA ROSA', aldia: 17, rango1_30: 2, rango31_60: 1, rango61_90: 1, prejuridico: 4, juridico: 3, total: 28 },
+      { municipio: 'CHIMALTENANGO', aldia: 18, rango1_30: 1, rango31_60: 0, rango61_90: 2, prejuridico: 0, juridico: 3, total: 24 },
+      { municipio: 'SUCHITEPÉQUEZ', aldia: 12, rango1_30: 1, rango31_60: 0, rango61_90: 2, prejuridico: 0, juridico: 1, total: 16 },
+      { municipio: 'EL PROGRESO', aldia: 10, rango1_30: 0, rango31_60: 2, rango61_90: 0, prejuridico: 0, juridico: 3, total: 15 },
+      { municipio: 'IZABAL', aldia: 6, rango1_30: 3, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 2, total: 12 },
+      { municipio: 'QUETZALTENANGO', aldia: 7, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 0, total: 8 },
+      { municipio: 'JUTIAPA', aldia: 3, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 4, total: 8 },
+      { municipio: 'JALAPA', aldia: 4, rango1_30: 1, rango31_60: 1, rango61_90: 0, prejuridico: 0, juridico: 0, total: 6 },
+      { municipio: 'ZACAPA', aldia: 3, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 1, total: 5 },
+      { municipio: 'RETALHULEU', aldia: 1, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 0, juridico: 3, total: 5 },
+      { municipio: 'SAN MARCOS', aldia: 3, rango1_30: 0, rango31_60: 1, rango61_90: 0, prejuridico: 0, juridico: 1, total: 5 },
+      { municipio: 'CHIQUIMULA', aldia: 1, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 0, total: 3 },
+      { municipio: 'QUICHÉ', aldia: 0, rango1_30: 1, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 1, total: 3 },
+      { municipio: 'BAJA VERAPAZ', aldia: 1, rango1_30: 0, rango31_60: 0, rango61_90: 1, prejuridico: 0, juridico: 0, total: 2 },
+      { municipio: 'TOTONICAPÁN', aldia: 0, rango1_30: 0, rango31_60: 0, rango61_90: 0, prejuridico: 1, juridico: 0, total: 1 }
+    ],
+    avaluos_pendientes_clientes: []
+  },
   DICIEMBRE: {
     rango: [661, 69, 43, 23, 42, 121],
     pct: [68.93, 7.19, 4.48, 2.40, 4.35, 12.62],
@@ -1910,20 +2023,20 @@ const data = {
       'SIN SEGMENTO': { total: 893, aldia: 598, mora: 174, juridico: 121 }
     },
     avaluos: [
-      { rango: 'DE 01% A 10%', creditos: 11, saldo: 642683 },
-      { rango: 'DE 11% A 20%', creditos: 87, saldo: 10409482 },
-      { rango: 'DE 21% A 30%', creditos: 154, saldo: 21882996 },
-      { rango: 'DE 31% A 40%', creditos: 253, saldo: 39160652 },
-      { rango: 'DE 41% A 50%', creditos: 154, saldo: 29336846 },
-      { rango: 'DE 51% A 60%', creditos: 81, saldo: 17400668 },
-      { rango: 'DE 61% A 70%', creditos: 58, saldo: 11844590 },
-      { rango: 'DE 71% A 80%', creditos: 30, saldo: 7135079 },
-      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3415113 },
-      { rango: 'DE 91% A 100%', creditos: 8, saldo: 1064718 },
-      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1441540 },
-      { rango: 'DE 126% A 150%', creditos: 3, saldo: 293780 },
-      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715 },
-      { rango: 'PENDIENTE', creditos: 87, saldo: 16713475 }
+      { rango: 'DE 01% A 10%', creditos: 11, saldo: 642683, pct: 0.40 },
+      { rango: 'DE 11% A 20%', creditos: 87, saldo: 10409482, pct: 6.45 },
+      { rango: 'DE 21% A 30%', creditos: 154, saldo: 21882996, pct: 13.56 },
+      { rango: 'DE 31% A 40%', creditos: 253, saldo: 39160652, pct: 24.26 },
+      { rango: 'DE 41% A 50%', creditos: 154, saldo: 29336846, pct: 18.18 },
+      { rango: 'DE 51% A 60%', creditos: 81, saldo: 17400668, pct: 10.78 },
+      { rango: 'DE 61% A 70%', creditos: 58, saldo: 11844590, pct: 7.34 },
+      { rango: 'DE 71% A 80%', creditos: 30, saldo: 7135079, pct: 4.42 },
+      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3415113, pct: 2.12 },
+      { rango: 'DE 91% A 100%', creditos: 8, saldo: 1064718, pct: 0.66 },
+      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1441540, pct: 0.89 },
+      { rango: 'DE 126% A 150%', creditos: 3, saldo: 293780, pct: 0.18 },
+      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715, pct: 0.36 },
+      { rango: 'PENDIENTE', creditos: 87, saldo: 16713475, pct: 10.35 }
     ],
     rango_avaluos: [
       { categoria: 'MENOR A 40%', creditos: 1012, saldo: 145016032 },
@@ -2024,20 +2137,20 @@ const data = {
       'SIN SEGMENTO': { total: 862, aldia: 569, mora: 170, juridico: 123 }
     },
     avaluos: [
-      { rango: 'DE 01% A 10%', creditos: 12, saldo: 642176 },
-      { rango: 'DE 11% A 20%', creditos: 79, saldo: 9581470 },
-      { rango: 'DE 21% A 30%', creditos: 151, saldo: 21293886 },
-      { rango: 'DE 31% A 40%', creditos: 236, saldo: 36212654 },
-      { rango: 'DE 41% A 50%', creditos: 146, saldo: 28442219 },
-      { rango: 'DE 51% A 60%', creditos: 74, saldo: 15277716 },
-      { rango: 'DE 61% A 70%', creditos: 59, saldo: 11260287 },
-      { rango: 'DE 71% A 80%', creditos: 30, saldo: 7131994 },
-      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3407240 },
-      { rango: 'DE 91% A 100%', creditos: 7, saldo: 501540 },
-      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1435813 },
-      { rango: 'DE 126% A 150%', creditos: 3, saldo: 293027 },
-      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715 },
-      { rango: 'PENDIENTE', creditos: 128, saldo: 26074042 }
+      { rango: 'DE 01% A 10%', creditos: 12, saldo: 642176, pct: 0.40 },
+      { rango: 'DE 11% A 20%', creditos: 79, saldo: 9581470, pct: 5.91 },
+      { rango: 'DE 21% A 30%', creditos: 151, saldo: 21293886, pct: 13.14 },
+      { rango: 'DE 31% A 40%', creditos: 236, saldo: 36212654, pct: 22.34 },
+      { rango: 'DE 41% A 50%', creditos: 146, saldo: 28442219, pct: 17.55 },
+      { rango: 'DE 51% A 60%', creditos: 74, saldo: 15277716, pct: 9.43 },
+      { rango: 'DE 61% A 70%', creditos: 59, saldo: 11260287, pct: 6.95 },
+      { rango: 'DE 71% A 80%', creditos: 30, saldo: 7131994, pct: 4.40 },
+      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3407240, pct: 2.10 },
+      { rango: 'DE 91% A 100%', creditos: 7, saldo: 501540, pct: 0.31 },
+      { rango: 'DE 101% A 125%', creditos: 11, saldo: 1435813, pct: 0.89 },
+      { rango: 'DE 126% A 150%', creditos: 3, saldo: 293027, pct: 0.18 },
+      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715, pct: 0.36 },
+      { rango: 'PENDIENTE', creditos: 128, saldo: 26074042, pct: 16.09 }
     ],
     rango_avaluos: [
       { categoria: 'MENOR A 40%', creditos: 478, saldo: 67730186 },
@@ -2141,20 +2254,20 @@ const data = {
       'SIN SEGMENTO': { total: 809, aldia: 527, mora: 155, juridico: 127 }
     },
     avaluos: [
-      { rango: 'DE 01% A 10%', creditos: 12, saldo: 672462 },
-      { rango: 'DE 11% A 20%', creditos: 84, saldo: 10483852 },
-      { rango: 'DE 21% A 30%', creditos: 158, saldo: 21903187 },
-      { rango: 'DE 31% A 40%', creditos: 247, saldo: 38453474 },
-      { rango: 'DE 41% A 50%', creditos: 157, saldo: 31108179 },
-      { rango: 'DE 51% A 60%', creditos: 80, saldo: 17363633 },
-      { rango: 'DE 61% A 70%', creditos: 58, saldo: 11314544 },
-      { rango: 'DE 71% A 80%', creditos: 31, saldo: 7333541 },
-      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3402239 },
-      { rango: 'DE 91% A 100%', creditos: 6, saldo: 357115 },
-      { rango: 'DE 101% A 125%', creditos: 11, saldo: 2230172 },
-      { rango: 'DE 126% A 150%', creditos: 3, saldo: 292257 },
-      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715 },
-      { rango: 'PENDIENTE', creditos: 81, saldo: 16795031 }
+      { rango: 'DE 01% A 10%', creditos: 12, saldo: 672462, pct: 0.41 },
+      { rango: 'DE 11% A 20%', creditos: 84, saldo: 10483852, pct: 6.46 },
+      { rango: 'DE 21% A 30%', creditos: 158, saldo: 21903187, pct: 13.49 },
+      { rango: 'DE 31% A 40%', creditos: 247, saldo: 38453474, pct: 23.69 },
+      { rango: 'DE 41% A 50%', creditos: 157, saldo: 31108179, pct: 19.17 },
+      { rango: 'DE 51% A 60%', creditos: 80, saldo: 17363633, pct: 10.70 },
+      { rango: 'DE 61% A 70%', creditos: 58, saldo: 11314544, pct: 6.97 },
+      { rango: 'DE 71% A 80%', creditos: 31, saldo: 7333541, pct: 4.52 },
+      { rango: 'DE 81% A 90%', creditos: 21, saldo: 3402239, pct: 2.10 },
+      { rango: 'DE 91% A 100%', creditos: 6, saldo: 357115, pct: 0.22 },
+      { rango: 'DE 101% A 125%', creditos: 11, saldo: 2230172, pct: 1.37 },
+      { rango: 'DE 126% A 150%', creditos: 3, saldo: 292257, pct: 0.18 },
+      { rango: 'MAS DE 151%', creditos: 1, saldo: 576715, pct: 0.36 },
+      { rango: 'PENDIENTE', creditos: 81, saldo: 16795031, pct: 10.35 }
     ],
     rango_avaluos: [
       { categoria: 'MENOR A 40%', creditos: 501, saldo: 71512975 },
@@ -2234,8 +2347,8 @@ const data = {
   }
 };
 
-const MESES = ['DICIEMBRE','ENERO','FEBRERO'];
-const MESES_DISPLAY = ['DICIEMBRE 2025','ENERO 2026','FEBRERO 2026'];
+const MESES = ['NOVIEMBRE','DICIEMBRE','ENERO','FEBRERO'];
+const MESES_DISPLAY = ['NOVIEMBRE 2025','DICIEMBRE 2025','ENERO 2026','FEBRERO 2026'];
 const COLORS = ['#5271ff','#f39519','#27ae60','#e84545','#8e44ad','#f38a00'];
 const MONTH_COLORS = ['#283551','#f39519','#27ae60'];
 const LABELS = ['Al día','1 a 30','31 a 60','61 a 90','Prejuridico','Jurídico'];
@@ -2287,7 +2400,8 @@ function toggleMonthSelection(visualization, mes, btn) {
   // Update tab styles
   const tabs = btn.parentElement.querySelectorAll('.tab');
   tabs.forEach(tab => {
-    const tabMes = tab.textContent.includes('DIC') ? 'DICIEMBRE' : 
+    const tabMes = tab.textContent.includes('NOV') ? 'NOVIEMBRE' :
+                   tab.textContent.includes('DIC') ? 'DICIEMBRE' : 
                    tab.textContent.includes('ENE') ? 'ENERO' : 'FEBRERO';
     const isSelected = current.indexOf(tabMes) > -1;
     const isFirst = current[0] === tabMes;
@@ -2305,7 +2419,7 @@ function toggleMonthSelection(visualization, mes, btn) {
   });
   
   // Actualizar también los botones del header
-  const btnLabels = { DICIEMBRE: 'DIC 2025', ENERO: 'ENE 2026', FEBRERO: 'FEB 2026', TODOS: 'TODOS' };
+  const btnLabels = { NOVIEMBRE: 'NOV 2025', DICIEMBRE: 'DIC 2025', ENERO: 'ENE 2026', FEBRERO: 'FEB 2026', TODOS: 'TODOS' };
   document.querySelectorAll('header .filter-btn').forEach(b => {
     const btnText = b.textContent.trim();
     const mesBtn = Object.keys(btnLabels).find(key => btnLabels[key] === btnText);
@@ -3009,6 +3123,7 @@ function renderAvaluosTable(meses) {
         <td class="rango-col" style="text-align: left; font-weight: 600; color: rgba(255,255,255,0.75);">${item.rango}</td>
         <td class="amount-col" style="text-align: center; color: #f39519; font-weight: 700;">${item.creditos}</td>
         <td class="amount-col">${formatCurrency(item.saldo)}</td>
+        <td class="amount-col" style="text-align: center; color: #27ae60; font-weight: 600;">${item.pct.toFixed(2)}%</td>
       `;
       tbody.appendChild(row);
     });
@@ -3029,6 +3144,7 @@ function renderAvaluosTable(meses) {
         <td class="rango-col" rowspan="2" style="text-align: left; font-weight: 600; color: rgba(255,255,255,0.75); vertical-align: middle;">${item.rango}</td>
         <td class="amount-col" style="text-align: center; background: rgba(243,149,25,0.1); color: #f39519; font-weight: 700;">${item.creditos}</td>
         <td class="amount-col" style="background: rgba(243,149,25,0.1);">${formatCurrency(item.saldo)}</td>
+        <td class="amount-col" style="text-align: center; background: rgba(243,149,25,0.1); color: #f39519; font-weight: 600;">${item.pct.toFixed(2)}%</td>
       `;
       tbody.appendChild(row);
       
@@ -3036,6 +3152,7 @@ function renderAvaluosTable(meses) {
       row2.innerHTML = `
         <td class="amount-col" style="text-align: center; background: rgba(39,174,96,0.1); color: #27ae60; font-weight: 700;">${item2 ? item2.creditos : 0}</td>
         <td class="amount-col" style="background: rgba(39,174,96,0.1);">${item2 ? formatCurrency(item2.saldo) : 'Q0'}</td>
+        <td class="amount-col" style="text-align: center; background: rgba(39,174,96,0.1); color: #27ae60; font-weight: 600;">${item2 && item2.pct ? item2.pct.toFixed(2) + '%' : '0%'}</td>
       `;
       tbody.appendChild(row2);
     });
@@ -3465,11 +3582,11 @@ window.addEventListener('DOMContentLoaded', () => {
   inmueblesChart = new Chart(document.getElementById('inmueblesChart'), {
     type: 'bar',
     data: {
-      labels: ['DICIEMBRE 2025', 'ENERO 2026', 'FEBRERO 2026'],
+      labels: ['NOVIEMBRE 2025', 'DICIEMBRE 2025', 'ENERO 2026', 'FEBRERO 2026'],
       datasets: [
-        { label: 'Saldo Capital', data: [5493334, 5521804, 7006698], backgroundColor: '#5271ff', borderRadius: 6, borderSkipped: false, yAxisID: 'y',
+        { label: 'Saldo Capital', data: [5493334, 5521804, 7006698, 6288354], backgroundColor: '#5271ff', borderRadius: 6, borderSkipped: false, yAxisID: 'y',
           datalabels: { display: true, color: '#fff', font: { weight: '700', size: 10 }, anchor: 'center', align: 'center', formatter: v => 'Q' + (v/1000000).toFixed(2) + 'M' } },
-        { label: 'N° Créditos', data: [44, 41, 48], backgroundColor: '#f39519', borderRadius: 6, borderSkipped: false, yAxisID: 'y1',
+        { label: 'N° Créditos', data: [44, 41, 48, 48], backgroundColor: '#f39519', borderRadius: 6, borderSkipped: false, yAxisID: 'y1',
           datalabels: { display: true, color: '#fff', font: { weight: '700', size: 11 }, anchor: 'center', align: 'center', formatter: v => v } }
       ]
     },
